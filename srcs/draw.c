@@ -28,7 +28,7 @@ void			draw_player()
 		j = 0;
 		while (j < 2)
 		{
-			game.img.data[to_coord(player.x + j, player.y + i)];
+			game.img.data[to_coord(player.x + j, player.y + i)] = 0xFF0000;
 			j++;
 		}
 		i++;
@@ -69,7 +69,7 @@ void			draw_rectangle(int row, int col)
 		j = 0;
 		while (j < g_tile_size)
 		{
-			game.img.data[(col + i) * md.width + (row + j)] = 0xFFFFFF;
+			game.img.data[(row + i) * md.width + (col + j)] = 0xFFFFFF;
 			j++;
 		}
 		i++;

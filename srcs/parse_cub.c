@@ -37,6 +37,8 @@ int				parse_data(int fd)
 	line = 0;
 	while (get_next_line(fd, &line) > 0)
 	{
+		printf("%s\n", line);
+		//error in data_setting
 		if (data_setting(line) == ERROR)
 		{
 			free(line);

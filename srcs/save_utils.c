@@ -3,13 +3,13 @@
 int				save_r(char **splits)
 {
 	int			split_length;
-	int			max_width;
-	int			max_height;
+	// int			max_width;
+	// int			max_height;
 	int			width;
 	int			height;
 
 	split_length = count_splits(splits);
-	mlx_get_screen_size(game.mlx, &max_width, &max_height);
+	// mlx_get_screen_size(game.mlx, &max_width, &max_height);
 	if (split_length != 3)
 		return (ERROR);
 	width = ft_atoi(splits[1]);

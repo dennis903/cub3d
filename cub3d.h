@@ -19,12 +19,12 @@
 # include <fcntl.h>
 # include "./libft/libft.h"
 # include "./get_next_line/get_next_line.h"
-# include "./mlx_dylib/mlx.h"
+# include "mlx_dylib/mlx.h"
 
 typedef struct			s_img
 {
 	void				*img;
-	char				*data;
+	int					*data;
 	int					endian;
 	int					bpp;
 	int					size_l;

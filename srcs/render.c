@@ -1,24 +1,24 @@
 #include "../cub3d.h"
 
-void				draw_2d_ray()
-{
-	int				col_id;
-	int				i;
-	double			ray_angle;
+// void				draw_2d_ray()
+// {
+// 	int				col_id;
+// 	int				i;
+// 	double			ray_angle;
 
-	col_id = 0;
-	i = 0;
-	ray_angle = player.rot_angle - get_degree(FOV_ANGLE / 2);
-	while (i < md.width)
-	{
-		rays[i].ray_angle = normalize_angle(ray_angle);
-		ray_cast(col_id, ray_angle);
-		draw_line(player.x, player.y, rays[i].hit_point.x, rays[i].hit_point.y, 0xFF0000);
-		ray_angle = ray_angle + (FOV_ANGLE / md.width);
-		col_id++;
-		i++;
-	}
-}
+// 	col_id = 0;
+// 	i = 0;
+// 	ray_angle = player.rot_angle - get_degree(FOV_ANGLE / 2);
+// 	while (i < md.width)
+// 	{
+// 		rays[i].ray_angle = normalize_angle(ray_angle);
+// 		ray_cast(col_id, ray_angle);
+// 		draw_line(player.x, player.y, rays[i].hit_point.x, rays[i].hit_point.y, 0xFF0000);
+// 		ray_angle = ray_angle + (FOV_ANGLE / md.width);
+// 		col_id++;
+// 		i++;
+// 	}
+// }
 
 void				image_reset()
 {
