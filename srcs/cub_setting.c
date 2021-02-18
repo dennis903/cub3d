@@ -53,7 +53,7 @@ int				cub_setting()
 	if (!(game.img.img = mlx_new_image(game.mlx, 
 	g_idx_width * g_tile_size, g_idx_height * g_tile_size)))
 		return (ERROR);
-	game.img.img = mlx_get_data_addr(game.img.img, &(game.img.bpp), &(game.img.size_l), &(game.img.endian));
+	game.img.data = (int *)mlx_get_data_addr(game.img.img, &(game.img.bpp), &(game.img.size_l), &(game.img.endian));
 	player_setting();
 	mlx_hook(game.win, X_EVENT_KEY_PRESS, 0, key_press, 0);
 	mlx_hook(game.win, X_EVENT_KEY_release, 0, key_release, 0);

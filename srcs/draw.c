@@ -5,6 +5,7 @@ void			draw_line(double x1, double y1, double x2, double y2, int color)
 	double		delta_x;
 	double		delta_y;
 	int			steps;
+	color = 0;
 
 	delta_x = x2 - x1;
 	delta_y = y2 - y1;

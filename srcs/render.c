@@ -43,7 +43,8 @@ void				raycast_2d()
 	draw_player();
 	draw_rectangles();
 	draw_lines();
-//	draw_2d_ray();
+	//draw_2d_ray();
+	//printf("why12\n");
 }
 
 void				render()

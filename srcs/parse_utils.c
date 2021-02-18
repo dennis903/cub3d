@@ -15,7 +15,7 @@ int				set_base_data(char **splits)
 	int			split_length;
 
 	split_length = count_splits(splits);
-	if (split_length != 2)
+	if (split_length != 2 && split_length != 3)
 		return (ERROR);
 	if (ft_strcmp(splits[0], "R") == 0)
 		return (save_r(splits));
@@ -31,7 +31,7 @@ int				set_base_data(char **splits)
 		return (save_texture(splits));
 	else if (ft_strcmp(splits[0], "F") == 0)
 		return (save_color(splits));
-	else if (ft_strcmp(splits[0], "c") == 0)
+	else if (ft_strcmp(splits[0], "C") == 0)
 		return (save_color(splits));
 	return (0);
 }

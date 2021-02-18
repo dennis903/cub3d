@@ -17,6 +17,7 @@
 # include <stdio.h>
 # include <math.h>
 # include <fcntl.h>
+# include <unistd.h>
 # include "./libft/libft.h"
 # include "./get_next_line/get_next_line.h"
 # include "mlx_dylib/mlx.h"
@@ -118,11 +119,11 @@ void					update(void);
 int						map_valid_test(char **map, int i, int j);
 //parse_map.c
 void					parse_map(int fd, t_list **map_list);
-char					**fill_map_data(t_list *map_list);
-int						get_map_width(t_list *map_list);
-int						get_map_height(t_list *map_list);
+char					**fill_map_data(t_list **map_list);
+int						get_map_width(t_list **map_list);
+int						get_map_height(t_list **map_list);
 //map_utils.c
-void					copy_map_data(char **map, t_list *map_list);
+void					copy_map_data(char **map, t_list **map_list);
 int						map_valid_check(char **map);
 //cub_setting.c
 int						cub_setting();

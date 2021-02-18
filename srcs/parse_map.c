@@ -1,24 +1,23 @@
 #include "../cub3d.h"
 
-int				get_map_width(t_list *map_list)
+int				get_map_width(t_list **map_list)
 {
 	int			width;
 	int			max_width;
 
 	width = 0;
 	max_width = 0;
-
 	while (map_list)
 	{
-		width = ft_strlen((char *)map_list->content);
-		if (width > max_width)
+		width = ft_strlen((char *)(*map_list)->content);
+		if (width >= max_width)
 			max_width = width;
-		map_list = map_list->next;
+		*map_list = (*map_list)->next;
 	}
 	return (max_width);
 }
 
-int				get_map_height(t_list *map_list)
+int				get_map_height(t_list **map_list)
 {
 	int			height;
 
@@ -26,7 +25,7 @@ int				get_map_height(t_list *map_list)
 	while (map_list)
 	{
 		height++;
-		map_list = map_list->next;
+		*map_list = (*map_list)->next;
 	}
 	return (height);
 }
@@ -38,12 +37,13 @@ void			parse_map(int fd, t_list **map_list)
 	line = 0;
 	while (get_next_line(fd, &line) > 0)
 	{
+		printf("%s\n", (char *)(*map_list)->content);
 		ft_lstadd_back(map_list, ft_lstnew((void *)line));
 		free(line);
 	}
 }
 
-char			**fill_map_data(t_list *map_list)
+char			**fill_map_data(t_list **map_list)
 {
 	char		**map;
 	int			i;
