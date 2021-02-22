@@ -15,6 +15,8 @@ srcs/parse_map.c	\
 srcs/player_util.c	\
 srcs/render.c	\
 srcs/utils1.c	\
+srcs/ray_cast.c	\
+srcs/ray_cast_util.c	\
 get_next_line/get_next_line.c	\
 get_next_line/get_next_line_utils.c
 
@@ -31,7 +33,7 @@ $(NAME): $(SRCS)
 	cp libft/libft.a ./
 	cp mlx/libmlx.a ./
 	cp mlx_dylib/libmlx.dylib ./
-	gcc $(FLAGS) ./libft/libft.a ./mlx/libmlx.a -framework OpenGl -framework AppKit $(SRCS) -o $(NAME)
+	gcc	./libft/libft.a ./mlx/libmlx.a -framework OpenGl -framework AppKit $(SRCS) -o $(NAME)
 
 bonus: all
 

@@ -5,11 +5,12 @@ void			draw_line(double x1, double y1, double x2, double y2, int color)
 	double		delta_x;
 	double		delta_y;
 	int			steps;
-	color = 0;
 
 	delta_x = x2 - x1;
 	delta_y = y2 - y1;
 	steps = (fabs(delta_x) > fabs(delta_y)) ? fabs(delta_x) : fabs(delta_y);
+	delta_x /= steps;
+	delta_y /= steps;
 	while (fabs(x2 - x1) > 0.01 || fabs(y2 - y1) > 0.01)
 	{
 		game.img.data[to_coord(x1, y1)] = color;
@@ -34,6 +35,7 @@ void			draw_player()
 		}
 		i++;
 	}
+	draw_line(player.x, player.y, player.x + cos(player.rot_angle) * 20, player.y + sin(player.rot_angle) * 20, 0xFF0000);
 }
 
 void			draw_lines()
@@ -44,17 +46,17 @@ void			draw_lines()
 	i = 0;
 	while (i < g_idx_height)
 	{
-		draw_line(0, i * g_tile_size, md.width, i * g_tile_size, 0xAAAAAA);
+		draw_line(0, i * g_tile_size, g_map_width, i * g_tile_size, 0xc6c6c6);
 		i++;
 	}
-	draw_line(0, g_idx_height * g_tile_size - 1, md.width, g_idx_height * g_tile_size - 1, 0xAAAAAA);
+	draw_line(0, g_idx_height * g_tile_size - 1, g_map_width, g_idx_height * g_tile_size - 1, 0xc6c6c6);
 	j = 0;
 	while (j < g_idx_width)
 	{
-		draw_line(j * g_tile_size, 0, j * g_tile_size, md.height, 0xAAAAAA);
+		draw_line(j * g_tile_size, 0, j * g_tile_size, g_map_height, 0xc6c6c6);
 		j++;
 	}
-	draw_line(g_idx_width * g_tile_size - 1, 0, g_idx_width * g_tile_size - 1, md.width, 0xAAAAAA);
+	draw_line(g_idx_width * g_tile_size - 1, 0, g_idx_width * g_tile_size - 1, g_map_height, 0xc6c6c6);
 }
 
 void			draw_rectangle(int row, int col)
@@ -70,7 +72,7 @@ void			draw_rectangle(int row, int col)
 		j = 0;
 		while (j < g_tile_size)
 		{
-			game.img.data[(row + i) * md.width + (col + j)] = 0xFFFFFF;
+			game.img.data[(row + i) * g_map_width + (col + j)] = 0xFFFFFF;
 			j++;
 		}
 		i++;
@@ -88,8 +90,8 @@ void			draw_rectangles()
 		j = 0;
 		while (j < g_idx_width)
 		{
-			if (game.map[i][j] == 1)
-				draw_rectangle(j, i);
+			if (game.map[i][j] == '1')
+				draw_rectangle(i, j);
 			j++;
 		}
 		i++;

@@ -6,10 +6,11 @@ void				update(void)
 	double			new_pos_x;
 	double			new_pos_y;
 
-	player.rot_angle = player.turn_dir * player.rotation_speed;
+	player.rot_angle += player.turn_dir * player.rotation_speed;
 	movestep = player.move_speed * player.walk_dir;
-	new_pos_x = 0;
-	new_pos_y = 0;
+	new_pos_x = player.x;
+	new_pos_y = player.y;
+
 	if (g_keys.w_key == 1 || g_keys.s_key == 1)
 	{
 		new_pos_x = player.x + cos(player.rot_angle) * movestep;

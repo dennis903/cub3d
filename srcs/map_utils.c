@@ -1,23 +1,29 @@
 #include "../cub3d.h"
 
-void			copy_map_data(char **map, t_list **map_list)
+void			copy_map_data(char **map, t_list *map_list)
 {
 	int			length;
 	int			i;
 	int			j;
 
+
 	i = 0;
 	while (map_list)
 	{
-		length = ft_strlen((char *)(*map_list)->content);
+		length = ft_strlen((char *)map_list->content);
 		j = 0;
 		while (j < length)
 		{
-			map[i][j] = ((char *)(*map_list)->content)[j];
+			map[i][j] = ((char *)map_list->content)[j];
+			j++;
+		}
+		while (j < g_idx_width)
+		{
+			map[i][j] = '\0';
 			j++;
 		}
 		i++;
-		*map_list = (*map_list)->next;
+		map_list = map_list->next;
 	}
 }
 

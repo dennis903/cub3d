@@ -46,15 +46,26 @@ void			player_setting()
 	}
 }
 
+void			ray_setting()
+{
+	g_fov_angle = get_degree(60);
+	g_num_rays = g_map_width;
+	if (!(g_rays = (t_ray *)malloc(sizeof(t_ray) * g_num_rays)))
+		exit(1);
+	if (g_num_rays == 0)
+		exit(1);
+}
+
 int				cub_setting()
 {
-	if (!(game.win = mlx_new_window(game.mlx, md.width, md.height, "cub3d")))
+	if (!(game.win = mlx_new_window(game.mlx, g_map_width, g_map_height, "cub3d")))
 		return (ERROR);
 	if (!(game.img.img = mlx_new_image(game.mlx, 
-	g_idx_width * g_tile_size, g_idx_height * g_tile_size)))
+	g_map_width, g_map_height)))
 		return (ERROR);
 	game.img.data = (int *)mlx_get_data_addr(game.img.img, &(game.img.bpp), &(game.img.size_l), &(game.img.endian));
 	player_setting();
+	ray_setting();
 	mlx_hook(game.win, X_EVENT_KEY_PRESS, 0, key_press, 0);
 	mlx_hook(game.win, X_EVENT_KEY_release, 0, key_release, 0);
 	return (0);

@@ -37,7 +37,6 @@ int				parse_data(int fd)
 	line = 0;
 	while (get_next_line(fd, &line) > 0)
 	{
-		printf("%s\n", line);
 		if (data_setting(line) == ERROR)
 		{
 			free(line);
@@ -57,9 +56,7 @@ int				move_to_map(int fd, t_list **map_list)
 {
 	int			check;
 	char		*line;
-	int			i;
 
-	i = 0;
 	check = 0;
 	line = 0;
 	while (get_next_line(fd, &line) > 0)
@@ -67,7 +64,6 @@ int				move_to_map(int fd, t_list **map_list)
 		if (line[0] != '\0')
 		{
 			check = 1;
-			free(line);
 			break ;
 		}
 		free(line);
@@ -83,14 +79,14 @@ int				parse_cub(int fd)
 {
 	int			w_tile;
 	int			h_tile;
-	t_list		**map_list;
+	t_list		*map_list;
 
 	map_list = 0;
 	if (!(game.mlx = mlx_init()))
 		return (ERROR);
 	if (parse_data(fd) == ERROR)
 		return (ERROR);
-	if (move_to_map(fd, map_list) == ERROR)
+	if (move_to_map(fd, &map_list) == ERROR)
 		return (ERROR);
 	if ((game.map = fill_map_data(map_list)) == 0)
 		return (ERROR);
@@ -100,5 +96,7 @@ int				parse_cub(int fd)
 		g_tile_size = h_tile;
 	else
 		g_tile_size = w_tile;
+	g_map_width = g_tile_size * g_idx_width;
+	g_map_height = g_tile_size * g_idx_height;
 	return (0);
 }

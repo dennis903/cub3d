@@ -36,7 +36,7 @@ int				right_test(char **map, int i, int j)
 
 int				down_test(char **map, int i, int j)
 {
-	while(j <= g_idx_height)
+	while(i <= g_idx_height)
 	{
 		if (map[i][j] == '1')
 			return (0);

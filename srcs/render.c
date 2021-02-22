@@ -1,24 +1,24 @@
 #include "../cub3d.h"
 
-// void				draw_2d_ray()
-// {
-// 	int				col_id;
-// 	int				i;
-// 	double			ray_angle;
+void				draw_2d_ray()
+{
+	int				col_id;
+	int				i;
+	double			ray_angle;
 
-// 	col_id = 0;
-// 	i = 0;
-// 	ray_angle = player.rot_angle - get_degree(FOV_ANGLE / 2);
-// 	while (i < md.width)
-// 	{
-// 		rays[i].ray_angle = normalize_angle(ray_angle);
-// 		ray_cast(col_id, ray_angle);
-// 		draw_line(player.x, player.y, rays[i].hit_point.x, rays[i].hit_point.y, 0xFF0000);
-// 		ray_angle = ray_angle + (FOV_ANGLE / md.width);
-// 		col_id++;
-// 		i++;
-// 	}
-// }
+	col_id = 0;
+	i = 0;
+	ray_angle = player.rot_angle;// - (g_fov_angle / 2);
+	while (i < g_num_rays)
+	{
+		g_rays[i].ray_angle = normalize_angle(ray_angle);
+		ray_cast(col_id, ray_angle);
+		// draw_line(player.x, player.y, g_rays[i].hit_point.x, g_rays[i].hit_point.y, 0xFF0000);
+		// ray_angle = ray_angle + (g_fov_angle / g_num_rays);
+		col_id++;
+		i++;
+	}
+}
 
 void				image_reset()
 {
@@ -26,29 +26,31 @@ void				image_reset()
 	int				j;
 
 	i = 0;
-	while (i < md.height)
+	while (i < g_map_height)
 	{
 		j = 0;
-		while (j < md.width)
+		while (j < g_map_width)
 		{
-			game.img.data[i * md.width + j] = 0x000000;
+			game.img.data[i * g_map_width + j] = 0x000000;
 			j++;
 		}
 		i++;
 	}
 }
 
+
 void				raycast_2d()
 {
-	draw_player();
 	draw_rectangles();
 	draw_lines();
-	//draw_2d_ray();
-	//printf("why12\n");
+	draw_player();
+	draw_2d_ray();
 }
 
 void				render()
 {
 	image_reset();
+	mlx_put_image_to_window(game.mlx, game.win, game.img.img, 0, 0);
 	raycast_2d();
+	mlx_put_image_to_window(game.mlx, game.win, game.img.img, 0, 0);
 }
