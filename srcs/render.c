@@ -46,6 +46,13 @@ void				raycast_2d()
 	draw_2d_ray();
 }
 
+void				raycast_3d()
+{
+	draw_ceiling();
+	draw_floor();
+	draw_wall();
+}
+
 void				render()
 {
 	image_reset();

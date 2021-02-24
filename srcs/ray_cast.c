@@ -6,7 +6,6 @@ void				horizontal_wall_check(double angle, t_point *horz_wall)
 	int				angle_side_left;
 	t_point			intercept;
 	t_point			step;
-	t_point			next_horz_touch;
 
 	horz_wall -> is_wall = 0;
 	angle_side_up = (angle <= 0 || angle >= PI) ? 1 : 0;
@@ -23,11 +22,7 @@ void				horizontal_wall_check(double angle, t_point *horz_wall)
 		step.x *= -1;
 	if (!angle_side_left && step.x < 0)
 		step.x *= -1;
-	next_horz_touch.x = intercept.x;
-	next_horz_touch.y = intercept.y;
-	if (angle_side_up)
-		next_horz_touch.y--;
-	get_next_horz_touch(next_horz_touch, &horz_wall, step, angle_side_up);
+	get_next_horz_touch(intercept, &horz_wall, step, angle_side_up);
 }
 
 void				vertical_wall_check(double angle, t_point *vert_wall)
@@ -36,7 +31,6 @@ void				vertical_wall_check(double angle, t_point *vert_wall)
 	int				angle_side_left;
 	t_point			intercept;
 	t_point			step;
-	t_point			next_vert_touch;
 
 	vert_wall -> is_wall = 0;
 	angle_side_down = (angle > 0 && angle < PI) ? 1 : 0;
@@ -55,9 +49,7 @@ void				vertical_wall_check(double angle, t_point *vert_wall)
 		step.y *= -1;
 	if (angle_side_left)
 		intercept.x--;
-	next_vert_touch.x = intercept.x;
-	next_vert_touch.y = intercept.y;
-	get_next_vert_touch(next_vert_touch, &vert_wall, step, angle_side_left);
+	get_next_vert_touch(intercept, &vert_wall, step, angle_side_left);
 }
 
 void				ray_cast(int col_id, double angle)

@@ -1,7 +1,11 @@
 #include "../cub3d.h"
 
-void			get_next_horz_touch(t_point touch, t_point **horz_wall, t_point step, int angle_side_up)
+void			get_next_horz_touch(t_point intercept, t_point **horz_wall, t_point step, int angle_side_up)
 {
+	t_point		touch;
+
+	touch.x = intercept.x;
+	touch.y = intercept.y;
 	(*horz_wall)->x = 0;
 	(*horz_wall)->y = 0;
 	while (touch.x >= 0 && touch.x < g_map_width && touch.y >=	 0 && touch.y <= g_map_height)
@@ -21,8 +25,12 @@ void			get_next_horz_touch(t_point touch, t_point **horz_wall, t_point step, int
 	}
 }
 
-void				get_next_vert_touch(t_point touch, t_point **vert_wall, t_point step, int angle_side_left)
+void				get_next_vert_touch(t_point intercept, t_point **vert_wall, t_point step, int angle_side_left)
 {
+	t_point			touch;
+
+	touch.x = intercept.x;
+	touch.y = intercept.y;
 	(*vert_wall)->x = 0;
 	(*vert_wall)->y = 0;
 	while (touch.x >= 0 && touch.x <= g_map_width && touch.y >= 0 && touch.y <= g_map_height)

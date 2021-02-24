@@ -146,6 +146,7 @@ double					get_distance(int x1, int y1, int x2, int y2);
 //render.c
 void					render();
 void					draw_2d_ray();
+void					raycast_3d();
 //image.c
 //draw.c
 void					draw_player();
@@ -160,7 +161,13 @@ void					ray_cast(int col_id, double angle);
 void					vertical_wall_check(double angle, t_point *vert_wall);
 void					horizontal_wall_check(double angle, t_point *horz_wall);
 //ray_cast_util.c
-void					get_next_horz_touch(t_point touch, t_point **horz_wall, t_point step, int angle_side_up);
-void					get_next_vert_touch(t_point touch, t_point **vert_wall, t_point step, int angle_side_left );
+void					get_next_horz_touch(t_point intercept, t_point **horz_wall, t_point step, int angle_side_up);
+void					get_next_vert_touch(t_point intercept, t_point **vert_wall, t_point step, int angle_side_left );
 void					get_ray_data(double dist, int col_id, t_point wall_point);
+//ray_cast_3d.c
+void					draw_ceiling();
+void					draw_floor();
+void					draw_wall();
+//color.c
+unsigned int			fill_color(t_color *color);
 #endif

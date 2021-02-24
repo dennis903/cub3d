@@ -17,6 +17,8 @@ srcs/render.c	\
 srcs/utils1.c	\
 srcs/ray_cast.c	\
 srcs/ray_cast_util.c	\
+srcs/ray_cast_3d.c	\
+srcs/color.c	\
 get_next_line/get_next_line.c	\
 get_next_line/get_next_line_utils.c
 
@@ -33,7 +35,7 @@ $(NAME): $(SRCS)
 	cp libft/libft.a ./
 	cp mlx/libmlx.a ./
 	cp mlx_dylib/libmlx.dylib ./
-	gcc	./libft/libft.a ./mlx/libmlx.a -framework OpenGl -framework AppKit $(SRCS) -o $(NAME)
+	gcc	$(FLAGS)	./libft/libft.a ./mlx/libmlx.a -framework OpenGl -framework AppKit $(SRCS) -o $(NAME)
 
 bonus: all
 
