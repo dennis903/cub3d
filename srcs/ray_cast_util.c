@@ -2,7 +2,9 @@
 
 void			get_next_horz_touch(t_point touch, t_point **horz_wall, t_point step, int angle_side_up)
 {
-	while (touch.x >= 0 && touch.x <= g_map_width && touch.y >= 0 && touch.y <= g_map_height)
+	(*horz_wall)->x = 0;
+	(*horz_wall)->y = 0;
+	while (touch.x >= 0 && touch.x < g_map_width && touch.y >=	 0 && touch.y <= g_map_height)
 	{
 		if (has_wall_at(touch.x, touch.y - angle_side_up))
 		{
@@ -21,6 +23,8 @@ void			get_next_horz_touch(t_point touch, t_point **horz_wall, t_point step, int
 
 void				get_next_vert_touch(t_point touch, t_point **vert_wall, t_point step, int angle_side_left)
 {
+	(*vert_wall)->x = 0;
+	(*vert_wall)->y = 0;
 	while (touch.x >= 0 && touch.x <= g_map_width && touch.y >= 0 && touch.y <= g_map_height)
 	{
 		if (has_wall_at(touch.x - angle_side_left, touch.y))

@@ -8,13 +8,13 @@ void				draw_2d_ray()
 
 	col_id = 0;
 	i = 0;
-	ray_angle = player.rot_angle;// - (g_fov_angle / 2);
+	ray_angle = player.rot_angle - (g_fov_angle / 2);
 	while (i < g_num_rays)
 	{
 		g_rays[i].ray_angle = normalize_angle(ray_angle);
 		ray_cast(col_id, ray_angle);
-		// draw_line(player.x, player.y, g_rays[i].hit_point.x, g_rays[i].hit_point.y, 0xFF0000);
-		// ray_angle = ray_angle + (g_fov_angle / g_num_rays);
+		draw_line(player.x, player.y, g_rays[i].hit_point.x, g_rays[i].hit_point.y, 0xFF0000);
+		ray_angle = ray_angle + (g_fov_angle / g_num_rays);
 		col_id++;
 		i++;
 	}
@@ -38,7 +38,6 @@ void				image_reset()
 	}
 }
 
-
 void				raycast_2d()
 {
 	draw_rectangles();
@@ -52,5 +51,6 @@ void				render()
 	image_reset();
 	mlx_put_image_to_window(game.mlx, game.win, game.img.img, 0, 0);
 	raycast_2d();
+	raycast_3d();
 	mlx_put_image_to_window(game.mlx, game.win, game.img.img, 0, 0);
 }

@@ -119,6 +119,8 @@ int						save_texture(char **splits);
 int						save_color(char **splits);
 //player_util.c
 void					update(void);
+int						defence_seg_y(double angle);
+int						defence_seg_x(double angle);
 //map_valid_test.c
 int						map_valid_test(char **map, int i, int j);
 //parse_map.c
