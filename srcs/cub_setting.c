@@ -64,6 +64,14 @@ int				cub_setting()
 	g_map_width, g_map_height)))
 		return (ERROR);
 	game.img.data = (int *)mlx_get_data_addr(game.img.img, &(game.img.bpp), &(game.img.size_l), &(game.img.endian));
+	// if ((get_texture(g_dir.north) == ERROR))
+	// 	return (ERROR);
+	// if ((get_texture(g_dir.south) == ERROR))
+	// 	return (ERROR);
+	// if ((get_texture(g_dir.east) == ERROR))
+	// 	return (ERROR);
+	// if ((get_texture(g_dir.west) == ERROR))
+	// 	return (ERROR);
 	player_setting();
 	ray_setting();
 	mlx_hook(game.win, X_EVENT_KEY_PRESS, 0, key_press, 0);

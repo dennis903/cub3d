@@ -1,9 +1,5 @@
 R 960 640
-
-
 SO ./nam.xpm
-
-
 NO ./buk.xpm
 
 WE ./su.xpm

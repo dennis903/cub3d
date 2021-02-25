@@ -24,11 +24,33 @@
 typedef struct			s_img
 {
 	void				*img;
+	int					width;
+	int					height;
 	int					*data;
 	int					endian;
 	int					bpp;
 	int					size_l;
 }						t_img;
+
+typedef struct			s_3d_data
+{
+	double				actual_wall_height;
+	double				dist_to_wall;
+	double				proj_wall_height;
+	double				dist_from_player;
+}						t_3d_data;
+
+typedef struct			s_direction
+{
+	t_img				*north;
+	t_img				*south;
+	t_img				*west;
+	t_img				*east;
+	int					check_no;
+	int					check_so;
+	int					check_ea;
+	int					check_we;
+}						t_direction;
 
 typedef struct			s_player
 {
@@ -99,6 +121,8 @@ t_map_data				md;
 t_player				player;
 t_key					g_keys;
 t_ray					*g_rays;
+t_direction				g_dir;
+t_3d_data				g_3d; 
 int						g_idx_width;
 int						g_idx_height;
 int						g_map_width;
@@ -168,6 +192,13 @@ void					get_ray_data(double dist, int col_id, t_point wall_point);
 void					draw_ceiling();
 void					draw_floor();
 void					draw_wall();
-//color.c
+//texture_admin.c
 unsigned int			fill_color(t_color *color);
+void					check_direction(int col_id);
+void					init_direction();
+//texture_utils.c
+void					is_dir_up(int left, int col_id);
+void					is_dir_down(int left, int col_id);
+//utils2.c
+int						calc_idx(int x, int y);
 #endif

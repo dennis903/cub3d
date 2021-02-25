@@ -4,9 +4,9 @@ int					defence_seg_x(double angle)
 {
 	angle = normalize_angle(angle);
 	if (angle > 0.5 * PI && angle < 1.5 * PI)
-		return(-3);
+		return(-10);
 	else if (angle <= 0.5 * PI || angle >= 1.5 * PI)
-		return (3);
+		return (10);
 	return (0);
 }
 
@@ -14,9 +14,9 @@ int					defence_seg_y(double angle)
 {
 	angle = normalize_angle(angle);
 	if (angle > 0 && angle < PI)
-		return (3);
+		return (10);
 	else if (angle >= 0 || angle >= PI)
-		return (-3);
+		return (-10);
 	return (0);
 }
 

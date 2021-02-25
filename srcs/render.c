@@ -15,6 +15,7 @@ void				draw_2d_ray()
 		ray_cast(col_id, ray_angle);
 		draw_line(player.x, player.y, g_rays[i].hit_point.x, g_rays[i].hit_point.y, 0xFF0000);
 		ray_angle = ray_angle + (g_fov_angle / g_num_rays);
+		check_direction(col_id);
 		col_id++;
 		i++;
 	}

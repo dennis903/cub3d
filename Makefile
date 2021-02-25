@@ -18,7 +18,9 @@ srcs/utils1.c	\
 srcs/ray_cast.c	\
 srcs/ray_cast_util.c	\
 srcs/ray_cast_3d.c	\
-srcs/color.c	\
+srcs/texture_admin.c	\
+srcs/texture_utils.c	\
+srcs/utils2.c	\
 get_next_line/get_next_line.c	\
 get_next_line/get_next_line_utils.c
 
@@ -40,7 +42,7 @@ $(NAME): $(SRCS)
 bonus: all
 
 %.o: %.c $(HEADER)
-	gcc $(FLAGS) -c $< -o $@
+	gcc -c $< -o $@
 
 clean:
 	make -C libft clean
