@@ -42,10 +42,34 @@ typedef struct			s_3d_data
 
 typedef struct			s_direction
 {
-	t_img				*north;
-	t_img				*south;
-	t_img				*west;
-	t_img				*east;
+	void				*north;
+	void				*south;
+	void				*west;
+	void				*east;
+	int					no_w;
+	int					no_h;
+	int					so_w;
+	int					so_h;
+	int					ea_w;
+	int					ea_h;
+	int					we_w;
+	int					we_h;
+	int					*no_data;
+	int					*so_data;
+	int					*ea_data;
+	int					*we_data;
+	int					no_bpp;
+	int					so_bpp;
+	int					ea_bpp;
+	int					we_bpp;
+	int					no_endian;
+	int					so_endian;
+	int					ea_endian;
+	int					we_endian;
+	int					no_size_l;
+	int					so_size_l;
+	int					we_size_l;
+	int					ea_size_l;
 	int					check_no;
 	int					check_so;
 	int					check_ea;
@@ -122,11 +146,9 @@ t_player				player;
 t_key					g_keys;
 t_ray					*g_rays;
 t_direction				g_dir;
-t_3d_data				g_3d; 
+t_3d_data				g_3d;
 int						g_idx_width;
 int						g_idx_height;
-int						g_map_width;
-int						g_map_height;
 int						g_tile_size;
 double					g_fov_angle;
 int						g_num_rays;
@@ -143,6 +165,8 @@ int						save_texture(char **splits);
 int						save_color(char **splits);
 //player_util.c
 void					update(void);
+void					set_angle(char direction);
+void					player_init(int height, int width);
 int						defence_seg_y(double angle);
 int						defence_seg_x(double angle);
 //map_valid_test.c
@@ -156,6 +180,7 @@ int						get_map_height(t_list *map_list);
 void					copy_map_data(char **map, t_list *map_list);
 int						map_valid_check(char **map);
 //cub_setting.c
+int						texture_setting();
 int						cub_setting();
 //key_press.c
 int						key_release(int keycode);
@@ -192,13 +217,20 @@ void					get_ray_data(double dist, int col_id, t_point wall_point);
 void					draw_ceiling();
 void					draw_floor();
 void					draw_wall();
+void					draw_3d_wall(double x, double start_y, double wall_height, t_ray ray);
 //texture_admin.c
 unsigned int			fill_color(t_color *color);
-void					check_direction(int col_id);
+void					check_direction(t_ray ray);
 void					init_direction();
 //texture_utils.c
-void					is_dir_up(int left, int col_id);
-void					is_dir_down(int left, int col_id);
+void					is_dir_up(int left, t_ray ray);
+void					is_dir_down(int left, t_ray ray);
+double					get_texture_x(t_ray ray);
+double					get_texture_y(double current_y, double start_y, double wall_height);
 //utils2.c
 int						calc_idx(int x, int y);
+//texture.c
+int						get_texture_color(double x, double y);
+//reset_img.c
+void					image_reset_2d();
 #endif

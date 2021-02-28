@@ -6,12 +6,12 @@ void					draw_ceiling()
 	int					j;
 
 	i = 0;
-	while (i < g_map_height / 2)
+	while (i < md.height / 2)
 	{
 		j = 0;
-		while (j < g_map_width)
+		while (j < md.width)
 		{
-			game.img.data[i * g_map_width + j] = fill_color(md.f);
+			game.img.data[i * md.width + j] = fill_color(md.f);
 			j++;
 		}
 		i++;
@@ -23,33 +23,42 @@ void					draw_floor()
 	int					i;
 	int					j;
 
-	i = g_map_height / 2;
-	while (i < g_map_height)
+	i = md.height / 2;
+	while (i < md.height)
 	{
 		j = 0;
-		while (j < g_map_width)
+		while (j < md.width)
 		{
-			game.img.data[i * g_map_width + j] = fill_color(md.c);
+			game.img.data[i * md.width + j] = fill_color(md.c);
 			j++;
 		}
 		i++;
 	}
 }
 
-void					draw_3d_rectangle(double x1, double y1, double x2, double y2)
+void					draw_3d_wall(double x, double start_y, double wall_height, t_ray ray)
 {
+	t_point				texture;
+	double				temp_wall_height;
+	double				temp_start_y;
+	int					color;
 	int					i;
-	int					j;
 
-	i = 0;
-	while(i < y2 + 0)
+	temp_start_y = start_y;
+	temp_wall_height = wall_height;
+	color = 0;
+	if (start_y < 0)
+		start_y = 0;
+	if (wall_height > md.height)
+		wall_height = md.height;
+	check_direction(ray);
+	texture.x = get_texture_x(ray);
+	i = start_y;
+	while (i < wall_height)
 	{
-		j = 0;
-		while (j < x2)
-		{
-			game.img.data[calc_idx((int)(x1 + j), (int)(y1 + i))] = 0xF1F1F1;
-			j++;
-		}
+		texture.y = get_texture_y(i, temp_start_y, temp_wall_height);
+		color = get_texture_color(texture.x, texture.y);
+		game.img.data[i * md.width + (int)x] = color;
 		i++;
 	}
 }
@@ -68,10 +77,9 @@ void					draw_wall()
 		ray = g_rays[i];
 		ray_dist = ray.distance;
 		correct_wall_dist = cos(player.rot_angle - ray.ray_angle) * ray_dist;
-		g_3d.dist_from_player = (g_map_width / 2) * tan(g_fov_angle / 2);
+		g_3d.dist_from_player = (md.width / 2) * tan(g_fov_angle / 2);
 		g_3d.proj_wall_height = (g_tile_size / correct_wall_dist) * g_3d.dist_from_player;
-		draw_3d_rectangle(i , (g_map_height / 2) - (g_3d.proj_wall_height / 2),
-		1, g_3d.proj_wall_height);
+		draw_3d_wall(i, ((md.height / 2) - (g_3d.proj_wall_height / 2)), g_3d.proj_wall_height, ray);
 		i++;
 	}
 }

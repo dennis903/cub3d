@@ -1,12 +1,35 @@
 #include "../cub3d.h"
 
+void			set_angle(char direction)
+{
+	if (direction == 'N')
+		player.rot_angle = (PI / 180) * get_degree(90);
+	else if (direction == 'E')
+		player.rot_angle = PI / 180;
+	else if (direction == 'W')
+		player.rot_angle = PI;
+	else if (direction == 'S')
+		player.rot_angle = (PI / 180) * get_degree(270);
+}
+
+void			player_init(int height, int width)
+{
+	player.x = g_tile_size * width;
+	player.y = g_tile_size * height;
+	player.radius = 3;
+	player.turn_dir = 0;
+	player.walk_dir = 0;
+	player.move_speed = 2.0;
+	player.rotation_speed = 2 * (PI / 180);
+}
+
 int					defence_seg_x(double angle)
 {
 	angle = normalize_angle(angle);
 	if (angle > 0.5 * PI && angle < 1.5 * PI)
-		return(-10);
+		return(-3);
 	else if (angle <= 0.5 * PI || angle >= 1.5 * PI)
-		return (10);
+		return (3);
 	return (0);
 }
 
@@ -14,9 +37,9 @@ int					defence_seg_y(double angle)
 {
 	angle = normalize_angle(angle);
 	if (angle > 0 && angle < PI)
-		return (10);
+		return (3);
 	else if (angle >= 0 || angle >= PI)
-		return (-10);
+		return (-3);
 	return (0);
 }
 

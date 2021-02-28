@@ -2,5 +2,5 @@
 
 int					calc_idx(int x, int y)
 {
-	return (y * g_map_width + x);
+	return (y * (g_tile_size * g_idx_width) + x);
 }

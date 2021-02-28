@@ -1,26 +1,25 @@
 #include "../cub3d.h"
 
-void			set_angle(char direction)
+int				texture_setting()
 {
-	if (direction == 'N')
-		player.rot_angle = (PI / 180) * get_degree(90);
-	else if (direction == 'E')
-		player.rot_angle = PI / 180;
-	else if (direction == 'W')
-		player.rot_angle = PI;
-	else if (direction == 'S')
-		player.rot_angle = (PI / 180) * get_degree(270);
-}
 
-void			player_init(int height, int width)
-{
-	player.x = g_tile_size * width;
-	player.y = g_tile_size * height;
-	player.radius = 3;
-	player.turn_dir = 0;
-	player.walk_dir = 0;
-	player.move_speed = 2.0;
-	player.rotation_speed = 2 * (PI / 180);
+	if (!(g_dir.north = mlx_xpm_file_to_image(game.mlx, md.north, &g_dir.no_w, &g_dir.no_h)))
+		return (ERROR);
+	if (!(g_dir.south = mlx_xpm_file_to_image(game.mlx, md.south, &g_dir.so_w, &g_dir.so_h)))
+		return (ERROR);
+	if (!(g_dir.east = mlx_xpm_file_to_image(game.mlx, md.east, &g_dir.ea_w, &g_dir.ea_h)))
+		return (ERROR);
+	if (!(g_dir.west = mlx_xpm_file_to_image(game.mlx, md.west, &g_dir.we_w, &g_dir.we_h)))
+		return (ERROR);
+	if (!(g_dir.no_data = (int *)mlx_get_data_addr(g_dir.north, &g_dir.no_bpp, &g_dir.no_size_l, &g_dir.no_endian)))
+		return (ERROR);
+	if (!(g_dir.so_data = (int *)mlx_get_data_addr(g_dir.south, &g_dir.so_bpp, &g_dir.so_size_l, &g_dir.so_endian)))
+		return (ERROR);
+	if (!(g_dir.ea_data = (int *)mlx_get_data_addr(g_dir.east, &g_dir.ea_bpp, &g_dir.ea_size_l, &g_dir.ea_endian)))
+		return (ERROR);
+	if (!(g_dir.we_data = (int *)mlx_get_data_addr(g_dir.west, &g_dir.we_bpp, &g_dir.we_size_l, &g_dir.we_endian)))
+		return (ERROR);
+	return (0);
 }
 
 void			player_setting()
@@ -49,7 +48,7 @@ void			player_setting()
 void			ray_setting()
 {
 	g_fov_angle = get_degree(60);
-	g_num_rays = g_map_width;
+	g_num_rays = md.width;
 	if (!(g_rays = (t_ray *)malloc(sizeof(t_ray) * g_num_rays)))
 		exit(1);
 	if (g_num_rays == 0)
@@ -58,20 +57,14 @@ void			ray_setting()
 
 int				cub_setting()
 {
-	if (!(game.win = mlx_new_window(game.mlx, g_map_width, g_map_height, "cub3d")))
+	if (!(game.win = mlx_new_window(game.mlx, md.width, md.height, "cub2d")))
 		return (ERROR);
-	if (!(game.img.img = mlx_new_image(game.mlx, 
-	g_map_width, g_map_height)))
+	if (!(game.img.img = mlx_new_image(game.mlx, md.width, md.height)))
 		return (ERROR);
-	game.img.data = (int *)mlx_get_data_addr(game.img.img, &(game.img.bpp), &(game.img.size_l), &(game.img.endian));
-	// if ((get_texture(g_dir.north) == ERROR))
-	// 	return (ERROR);
-	// if ((get_texture(g_dir.south) == ERROR))
-	// 	return (ERROR);
-	// if ((get_texture(g_dir.east) == ERROR))
-	// 	return (ERROR);
-	// if ((get_texture(g_dir.west) == ERROR))
-	// 	return (ERROR);
+	if (!(game.img.data = (int *)mlx_get_data_addr(game.img.img, &(game.img.bpp), &(game.img.size_l), &(game.img.endian))))
+		return (ERROR);
+	if (texture_setting() == ERROR)
+		return (ERROR);
 	player_setting();
 	ray_setting();
 	mlx_hook(game.win, X_EVENT_KEY_PRESS, 0, key_press, 0);

@@ -20,7 +20,7 @@ unsigned int				fill_color(t_color *color)
 	return (((r & 0xFF) << 16) + ((g & 0xFF) << 8) + (b & 0xFF));
 }
 
-void						check_direction(int col_id)
+void						check_direction(t_ray ray)
 {
 	int						angle_side_down;
 	int						angle_side_left;
@@ -28,14 +28,14 @@ void						check_direction(int col_id)
 
 	angle_side_down = 0;
 	angle_side_left = 0;
-	angle = g_rays[col_id].ray_angle;
+	angle = ray.ray_angle;
 	if (angle > 0 && angle < PI)
 		angle_side_down = 1;
 	if (angle > 0.5 * PI && angle < 1.5 * PI)
 		angle_side_left = 1;
 	init_direction();
 	if (!angle_side_down)
-		is_dir_up(angle_side_left, col_id);
+		is_dir_up(angle_side_left, ray);
 	else
-		is_dir_down(angle_side_left, col_id);
+		is_dir_down(angle_side_left, ray);
 }

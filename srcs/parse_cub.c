@@ -96,7 +96,5 @@ int				parse_cub(int fd)
 		g_tile_size = h_tile;
 	else
 		g_tile_size = w_tile;
-	g_map_width = g_tile_size * g_idx_width;
-	g_map_height = g_tile_size * g_idx_height;
 	return (0);
 }

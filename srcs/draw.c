@@ -46,17 +46,17 @@ void			draw_lines()
 	i = 0;
 	while (i < g_idx_height)
 	{
-		draw_line(0, i * g_tile_size, g_map_width, i * g_tile_size, 0xc6c6c6);
+		draw_line(0, i * g_tile_size, (g_tile_size * g_idx_width), i * g_tile_size, 0xc6c6c6);
 		i++;
 	}
-	draw_line(0, g_idx_height * g_tile_size - 1, g_map_width, g_idx_height * g_tile_size - 1, 0xc6c6c6);
+	draw_line(0, g_idx_height * g_tile_size - 1, g_tile_size * g_idx_width, g_idx_height * g_tile_size - 1, 0xc6c6c6);
 	j = 0;
 	while (j < g_idx_width)
 	{
-		draw_line(j * g_tile_size, 0, j * g_tile_size, g_map_height, 0xc6c6c6);
+		draw_line(j * g_tile_size, 0, j * g_tile_size, g_tile_size * g_idx_height, 0xc6c6c6);
 		j++;
 	}
-	draw_line(g_idx_width * g_tile_size - 1, 0, g_idx_width * g_tile_size - 1, g_map_height, 0xc6c6c6);
+	draw_line(g_idx_width * g_tile_size - 1, 0, g_idx_width * g_tile_size - 1, g_tile_size * g_idx_height, 0xc6c6c6);
 }
 
 void			draw_rectangle(int row, int col)
@@ -72,7 +72,7 @@ void			draw_rectangle(int row, int col)
 		j = 0;
 		while (j < g_tile_size)
 		{
-			game.img.data[(row + i) * g_map_width + (col + j)] = 0xFFFFFF;
+			game.img.data[(row + i) * md.width + (col + j)] = 0xFFFFFF;
 			j++;
 		}
 		i++;
