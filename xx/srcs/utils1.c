@@ -6,12 +6,12 @@ void				img_reset_2d()
 	int				j;
 
 	i = 0;
-	while (i < g_md.height)
+	while (i < g_tile_size * g_idx_height)
 	{
 		j = 0;
-		while (j < g_md.width)
+		while (j < g_tile_size * g_idx_width)
 		{
-			g_game.img_2d.data[i * g_md.width + j] = 0x000000;
+			g_game.img_2d.data[i * (g_tile_size * g_idx_width) + j] = 0x000000;
 			j++;
 		}
 		i++;
@@ -53,5 +53,13 @@ int					has_wall_at(double x, double y)
 
 int					calc_idx(double x, double y)
 {
-	return ((int)y * g_md.width + (int)x);
+	return ((int)y * (g_tile_size * g_idx_width) + (int)x);
+}
+
+double				normalize_angle(double angle)
+{
+	angle = fmod(angle, PI * 2);
+	if (angle < 0)
+		angle = (PI * 2) + angle;
+	return (angle);
 }

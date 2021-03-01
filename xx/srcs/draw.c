@@ -13,7 +13,7 @@ void				draw_line(double x1, double y1, double x2, double y2)
 	delta_y /= steps;
 	while (fabs(x2 - x1) > 0.01 || fabs(y2 - y1) > 0.01)
 	{
-		g_game.img_2d.data[(int)(y1 * g_md.width) + (int)x1] = 0xFF00FF;
+		g_game.img_2d.data[(int)(y1 * (g_tile_size * g_idx_width)) + (int)x1] = 0xFF00FF;
 		x1 += delta_x;
 		y1 += delta_y;
 	}
@@ -32,7 +32,7 @@ void				draw_rectangle(int row, int col)
 		j = 0;
 		while (j < g_tile_size)
 		{
-			g_game.img_2d.data[(row + i) * g_md.width + (col + j)] = 0xFFFFFF;
+			g_game.img_2d.data[(row + i) * (g_tile_size * g_idx_width) + (col + j)] = 0xFFFFFF;
 			j++;
 		}
 		i++;
@@ -90,7 +90,7 @@ void				draw_player()
 		j = 0;
 		while (j < 2)
 		{
-			g_game.img_2d.data[calc_idx(g_player.x + j, g_player.y + i)] = 0xFF0000;
+			g_game.img_2d.data[calc_idx(g_player.x + j, g_player.y + i)] = 0xFFFFFF;
 			j++;
 		}
 		i++;

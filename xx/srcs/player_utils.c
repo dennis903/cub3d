@@ -22,7 +22,7 @@ void				player_init(int height, int width)
 	g_player.move_speed = 2.0;
 	g_player.rotation_speed = 2 * (PI / 180);
 }
-
+// fix it
 int					defence_seg_x(double angle)
 {
 	angle = normalize_angle(angle);

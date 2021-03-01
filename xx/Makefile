@@ -13,6 +13,8 @@ srcs/key_press.c	\
 srcs/utils1.c		\
 srcs/cub_start.c	\
 srcs/ray_cast.c		\
+srcs/ray_cast_utils.c	\
+srcs/draw.c			\
 get_next_line/get_next_line.c	\
 get_next_line/get_next_line_utils.c
 

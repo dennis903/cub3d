@@ -36,13 +36,12 @@ void			player_setting()
 			|| g_game.map[i][j] == 'W' || g_game.map[i][j] == 'E')
 			{
 				set_angle(g_game.map[i][j]);
-				break ;
+				player_init(i, j);
 			}
 			j++;
 		}
 		i++;
 	}
-	player_init(i, j);
 }
 
 int					ray_setting()
@@ -58,7 +57,7 @@ int					cub_setting()
 {
 	if (!(g_game.win = mlx_new_window(g_game.mlx, g_md.width, g_md.height, "cub3d")))
 		return (ERROR);
-	if (!(g_game.img_2d.img = mlx_new_image(g_game.mlx, g_md.width, g_md.height)))
+	if (!(g_game.img_2d.img = mlx_new_image(g_game.mlx, g_tile_size * g_idx_width, g_tile_size * g_idx_height)))
 		return (ERROR);
 	if (!(g_game.img_3d.img = mlx_new_image(g_game.mlx, g_md.width, g_md.height)))
 		return (ERROR);

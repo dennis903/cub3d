@@ -113,6 +113,7 @@ typedef struct			s_point
 {
 	double				x;
 	double				y;
+	int					is_wall;
 }						t_point;
 
 typedef struct			s_ray
@@ -194,15 +195,25 @@ int						has_wall_at(double x, double y);
 int						calc_idx(double x, double y);
 void					img_reset_2d();
 void					img_reset_3d();
+double					normalize_angle(double angle);
 //cub_start.c
 int						main_loop(void);
 void					render();
 //ray_cast.c
 void					ray_cast_2d();
+void					draw_2d_ray();
+void					ray_cast(int col_id, double ray_angle);
+void					vertical_wall_check(double angle, t_point *vert_wall);
+void					horizontal_wall_check(double angle, t_point *horz_wall);
 //draw.c
 void					draw_lines();
 void					draw_rectangles();
 void					draw_player();
 void					draw_line(double x1, double y1, double x2, double y2);
 void					draw_rectangle(int row, int col);
+//ray_cast_utils.c
+void					get_next_horz_touch(t_point intercept, t_point **horz_wall, t_point step, int angle_side_up);
+void					get_next_vert_touch(t_point intercept, t_point **vert_wall, t_point step, int angle_side_left);
+void					get_ray_data(double dist, int col_id, t_point wall_point);
+double					get_distance(int x1, int y1, int x2, int y2);
 #endif
