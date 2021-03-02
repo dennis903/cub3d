@@ -13,7 +13,6 @@ void				draw_2d_ray()
 	{
 		g_rays[i].ray_angle = normalize_angle(ray_angle);
 		ray_cast(col_id, ray_angle);
-		draw_line(player.x, player.y, g_rays[i].hit_point.x, g_rays[i].hit_point.y, 0xFF0000);
 		ray_angle = ray_angle + (g_fov_angle / g_num_rays);
 		col_id++;
 		i++;
@@ -23,9 +22,9 @@ void				draw_2d_ray()
 
 void				raycast_2d()
 {
-	draw_rectangles();
-	draw_lines();
-	draw_player();
+	// draw_rectangles();
+	// draw_lines();
+	// draw_player();
 	draw_2d_ray();
 }
 
@@ -38,7 +37,8 @@ void				raycast_3d()
 
 void				render()
 {
-	image_reset_2d();
+	// image_reset_2d();
+	image_reset_3d();
 	raycast_2d();
 	raycast_3d();
 }

@@ -21,7 +21,6 @@ srcs/ray_cast_3d.c	\
 srcs/texture_admin.c	\
 srcs/texture_utils.c	\
 srcs/utils2.c	\
-srcs/texture.c	\
 srcs/reset_img.c	\
 get_next_line/get_next_line.c	\
 get_next_line/get_next_line_utils.c

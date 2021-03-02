@@ -11,7 +11,7 @@ void					draw_ceiling()
 		j = 0;
 		while (j < md.width)
 		{
-			game.img.data[i * md.width + j] = fill_color(md.f);
+			game.img_3d.data[i * md.width + j] = fill_color(md.f);
 			j++;
 		}
 		i++;
@@ -29,36 +29,35 @@ void					draw_floor()
 		j = 0;
 		while (j < md.width)
 		{
-			game.img.data[i * md.width + j] = fill_color(md.c);
+			game.img_3d.data[i * md.width + j] = fill_color(md.c);
 			j++;
 		}
 		i++;
 	}
 }
 
-void					draw_3d_wall(double x, double start_y, double wall_height, t_ray ray)
+void					draw_3d_wall(double x, int wall_strip_height, t_ray ray)
 {
-	t_point				texture;
-	double				temp_wall_height;
-	double				temp_start_y;
-	int					color;
 	int					i;
+	int					start_point;
+	int					end_point;
+	int					screen_y;
+	t_point				get_texture;
 
-	temp_start_y = start_y;
-	temp_wall_height = wall_height;
-	color = 0;
-	if (start_y < 0)
-		start_y = 0;
-	if (wall_height > md.height)
-		wall_height = md.height;
+	start_point = (md.height / 2) - (wall_strip_height / 2);
+	if (start_point < 0)
+		start_point = 0;
+	end_point = (md.height / 2) + (wall_strip_height / 2);
+	if (end_point >= md.height)
+		end_point = md.height - 1;
+	i = start_point;
 	check_direction(ray);
-	texture.x = get_texture_x(ray);
-	i = start_y;
-	while (i < wall_height)
+	get_texture.x = get_texture_x(ray);
+	while (i < end_point)
 	{
-		texture.y = get_texture_y(i, temp_start_y, temp_wall_height);
-		color = get_texture_color(texture.x, texture.y);
-		game.img.data[i * md.width + (int)x] = color;
+		screen_y = i + (wall_strip_height / 2) - (md.height / 2);
+		get_texture.y = get_texture_y(screen_y,  wall_strip_height);
+		game.img_3d.data[i * md.width + (int)x] = get_texture_color(get_texture.x, get_texture.y);
 		i++;
 	}
 }
@@ -66,20 +65,19 @@ void					draw_3d_wall(double x, double start_y, double wall_height, t_ray ray)
 void					draw_wall()
 {
 	int					i;
-	t_ray				ray;
-	double				ray_dist;
-	double				correct_wall_dist;
+	double				dist_from_player;
+	double				proj_wall_height;
+	double				correct_ray_dist;
+	int					wall_strip_height;
 
 	i = 0;
-	g_3d.actual_wall_height = g_tile_size;
 	while (i < g_num_rays)
 	{
-		ray = g_rays[i];
-		ray_dist = ray.distance;
-		correct_wall_dist = cos(player.rot_angle - ray.ray_angle) * ray_dist;
-		g_3d.dist_from_player = (md.width / 2) * tan(g_fov_angle / 2);
-		g_3d.proj_wall_height = (g_tile_size / correct_wall_dist) * g_3d.dist_from_player;
-		draw_3d_wall(i, ((md.height / 2) - (g_3d.proj_wall_height / 2)), g_3d.proj_wall_height, ray);
+		correct_ray_dist = cos(player.rot_angle - g_rays[i].ray_angle) * (g_rays[i].distance);
+		dist_from_player = (md.width / 2) * (tan(g_fov_angle / 2));
+		proj_wall_height = (g_tile_size * 2.5 / correct_ray_dist) * dist_from_player;
+		wall_strip_height = (int)proj_wall_height;
+		draw_3d_wall(i, wall_strip_height, g_rays[i]);
 		i++;
 	}
 }

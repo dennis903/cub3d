@@ -58,7 +58,6 @@ void				ray_cast(int col_id, double angle)
 	t_point			vert_wall;
 	double			horz_dist;
 	double			vert_dist;
-
 	angle = normalize_angle(angle);
 	horizontal_wall_check(angle, &horz_wall);
 	vertical_wall_check(angle, &vert_wall);

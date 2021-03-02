@@ -102,7 +102,8 @@ typedef struct			s_game
 {
 	void				*mlx;
 	void				*win;
-	t_img				img;
+	// t_img				img_2d;
+	t_img				img_3d;
 	char				**map;
 }						t_game;
 
@@ -217,7 +218,7 @@ void					get_ray_data(double dist, int col_id, t_point wall_point);
 void					draw_ceiling();
 void					draw_floor();
 void					draw_wall();
-void					draw_3d_wall(double x, double start_y, double wall_height, t_ray ray);
+void					draw_3d_wall(double x, int wall_strip_height, t_ray ray);
 //texture_admin.c
 unsigned int			fill_color(t_color *color);
 void					check_direction(t_ray ray);
@@ -225,12 +226,13 @@ void					init_direction();
 //texture_utils.c
 void					is_dir_up(int left, t_ray ray);
 void					is_dir_down(int left, t_ray ray);
-double					get_texture_x(t_ray ray);
-double					get_texture_y(double current_y, double start_y, double wall_height);
+int						get_texture_x(t_ray ray);
+int						get_texture_y(int screen_y, int wall_height);
+int						get_texture_color(int x, int y);
 //utils2.c
 int						calc_idx(int x, int y);
 //texture.c
-int						get_texture_color(double x, double y);
 //reset_img.c
 void					image_reset_2d();
+void					image_reset_3d();
 #endif

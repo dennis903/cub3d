@@ -3,13 +3,13 @@
 void			set_angle(char direction)
 {
 	if (direction == 'N')
-		player.rot_angle = (PI / 180) * get_degree(90);
+		player.rot_angle = (PI / 180) * 90;
 	else if (direction == 'E')
 		player.rot_angle = PI / 180;
 	else if (direction == 'W')
 		player.rot_angle = PI;
 	else if (direction == 'S')
-		player.rot_angle = (PI / 180) * get_degree(270);
+		player.rot_angle = (PI / 180) * 270;
 }
 
 void			player_init(int height, int width)

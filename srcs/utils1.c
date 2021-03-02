@@ -10,12 +10,14 @@ int					has_wall_at(double x, double y)
 	int				check_wall_x;
 	int				check_wall_y;
 
-	if (x >= g_idx_width * g_tile_size || x < 0 || y >= g_idx_height * g_tile_size || y < 0)
+	if (x >= md.width || x < 0 ||y >= md.height || y < 0)
 		return (1);
 	check_wall_x = floor(x / g_tile_size);
 	check_wall_y = floor(y / g_tile_size);
 	if (game.map[check_wall_y][check_wall_x] == '1')
+	{
 		return (1);
+	}
 	else
 		return (0);
 }
