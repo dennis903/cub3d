@@ -13,6 +13,7 @@
 # define KEY_D					2
 # define KEY_LEFT				123
 # define KEY_RIGHT				124
+# define KEY_TAB				48
 # include <stdio.h>
 # include <math.h>
 # include <fcntl.h>
@@ -96,13 +97,14 @@ typedef struct			s_key
 	int					d_key;
 	int					left_key;
 	int					right_key;
+	int					tab_key;
 }						t_key;
 
 typedef struct			s_game
 {
 	void				*mlx;
 	void				*win;
-	// t_img				img_2d;
+	t_img				img_2d;
 	t_img				img_3d;
 	char				**map;
 }						t_game;
@@ -153,6 +155,7 @@ int						g_idx_height;
 int						g_tile_size;
 double					g_fov_angle;
 int						g_num_rays;
+double					g_dist_from_player;
 //parse_cub.c
 int						parse_cub(int fd);
 //parse_utils.c

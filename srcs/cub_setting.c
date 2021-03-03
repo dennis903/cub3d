@@ -49,6 +49,7 @@ void			ray_setting()
 {
 	g_fov_angle = get_degree(60);
 	g_num_rays = md.width;
+	g_dist_from_player = (md.width / 2) / (tan(g_fov_angle / 2));
 	if (!(g_rays = (t_ray *)malloc(sizeof(t_ray) * g_num_rays)))
 		exit(1);
 	if (g_num_rays == 0)
@@ -59,13 +60,13 @@ int				cub_setting()
 {
 	if (!(game.win = mlx_new_window(game.mlx, md.width, md.height, "cub3d")))
 		return (ERROR);
-	// if (!(game.img_2d.img = mlx_new_image(game.mlx, g_tile_size * g_idx_width, g_tile_size * g_idx_height)))
-	// 	return (ERROR);
+	if (!(game.img_2d.img = mlx_new_image(game.mlx, g_tile_size * g_idx_width, g_tile_size * g_idx_height)))
+		return (ERROR);
 	if (!(game.img_3d.img = mlx_new_image(game.mlx, md.width, md.height)))
 		return (ERROR);
-	// if (!(game.img_2d.data = (int *)mlx_get_data_addr(game.img_2d.img, &(game.img_2d.bpp),
-	// &(game.img_2d.size_l), &(game.img_2d.endian))))
-		// return (ERROR);
+	if (!(game.img_2d.data = (int *)mlx_get_data_addr(game.img_2d.img, &(game.img_2d.bpp),
+	&(game.img_2d.size_l), &(game.img_2d.endian))))
+		return (ERROR);
 	if (!(game.img_3d.data = (int *)mlx_get_data_addr(game.img_3d.img, &(game.img_3d.bpp),
 	&(game.img_3d.size_l), &(game.img_3d.endian))))
 		return (ERROR);

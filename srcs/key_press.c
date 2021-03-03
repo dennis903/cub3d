@@ -8,6 +8,7 @@ void				init_keys()
 	g_keys.s_key = 0;
 	g_keys.left_key = 0;
 	g_keys.right_key = 0;
+	g_keys.tab_key = 0;
 }
 
 void				check_key(int keycode)
@@ -24,6 +25,8 @@ void				check_key(int keycode)
 		g_keys.left_key = 1;
 	else if (keycode == KEY_RIGHT)
 		g_keys.right_key = 1;
+	else if (keycode == KEY_TAB)
+		g_keys.tab_key = 1;
 }
 
 int					key_press(int keycode)
@@ -79,5 +82,7 @@ int					key_release(int keycode)
 		player.turn_dir = 0;
 		g_keys.right_key = 0;
 	}
+	else if (keycode == KEY_TAB)
+		g_keys.tab_key = 0;
 	return (0);
 }

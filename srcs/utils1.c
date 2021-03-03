@@ -24,7 +24,7 @@ int					has_wall_at(double x, double y)
 
 int					to_coord(double x, double y)
 {
-	return ((int)floor(y) * md.width + (int)floor(x));
+	return ((int)floor(y) * g_tile_size * g_idx_width + (int)floor(x));
 }
 
 double				get_distance(int x1, int y1, int x2, int y2)

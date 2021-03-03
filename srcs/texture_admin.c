@@ -29,9 +29,9 @@ void						check_direction(t_ray ray)
 	angle_side_down = 0;
 	angle_side_left = 0;
 	angle = ray.ray_angle;
-	if (angle >= 0 && angle < PI)
+	if (angle > 0 && angle < PI)
 		angle_side_down = 1;
-	if (angle >= 0.5 * PI && angle < 1.5 * PI)
+	if (angle > 0.5 * PI && angle < 1.5 * PI)
 		angle_side_left = 1;
 	init_direction();
 	if (!angle_side_down)
