@@ -151,6 +151,8 @@ t_key					g_keys;
 t_ray					*g_rays;
 t_direction				g_dir;
 t_3d_data				g_3d;
+
+char					g_num_sprite;
 int						g_idx_width;
 int						g_idx_height;
 int						g_tile_size;
