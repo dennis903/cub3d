@@ -61,6 +61,7 @@ void				ray_cast(int col_id, double angle)
 
 	angle = normalize_angle(angle);
 	horizontal_wall_check(angle, &horz_wall);
+    g_rays[col_id].side = 0;
 	vertical_wall_check(angle, &vert_wall);
 	if (horz_wall.is_wall == 0)
 		horz_dist = 9999999;
@@ -70,8 +71,11 @@ void				ray_cast(int col_id, double angle)
 		vert_dist = 9999999;
 	else
 		vert_dist = get_distance(player.x, player.y, vert_wall.x, vert_wall.y);
-	if (horz_dist > vert_dist)
+	if (horz_dist >= vert_dist)
+	{
 		get_ray_data(vert_dist, col_id, vert_wall);
+		g_rays[col_id].side = 1;
+	}
 	else
 		get_ray_data(horz_dist, col_id, horz_wall);
 }

@@ -4,14 +4,14 @@ void				is_dir_up(int left, t_ray ray)
 {
 	if (left)
 	{
-		if (((int)ray.hit_point.y % g_tile_size) == 0)
+		if (ray.side == 0)
 			g_dir.check_no = 1;
 		else
 			g_dir.check_we = 1;
 	}
 	else
 	{
-		if (((int)ray.hit_point.x % g_tile_size) == 0)
+		if (ray.side == 1)
 			g_dir.check_ea = 1;
 		else
 			g_dir.check_no = 1;
@@ -22,14 +22,14 @@ void				is_dir_down(int left, t_ray ray)
 {
 	if (left)
 	{
-		if (((int)ray.hit_point.y % g_tile_size) == 0)
+		if (ray.side == 0)
 			g_dir.check_so = 1;
 		else
 			g_dir.check_we = 1;
 	}
 	else
 	{
-		if (((int)ray.hit_point.x % g_tile_size) == 0)
+		if (ray.side == 1)
 			g_dir.check_ea = 1;
 		else
 			g_dir.check_so = 1;

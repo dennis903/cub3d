@@ -141,6 +141,7 @@ typedef struct			s_ray
 	double				ray_angle;
 	double				distance;
 	t_point				hit_point;
+	char				side;
 }						t_ray;
 
 t_game					game;
@@ -153,6 +154,7 @@ t_3d_data				g_3d;
 int						g_idx_width;
 int						g_idx_height;
 int						g_tile_size;
+int						h_tile_size;
 double					g_fov_angle;
 int						g_num_rays;
 double					g_dist_from_player;
