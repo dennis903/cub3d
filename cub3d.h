@@ -22,6 +22,14 @@
 # include "./get_next_line/get_next_line.h"
 # include "mlx_dylib/mlx.h"
 
+
+typedef struct			s_point
+{
+	double				x;
+	double				y;
+	int					is_wall;
+}						t_point;
+
 typedef struct			s_img
 {
 	void				*img;
@@ -89,6 +97,13 @@ typedef struct			s_player
 	double				rotation_speed;
 }						t_player;
 
+typedef struct			s_sprite
+{
+	t_point				pos;
+	double				distance;
+	char				visible;
+}						t_sprite;
+
 typedef struct			s_key
 {
 	int					w_key;
@@ -129,13 +144,6 @@ typedef struct			s_map_data
 	struct s_color		*c;
 }						t_map_data;
 
-typedef struct			s_point
-{
-	double				x;
-	double				y;
-	int					is_wall;
-}						t_point;
-
 typedef struct			s_ray
 {
 	double				ray_angle;
@@ -151,8 +159,9 @@ t_key					g_keys;
 t_ray					*g_rays;
 t_direction				g_dir;
 t_3d_data				g_3d;
+t_sprite				*g_sprites;
 
-char					g_num_sprite;
+char					g_sprite_num;
 int						g_idx_width;
 int						g_idx_height;
 int						g_tile_size;
@@ -190,6 +199,9 @@ int						map_valid_check(char **map);
 //cub_setting.c
 int						texture_setting();
 int						cub_setting();
+int						sprite_setting();
+void					player_setting();
+void					ray_setting();
 //key_press.c
 int						key_release(int keycode);
 int						key_press(int keycode);
@@ -238,8 +250,13 @@ int						get_texture_y(int screen_y, int wall_height);
 int						get_texture_color(int x, int y);
 //utils2.c
 int						calc_idx(int x, int y);
-//texture.c
+int						count_sprite();
 //reset_img.c
 void					image_reset_2d();
 void					image_reset_3d();
+//sprite_util.c
+void					sprite_pos_set();
+void					draw_2d_sprite(int y, int x, int color);
+//sprite.c
+void					sprite_2d();
 #endif

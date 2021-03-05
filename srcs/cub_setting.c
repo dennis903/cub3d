@@ -45,6 +45,17 @@ void			player_setting()
 	}
 }
 
+int				sprite_setting()
+{
+	g_sprite_num = count_sprite();
+	if (g_sprite_num == 0)
+		return (0);
+	if (!(g_sprites = (t_sprite *)malloc(sizeof(t_sprite) * g_sprite_num)))
+		return (ERROR);
+	sprite_pos_set();
+	return (0);
+}
+
 void			ray_setting()
 {
 	g_fov_angle = get_degree(60);
@@ -71,6 +82,8 @@ int				cub_setting()
 	&(game.img_3d.size_l), &(game.img_3d.endian))))
 		return (ERROR);
 	if (texture_setting() == ERROR)
+		return (ERROR);
+	if (sprite_setting() == ERROR)
 		return (ERROR);
 	player_setting();
 	ray_setting();

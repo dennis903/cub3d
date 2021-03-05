@@ -46,5 +46,7 @@ void				render()
 	image_reset_2d();
 	image_reset_3d();
 	raycast_2d();
+	sprite_2d();
 	raycast_3d();
+
 }

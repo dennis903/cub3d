@@ -22,6 +22,8 @@ srcs/texture_admin.c	\
 srcs/texture_utils.c	\
 srcs/utils2.c	\
 srcs/reset_img.c	\
+srcs/sprite_util.c	\
+srcs/sprite.c		\
 get_next_line/get_next_line.c	\
 get_next_line/get_next_line_utils.c
 
