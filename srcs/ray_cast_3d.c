@@ -65,17 +65,15 @@ void					draw_3d_wall(double x, int wall_strip_height, t_ray ray)
 void					draw_wall()
 {
 	int					i;
-	double				proj_wall_height;
 	double				correct_ray_dist;
-	int					wall_strip_height;
+	int					wall_height;
 
 	i = 0;
 	while (i < g_num_rays)
 	{
 		correct_ray_dist = cos(player.rot_angle - g_rays[i].ray_angle) * (g_rays[i].distance);
-		proj_wall_height = (g_tile_size / correct_ray_dist) * g_dist_from_player;
-		wall_strip_height = (int)proj_wall_height;
-		draw_3d_wall(i, wall_strip_height, g_rays[i]);
+		wall_height = (g_tile_size / correct_ray_dist) * g_dist_from_player;
+		draw_3d_wall(i, wall_height, g_rays[i]);
 		i++;
 	}
 }

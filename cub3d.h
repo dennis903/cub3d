@@ -259,4 +259,9 @@ void					sprite_pos_set();
 void					draw_2d_sprite(int y, int x, int color);
 //sprite.c
 void					sprite_2d();
+//make_bmp.c
+int						make_bmp();
+void					set_bmp_header(unsigned char *header);
+//bmp_utils.c
+int						calc_bmp_size();
 #endif
