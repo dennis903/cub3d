@@ -50,6 +50,7 @@ void				update(void)
 	double			new_pos_y;
 
 	player.rot_angle += player.turn_dir * player.rotation_speed;
+	player.rot_angle = normalize_angle(player.rot_angle);
 	movestep = player.move_speed * player.walk_dir;
 	new_pos_x = player.x;
 	new_pos_y = player.y;

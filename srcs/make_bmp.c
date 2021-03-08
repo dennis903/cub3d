@@ -31,11 +31,6 @@ void				set_bmp_header(unsigned char *header)
 	header[26] = 1;
 	header[28] = 24;
 	i = 0;
-	while (i < 54)
-	{
-		printf("%d : %d\n", i, header[i]);
-		i++;
-	}
 }
 
 int					make_bmp()

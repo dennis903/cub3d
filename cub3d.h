@@ -101,6 +101,7 @@ typedef struct			s_sprite
 {
 	t_point				pos;
 	double				distance;
+	double				angle;
 	char				visible;
 }						t_sprite;
 

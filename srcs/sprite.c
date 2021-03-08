@@ -4,6 +4,7 @@ void				sprite_2d()
 {
 	int				i;
 	double			pbs_angle;
+	// t_sprite		visible_sprite;
 	i = 0;
 
 	while (i < g_sprite_num)
@@ -18,6 +19,8 @@ void				sprite_2d()
 		if (pbs_angle < g_fov_angle / 2)
 		{
 			g_sprites[i].visible = 1;
+			g_sprites[i].angle = pbs_angle;
+			g_sprites[i].distance = get_distance(player.x, player.y, g_sprites[i].pos.x, g_sprites[i].pos.y);
 			draw_2d_sprite((int)g_sprites[i].pos.y, (int)g_sprites[i].pos.x, 0xF100FF);
 		}
 		else

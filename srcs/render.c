@@ -48,5 +48,4 @@ void				render()
 	raycast_2d();
 	sprite_2d();
 	raycast_3d();
-
 }
