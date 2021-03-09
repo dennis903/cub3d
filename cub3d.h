@@ -30,6 +30,14 @@ typedef struct			s_point
 	int					is_wall;
 }						t_point;
 
+typedef struct			s_sprite_utils
+{
+	int					start_x;
+	int					end_x;
+	int					start_y;
+	int					end_y;
+}						t_sprite_utils;
+
 typedef struct			s_img
 {
 	void				*img;
@@ -266,11 +274,12 @@ void					image_reset_3d();
 void					sprite_pos_set();
 void					draw_2d_sprite(int y, int x, int color);
 void					draw_3d_sprite(int sprite_height, t_sprite sprite);
-void					draw_sprite_height(int sprite_height, int sprite_width, int x, int start_x);
-void					calc_sprite(t_sprite *visible_sprite, int visible_sp_num);
+void					draw_sprite_height(int sprite_height, int sprite_width, int x, t_sprite_utils sp_utils);
+void					sort_sprite(t_sprite *visible_sprite, int visible_sp_num);
 //sprite.c
 void					sprite_2d();
 void					sprite_3d();
+void					calc_sprite(t_sprite *visible_sprite, int visible_sp_num);
 //make_bmp.c
 int						make_bmp();
 void					set_bmp_header(unsigned char *header);

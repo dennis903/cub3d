@@ -44,28 +44,28 @@ void					sprite_pos_set()
 	}
 }
 
-void					draw_sprite_height(int sprite_height, int sprite_width, int x, int start_x)
+void					draw_sprite_height(int sprite_height, int sprite_width, int x, t_sprite_utils sp_utils)
 {
 	int					start_y;
 	int					end_y;
-	int					i;
 	int					texture_x;
 	int					texture_y;
 
 	start_y = (md.height / 2) - (sprite_height / 2);
 	end_y = (md.height / 2) + (sprite_height / 2);
+	sp_utils.start_y = start_y;
+	sp_utils.end_y = end_y;
 	if (start_y < 0)
 		start_y = 0;
 	if (end_y > md.height)
 		end_y = md.height;
-	i = start_y;
-	texture_x = get_sp_tex_x(x - start_x, sprite_width);
-	while (i < end_y)
+	texture_x = get_sp_tex_x(x - sp_utils.start_x, sprite_width);
+	while (start_y < end_y)
 	{
-		texture_y = get_sp_tex_y(i - start_y, sprite_height);
+		texture_y = get_sp_tex_y(start_y - sp_utils.start_y, sprite_height);
 		if (get_sp_texture(texture_x, texture_y) != 0)
-			game.img_3d.data[i * md.width + x] = get_sp_texture(texture_x, texture_y);
-		i++;
+			game.img_3d.data[start_y * md.width + x] = get_sp_texture(texture_x, texture_y);
+		start_y++;
 	}
 }
 
@@ -73,38 +73,48 @@ void					draw_3d_sprite(int sprite_height, t_sprite sprite)
 {
 	int					start_x;
 	int					end_x;
-	int					i;
+	t_sprite_utils		sp_utils;
 	int					sprite_width;
 	double				sprite_angle;
 
 	sprite_angle = atan2(sprite.pos.y - player.y, sprite.pos.x - player.x) - player.rot_angle;
 	sprite_width = sprite_height;
-	start_x = (md.width / 2) + (tan(sprite_angle) * g_dist_from_player);
+	start_x = (md.width / 2) + (tan(sprite_angle) * g_dist_from_player) - (sprite_width / 2) + 30;
+	sp_utils.start_x = start_x;
 	end_x = start_x + sprite_width;
+	sp_utils.end_x = end_x;
 	if (start_x < 0)
 		start_x = 0;
 	if (end_x > md.width)
 		end_x = md.width;
-	i = start_x;
-	while (i < end_x)
+	while (start_x < end_x)
 	{
-		draw_sprite_height(sprite_height, sprite_width, i, start_x);
-		i++;
+		if (sprite.distance < g_rays[start_x].distance)
+			draw_sprite_height(sprite_height, sprite_width, start_x, sp_utils);
+		start_x++;
 	}
 }
 
-void					calc_sprite(t_sprite *visible_sprite, int visible_sp_num)
+void					sort_sprite(t_sprite *visible_sprite, int visible_sp_num)
 {
-	t_sprite			sprite;
-	int					sprite_height;
+	t_sprite			temp_sprite;
 	int					i;
+	int					j;
 
 	i = 0;
-	while (i < visible_sp_num)
+	while (i < visible_sp_num - 1)
 	{
-		sprite = visible_sprite[i];
-		sprite_height = (g_tile_size / sprite.distance) * g_dist_from_player;
-		draw_3d_sprite(sprite_height, sprite);
+		j = 0;
+		while (j < visible_sp_num - 1 - i)
+		{
+			if (visible_sprite[j].distance < visible_sprite[j + 1].distance)
+			{
+				temp_sprite = visible_sprite[j];
+				visible_sprite[j] = visible_sprite[j + 1];
+				visible_sprite[j + 1] = temp_sprite;
+			}
+			j++;
+		}
 		i++;
 	}
 }

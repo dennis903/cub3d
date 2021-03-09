@@ -15,7 +15,7 @@ void				sprite_2d()
 		if (pbs_angle < -PI)
 			pbs_angle += (PI * 2);
 		pbs_angle = fabs(pbs_angle);
-		if (pbs_angle < g_fov_angle / 2)
+		if (pbs_angle < (g_fov_angle / 2) + 0.3)
 		{
 			g_sprites[i].visible = 1;
 			g_sprites[i].angle = pbs_angle;
@@ -46,4 +46,21 @@ void				sprite_3d()
 		i++;
 	}
 	calc_sprite(visible_sprite, visible_sp_num);
+}
+
+void					calc_sprite(t_sprite *visible_sprite, int visible_sp_num)
+{
+	t_sprite			sprite;
+	int					sprite_height;
+	int					i;
+
+	i = 0;
+	sort_sprite(visible_sprite, visible_sp_num);
+	while (i < visible_sp_num)
+	{
+		sprite = visible_sprite[i];
+		sprite_height = (g_tile_size / sprite.distance) * g_dist_from_player;
+		draw_3d_sprite(sprite_height, sprite);
+		i++;
+	}
 }
