@@ -258,8 +258,12 @@ void					image_reset_3d();
 //sprite_util.c
 void					sprite_pos_set();
 void					draw_2d_sprite(int y, int x, int color);
+void					draw_3d_sprite(int sprite_height, t_sprite sprite);
+void					draw_sprite_height(int sprite_height, int x);
+void					calc_sprite(t_sprite *visible_sprite, int visible_sp_num);
 //sprite.c
 void					sprite_2d();
+void					sprite_3d();
 //make_bmp.c
 int						make_bmp();
 void					set_bmp_header(unsigned char *header);

@@ -4,7 +4,6 @@ void				sprite_2d()
 {
 	int				i;
 	double			pbs_angle;
-	// t_sprite		visible_sprite;
 	i = 0;
 
 	while (i < g_sprite_num)
@@ -27,4 +26,24 @@ void				sprite_2d()
 			draw_2d_sprite((int)g_sprites[i].pos.y, (int)g_sprites[i].pos.x, 0x3b3b3b);
 		i++;
 	}
+}
+
+void				sprite_3d()
+{
+	t_sprite		visible_sprite[g_sprite_num];
+	int				visible_sp_num;
+	int				i;
+	
+	i = 0;
+	visible_sp_num = 0;
+	while (i < g_sprite_num)
+	{
+		if (g_sprites[i].visible)
+		{
+			visible_sprite[visible_sp_num] = g_sprites[i];
+			visible_sp_num++;
+		}
+		i++;
+	}
+	calc_sprite(visible_sprite, visible_sp_num);
 }
