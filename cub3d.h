@@ -55,6 +55,7 @@ typedef struct			s_direction
 	void				*south;
 	void				*west;
 	void				*east;
+	void				*sprite;
 	int					no_w;
 	int					no_h;
 	int					so_w;
@@ -63,22 +64,28 @@ typedef struct			s_direction
 	int					ea_h;
 	int					we_w;
 	int					we_h;
+	int					sp_w;
+	int					sp_h;
 	int					*no_data;
 	int					*so_data;
 	int					*ea_data;
 	int					*we_data;
+	int					*sp_data;
 	int					no_bpp;
 	int					so_bpp;
 	int					ea_bpp;
 	int					we_bpp;
+	int					sp_bpp;
 	int					no_endian;
 	int					so_endian;
 	int					ea_endian;
 	int					we_endian;
+	int					sp_endian;
 	int					no_size_l;
 	int					so_size_l;
 	int					we_size_l;
 	int					ea_size_l;
+	int					sp_size_l;
 	int					check_no;
 	int					check_so;
 	int					check_ea;
@@ -259,7 +266,7 @@ void					image_reset_3d();
 void					sprite_pos_set();
 void					draw_2d_sprite(int y, int x, int color);
 void					draw_3d_sprite(int sprite_height, t_sprite sprite);
-void					draw_sprite_height(int sprite_height, int x);
+void					draw_sprite_height(int sprite_height, int sprite_width, int x, int start_x);
 void					calc_sprite(t_sprite *visible_sprite, int visible_sp_num);
 //sprite.c
 void					sprite_2d();
@@ -269,4 +276,8 @@ int						make_bmp();
 void					set_bmp_header(unsigned char *header);
 //bmp_utils.c
 int						calc_bmp_size();
+//sprite_textures.c
+int						get_sp_tex_x(int current_x, int sprite_width);
+int						get_sp_tex_y(int current_y, int sprite_height);
+int						get_sp_texture(int x, int y);
 #endif

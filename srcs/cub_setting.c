@@ -2,7 +2,6 @@
 
 int				texture_setting()
 {
-
 	if (!(g_dir.north = mlx_xpm_file_to_image(game.mlx, md.north, &g_dir.no_w, &g_dir.no_h)))
 		return (ERROR);
 	if (!(g_dir.south = mlx_xpm_file_to_image(game.mlx, md.south, &g_dir.so_w, &g_dir.so_h)))
@@ -11,6 +10,8 @@ int				texture_setting()
 		return (ERROR);
 	if (!(g_dir.west = mlx_xpm_file_to_image(game.mlx, md.west, &g_dir.we_w, &g_dir.we_h)))
 		return (ERROR);
+	if (!(g_dir.sprite = mlx_xpm_file_to_image(game.mlx, md.sprite, &g_dir.sp_w, &g_dir.sp_h)))
+		return (ERROR);
 	if (!(g_dir.no_data = (int *)mlx_get_data_addr(g_dir.north, &g_dir.no_bpp, &g_dir.no_size_l, &g_dir.no_endian)))
 		return (ERROR);
 	if (!(g_dir.so_data = (int *)mlx_get_data_addr(g_dir.south, &g_dir.so_bpp, &g_dir.so_size_l, &g_dir.so_endian)))
@@ -18,6 +19,8 @@ int				texture_setting()
 	if (!(g_dir.ea_data = (int *)mlx_get_data_addr(g_dir.east, &g_dir.ea_bpp, &g_dir.ea_size_l, &g_dir.ea_endian)))
 		return (ERROR);
 	if (!(g_dir.we_data = (int *)mlx_get_data_addr(g_dir.west, &g_dir.we_bpp, &g_dir.we_size_l, &g_dir.we_endian)))
+		return (ERROR);
+	if (!(g_dir.sp_data = (int *)mlx_get_data_addr(g_dir.sprite, &g_dir.sp_bpp, &g_dir.sp_size_l, &g_dir.sp_endian)))
 		return (ERROR);
 	return (0);
 }
@@ -60,7 +63,7 @@ void			ray_setting()
 {
 	g_fov_angle = get_degree(60);
 	g_num_rays = md.width;
-	g_dist_from_player = (md.width / 2) / (tan(g_fov_angle / 2));
+	g_dist_from_player = ((md.width / 2) / (tan(g_fov_angle / 2)));
 	if (!(g_rays = (t_ray *)malloc(sizeof(t_ray) * g_num_rays)))
 		exit(1);
 	if (g_num_rays == 0)

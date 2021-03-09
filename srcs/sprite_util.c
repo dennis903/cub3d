@@ -44,11 +44,14 @@ void					sprite_pos_set()
 	}
 }
 
-void					draw_sprite_height(int sprite_height, int x)
+void					draw_sprite_height(int sprite_height, int sprite_width, int x, int start_x)
 {
 	int					start_y;
 	int					end_y;
 	int					i;
+	int					texture_x;
+	int					texture_y;
+
 	start_y = (md.height / 2) - (sprite_height / 2);
 	end_y = (md.height / 2) + (sprite_height / 2);
 	if (start_y < 0)
@@ -56,10 +59,12 @@ void					draw_sprite_height(int sprite_height, int x)
 	if (end_y > md.height)
 		end_y = md.height;
 	i = start_y;
-
+	texture_x = get_sp_tex_x(x - start_x, sprite_width);
 	while (i < end_y)
 	{
-		game.img_3d.data[i * md.width + x] = 0x0000FF;
+		texture_y = get_sp_tex_y(i - start_y, sprite_height);
+		if (get_sp_texture(texture_x, texture_y) != 0)
+			game.img_3d.data[i * md.width + x] = get_sp_texture(texture_x, texture_y);
 		i++;
 	}
 }
@@ -83,7 +88,7 @@ void					draw_3d_sprite(int sprite_height, t_sprite sprite)
 	i = start_x;
 	while (i < end_x)
 	{
-		draw_sprite_height(sprite_height, i);
+		draw_sprite_height(sprite_height, sprite_width, i, start_x);
 		i++;
 	}
 }
