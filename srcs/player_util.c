@@ -1,18 +1,18 @@
 #include "../cub3d.h"
 
-void			set_angle(char direction)
+void				set_angle(char direction)
 {
 	if (direction == 'N')
-		player.rot_angle = (PI / 180) * 90;
+		player.rot_angle = (PI / 180) * 270;
 	else if (direction == 'E')
 		player.rot_angle = PI / 180;
 	else if (direction == 'W')
 		player.rot_angle = PI;
 	else if (direction == 'S')
-		player.rot_angle = (PI / 180) * 270;
+		player.rot_angle = (PI / 180) * 90;
 }
 
-void			player_init(int height, int width)
+void				player_init(int height, int width)
 {
 	player.x = g_tile_size * width;
 	player.y = g_tile_size * height;
@@ -25,22 +25,50 @@ void			player_init(int height, int width)
 
 int					defence_seg_x(double angle)
 {
-	angle = normalize_angle(angle);
+	t_ray			ray;
+	int				side_down;
+	int				side_left;
+
+	side_down = 0;
+	side_left = 0;
+	angle = fix_angle(angle);
+	if (angle > 0 && angle < PI)
+		side_down = 1;
 	if (angle > 0.5 * PI && angle < 1.5 * PI)
-		return(-3);
-	else if (angle <= 0.5 * PI || angle >= 1.5 * PI)
+		side_left = 1;
+	ray = rot_angle_ray_cast(angle);
+	if (ray.side == 0 && side_down == 1)
+		return (0);
+	if (ray.side == 0 && !(side_down))
+		return (0);
+	if (ray.side == 1 && side_left)
 		return (3);
-	return (0);
+	else
+		return (-3);
 }
 
 int					defence_seg_y(double angle)
 {
-	angle = normalize_angle(angle);
+	t_ray			ray;
+	int				side_down;
+	int				side_left;
+
+	side_down = 0;
+	side_left = 0;
+	angle = fix_angle(angle);
 	if (angle > 0 && angle < PI)
+		side_down = 1;
+	if (angle > 0.5 * PI && angle < 1.5 * PI)
+		side_left = 1;
+	ray = rot_angle_ray_cast(angle);
+	if (ray.side == 0 && side_down == 1)
 		return (3);
-	else if (angle >= 0 || angle >= PI)
+	if (ray.side == 0 && !(side_down))
 		return (-3);
-	return (0);
+	if (ray.side == 1 && side_left)
+		return (0);
+	else
+		return (0);
 }
 
 void				update(void)

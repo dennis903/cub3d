@@ -34,8 +34,8 @@ void					sprite_pos_set()
 		{
 			if (game.map[i][j] == '2')
 			{
-				g_sprites[count].pos.x = j * g_tile_size;
-				g_sprites[count].pos.y = i * g_tile_size;
+				g_sprites[count].pos.x = (j * g_tile_size + (g_tile_size / 2));
+				g_sprites[count].pos.y = (i * g_tile_size + (g_tile_size / 2));
 				count++;
 			}
 			j++;

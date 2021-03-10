@@ -221,6 +221,7 @@ void					ray_setting();
 //key_press.c
 int						key_release(int keycode);
 int						key_press(int keycode);
+int						key_exit();
 //cub3d_start.c
 int						main_loop();
 //utils1.c
@@ -267,6 +268,8 @@ int						get_texture_color(int x, int y);
 //utils2.c
 int						calc_idx(int x, int y);
 int						count_sprite();
+t_ray					rot_angle_ray_cast(double angle);
+double					fix_angle(double angle);
 //reset_img.c
 void					image_reset_2d();
 void					image_reset_3d();

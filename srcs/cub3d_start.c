@@ -2,7 +2,6 @@
 
 int				main_loop(void)
 {
-	
 	update();
 	render();
 	mlx_put_image_to_window(game.mlx, game.win, game.img_3d.img, 0, 0);

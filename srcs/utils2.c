@@ -26,3 +26,39 @@ int					count_sprite()
 	}
 	return (count);
 }
+
+t_ray					rot_angle_ray_cast(double angle)
+{
+	t_point				horz_wall;
+	t_point				vert_wall;
+	t_ray				ray;
+	double				horz_dist;
+	double				vert_dist;
+
+	angle = normalize_angle(angle);
+	horizontal_wall_check(angle, &horz_wall);
+    ray.side = 0;
+	vertical_wall_check(angle, &vert_wall);
+	if (horz_wall.is_wall == 0)
+		horz_dist = 9999999;
+	else
+		horz_dist = get_distance(player.x, player.y, horz_wall.x, horz_wall.y);
+	if (vert_wall.is_wall == 0)
+		vert_dist = 9999999;
+	else
+		vert_dist = get_distance(player.x, player.y, vert_wall.x, vert_wall.y);
+	if (horz_dist >= vert_dist)
+		ray.side = 1;
+	return (ray);
+}
+
+double					fix_angle(double angle)
+{
+	if (g_keys.a_key)
+		angle = angle + get_degree(90);
+	else if (g_keys.d_key)
+		angle = angle + get_degree(270);
+	else if (g_keys.s_key)
+		angle = angle + get_degree(180);
+	return (angle);
+}

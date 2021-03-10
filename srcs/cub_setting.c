@@ -92,5 +92,6 @@ int				cub_setting()
 	ray_setting();
 	mlx_hook(game.win, X_EVENT_KEY_PRESS, 0, key_press, 0);
 	mlx_hook(game.win, X_EVENT_KEY_release, 0, key_release, 0);
+	mlx_hook(game.win, X_EVENT_KEY_EXIT, 0, key_exit, 0);
 	return (0);
 }

@@ -45,6 +45,7 @@ int					display_window(char *argv)
 		printf("cub setting error\n");
 		return (ERROR);
 	}
+
 	mlx_loop_hook(game.mlx, main_loop, 0);
 	mlx_loop(game.mlx);
 	return (0);
