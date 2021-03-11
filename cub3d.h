@@ -229,6 +229,7 @@ double					get_degree(int degree);
 int						has_wall_at(double x, double y);
 int						to_coord(double x, double y);
 double					get_distance(int x1, int y1, int x2, int y2);
+void					move_player();
 //render.c
 void					render();
 void					draw_2d_ray();
@@ -270,6 +271,7 @@ int						calc_idx(int x, int y);
 int						count_sprite();
 t_ray					rot_angle_ray_cast(double angle);
 double					fix_angle(double angle);
+double					check_angle_by_dir(double angle);
 //reset_img.c
 void					image_reset_2d();
 void					image_reset_3d();
@@ -292,4 +294,14 @@ int						calc_bmp_size();
 int						get_sp_tex_x(int current_x, int sprite_width);
 int						get_sp_tex_y(int current_y, int sprite_height);
 int						get_sp_texture(int x, int y);
+//move_player.c
+void					move_up();
+void					move_down();
+void					move_left();
+void					move_right();
+//check_key.c
+void					check_a(double angle);
+void					check_w(double angle);
+void					check_s(double angle);
+void					check_d(double angle);
 #endif

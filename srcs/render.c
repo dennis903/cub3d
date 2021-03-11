@@ -19,7 +19,7 @@ void				draw_2d_ray()
 		ray_angle = player.rot_angle + atan((i - g_num_rays / 2) / g_dist_from_player);
 		g_rays[i].ray_angle = normalize_angle(ray_angle);
 		ray_cast(col_id, ray_angle);
-		draw_line(player.x, player.y, g_rays[i].hit_point.x, g_rays[i].hit_point.y, 0xFF0000);
+		// draw_line(player.x, player.y, g_rays[i].hit_point.x, g_rays[i].hit_point.y, 0xFF0000);
 		col_id++;
 		i++;
 	}

@@ -36,8 +36,9 @@ t_ray					rot_angle_ray_cast(double angle)
 	double				vert_dist;
 
 	angle = normalize_angle(angle);
+	ray.ray_angle = angle;
 	horizontal_wall_check(angle, &horz_wall);
-    ray.side = 0;
+	ray.side = 0;
 	vertical_wall_check(angle, &vert_wall);
 	if (horz_wall.is_wall == 0)
 		horz_dist = 9999999;
@@ -58,6 +59,16 @@ double					fix_angle(double angle)
 		angle = angle + get_degree(90);
 	else if (g_keys.d_key)
 		angle = angle + get_degree(270);
+	else if (g_keys.s_key)
+		angle = angle + get_degree(180);
+	return (angle);
+}
+double					check_angle_by_dir(double angle)
+{
+	if (g_keys.a_key)
+		angle = angle - get_degree(90);
+	else if (g_keys.d_key)
+		angle = angle + get_degree(90);
 	else if (g_keys.s_key)
 		angle = angle + get_degree(180);
 	return (angle);

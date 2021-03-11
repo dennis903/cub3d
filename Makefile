@@ -27,6 +27,7 @@ srcs/sprite.c		\
 srcs/make_bmp.c		\
 srcs/bmp_utils.c	\
 srcs/sprite_textures.c	\
+srcs/check_key.c		\
 get_next_line/get_next_line.c	\
 get_next_line/get_next_line_utils.c
 

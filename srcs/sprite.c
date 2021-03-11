@@ -15,7 +15,7 @@ void				sprite_2d()
 		if (pbs_angle < -PI)
 			pbs_angle += (PI * 2);
 		pbs_angle = fabs(pbs_angle);
-		if (pbs_angle < (g_fov_angle / 2) + 0.3)
+		if (pbs_angle < (g_fov_angle / 2) + 0.2)
 		{
 			g_sprites[i].visible = 1;
 			g_sprites[i].angle = pbs_angle;
