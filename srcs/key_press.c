@@ -6,21 +6,37 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:48:59 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 11:15:32 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 15:42:47 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void				init_keys()
+void				init_keys(int keycode)
 {
-	g_keys.w_key = 0;
-	g_keys.a_key = 0;
-	g_keys.d_key = 0;
-	g_keys.s_key = 0;
-	g_keys.left_key = 0;
-	g_keys.right_key = 0;
-	g_keys.tab_key = 0;
+	if (keycode == KEY_W || keycode == KEY_A ||
+	keycode == KEY_D || keycode == KEY_S)
+	{
+		g_player.walk_dir = 0;
+		if (keycode == KEY_W)
+			g_keys.w_key = 0;
+		if (keycode == KEY_A)
+			g_keys.a_key = 0;
+		if (keycode == KEY_D)
+			g_keys.d_key = 0;
+		if (keycode == KEY_S)
+			g_keys.s_key = 0;
+	}
+	if (keycode == KEY_LEFT || keycode == KEY_RIGHT)
+	{
+		g_player.turn_dir = 0;
+		if (keycode == KEY_LEFT)
+			g_keys.left_key = 0;
+		if (keycode == KEY_RIGHT)
+			g_keys.right_key = 0;
+	}
+	if (keycode == KEY_TAB)
+		g_keys.tab_key = 0;
 }
 
 int					key_press(int keycode)
@@ -52,38 +68,7 @@ int					key_press(int keycode)
 
 int					key_release(int keycode)
 {
-	if (keycode == KEY_W)
-	{
-		g_player.walk_dir = 0;
-		g_keys.w_key = 0;
-	}
-	if (keycode == KEY_A)
-	{
-		g_player.walk_dir = 0;
-		g_keys.a_key = 0;
-	}
-	if (keycode == KEY_S)
-	{
-		g_player.walk_dir = 0;
-		g_keys.s_key = 0;
-	}
-	if (keycode == KEY_D)
-	{
-		g_player.walk_dir = 0;
-		g_keys.d_key = 0;
-	}
-	if (keycode == KEY_LEFT)
-	{
-		g_player.turn_dir = 0;
-		g_keys.left_key = 0;
-	}
-	if (keycode == KEY_RIGHT)
-	{
-		g_player.turn_dir = 0;
-		g_keys.right_key = 0;
-	}
-	if (keycode == KEY_TAB)
-		g_keys.tab_key = 0;
+	init_keys(keycode);
 	return (0);
 }
 

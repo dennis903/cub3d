@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:48:53 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 11:15:30 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 15:47:39 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ void				set_bmp_header(unsigned char *header)
 		header[i] = 0;
 		i++;
 	}
+	fill_header(header, size);
+}
+
+void				fill_header(unsigned char *header, int size)
+{	
 	header[0] = 'B';
 	header[1] = 'M';
 	header[2] = size % 256;
@@ -42,7 +47,6 @@ void				set_bmp_header(unsigned char *header)
 	header[25] = (g_md.height / (256 * 256 * 256)) % 256;
 	header[26] = 1;
 	header[28] = 24;
-	i = 0;
 }
 
 int					make_bmp()

@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:46:50 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 11:16:43 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 15:47:46 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -235,7 +235,7 @@ void					render();
 void					draw_2d_ray();
 void					raycast_3d();
 void					draw_player();
-void					draw_line(double x1, double y1, double x2, double y2, int color);
+void					draw_line(double x1, double y1, double x2, double y2);
 void					draw_lines();
 void					draw_rectangles();
 void					draw_rectangle(int row, int col);
@@ -293,4 +293,8 @@ void					check_d(double angle);
 int						find_str(char *dist, const char *src);
 int						check_save(char *argv);
 int						display_window(char *argv);
+void					put_xpm_file_to_image(void);
+void					put_get_data_addr(void);
+void					init_keys(int keycode);
+void					fill_header(unsigned char *header, int size);
 #endif

@@ -6,13 +6,13 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:49:26 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 11:15:28 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 15:20:39 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int					calc_bmp_size()
+int					calc_bmp_size(void)
 {
 	int				padding;
 	int				size;

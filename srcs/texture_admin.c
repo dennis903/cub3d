@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:47:13 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/12 21:47:14 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 15:27:46 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,43 @@ void						check_direction(t_ray ray)
 		is_dir_up(angle_side_left, ray);
 	else
 		is_dir_down(angle_side_left, ray);
+}
+
+void						put_xpm_file_to_image(void)
+{
+	if (!(g_dir.north = mlx_xpm_file_to_image(g_game.mlx, g_md.north,
+	&g_dir.no_w, &g_dir.no_h)))
+		return (ERROR);
+	if (!(g_dir.south = mlx_xpm_file_to_image(g_game.mlx, g_md.south,
+	&g_dir.so_w, &g_dir.so_h)))
+		return (ERROR);
+	if (!(g_dir.east = mlx_xpm_file_to_image(g_game.mlx, g_md.east,
+	&g_dir.ea_w, &g_dir.ea_h)))
+		return (ERROR);
+	if (!(g_dir.west = mlx_xpm_file_to_image(g_game.mlx, g_md.west,
+	&g_dir.we_w, &g_dir.we_h)))
+		return (ERROR);
+	if (!(g_dir.sprite = mlx_xpm_file_to_image(g_game.mlx, g_md.sprite,
+	&g_dir.sp_w, &g_dir.sp_h)))
+		return (ERROR);
+
+}
+
+void						put_get_data_addr(void)
+{
+	if (!(g_dir.no_data = (int *)mlx_get_data_addr(g_dir.north, &g_dir.no_bpp,
+	&g_dir.no_size_l, &g_dir.no_endian)))
+		return (ERROR);
+	if (!(g_dir.so_data = (int *)mlx_get_data_addr(g_dir.south, &g_dir.so_bpp,
+	&g_dir.so_size_l, &g_dir.so_endian)))
+		return (ERROR);
+	if (!(g_dir.ea_data = (int *)mlx_get_data_addr(g_dir.east, &g_dir.ea_bpp,
+	&g_dir.ea_size_l, &g_dir.ea_endian)))
+		return (ERROR);
+	if (!(g_dir.we_data = (int *)mlx_get_data_addr(g_dir.west, &g_dir.we_bpp,
+	&g_dir.we_size_l, &g_dir.we_endian)))
+		return (ERROR);
+	if (!(g_dir.sp_data = (int *)mlx_get_data_addr(g_dir.sprite, &g_dir.sp_bpp,
+	&g_dir.sp_size_l, &g_dir.sp_endian)))
+		return (ERROR);
 }
