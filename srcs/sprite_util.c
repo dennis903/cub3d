@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:47:35 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 19:21:15 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 19:23:42 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void					draw_2d_sprite(int y, int x, int color)
 		j = 0;
 		while (j < 2)
 		{
-			g_game.img_2d.data[(y + i) * 
+			g_game.img_2d.data[(y + i) *
 			(g_tile_size * g_idx_width) + x + j] = color;
 			j++;
 		}
@@ -31,7 +31,7 @@ void					draw_2d_sprite(int y, int x, int color)
 	}
 }
 
-void					sprite_pos_set()
+void					sprite_pos_set(void)
 {
 	int					i;
 	int					j;
@@ -92,9 +92,11 @@ void					draw_3d_sprite(int sprite_height, t_sprite sprite)
 	int					sprite_width;
 	double				sprite_angle;
 
-	sprite_angle = atan2(sprite.pos.y - g_player.y, sprite.pos.x - g_player.x) - g_player.angle;
+	sprite_angle = atan2(sprite.pos.y - g_player.y,
+	sprite.pos.x - g_player.x) - g_player.angle;
 	sprite_width = sprite_height;
-	start_x = (g_md.width / 2) + (tan(sprite_angle) * g_proj_dist) - (sprite_width / 2);
+	start_x = (g_md.width / 2) +
+	(tan(sprite_angle) * g_proj_dist) - (sprite_width / 2);
 	sp_utils.start_x = start_x;
 	end_x = start_x + sprite_width;
 	sp_utils.end_x = end_x;
@@ -110,17 +112,17 @@ void					draw_3d_sprite(int sprite_height, t_sprite sprite)
 	}
 }
 
-void					sort_sprite(t_sprite *visible_sprite, int visible_sp_num)
+void					sort_sprite(t_sprite *visible_sprite, int visible_num)
 {
 	t_sprite			temp_sprite;
 	int					i;
 	int					j;
 
 	i = 0;
-	while (i < visible_sp_num - 1)
+	while (i < visible_num - 1)
 	{
 		j = 0;
-		while (j < visible_sp_num - 1 - i)
+		while (j < visible_num - 1 - i)
 		{
 			if (visible_sprite[j].distance < visible_sprite[j + 1].distance)
 			{
