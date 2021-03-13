@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:46:50 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 17:18:20 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 17:50:55 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ typedef struct			s_player
 	double				radius;
 	double				turn_dir;
 	double				walk_dir;
-	double				rot_angle;
+	double				angle;
 	double				move_speed;
 	double				rotation_speed;
 }						t_player;
@@ -194,7 +194,7 @@ int						g_idx_height;
 int						g_tile_size;
 double					g_fov_angle;
 int						g_num_rays;
-double					g_dist_from_player;
+double					g_proj_dist;
 int						parse_cub(int fd);
 int						set_base_data(char **splits);
 int						count_splits(char **splits);
