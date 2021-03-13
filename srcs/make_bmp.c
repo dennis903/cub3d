@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:48:53 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/12 21:48:54 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 11:15:30 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@ void				set_bmp_header(unsigned char *header)
 	header[5] = (size / (256 * 256 * 256)) % 256;
 	header[10] = '6';
 	header[14] = 40;
-	header[18] = md.width % 256;
-	header[19] = (md.width / 256) % 256;
-	header[20] = (md.width / (256 * 256)) % 256;
-	header[21] = (md.width / (256 * 256 * 256)) % 256;
-	header[22] = md.height % 256;
-	header[23] = (md.height / 256) % 256;
-	header[24] = (md.height / (256 * 256)) % 256;
-	header[25] = (md.height / (256 * 256 * 256)) % 256;
+	header[18] = g_md.width % 256;
+	header[19] = (g_md.width / 256) % 256;
+	header[20] = (g_md.width / (256 * 256)) % 256;
+	header[21] = (g_md.width / (256 * 256 * 256)) % 256;
+	header[22] = g_md.height % 256;
+	header[23] = (g_md.height / 256) % 256;
+	header[24] = (g_md.height / (256 * 256)) % 256;
+	header[25] = (g_md.height / (256 * 256 * 256)) % 256;
 	header[26] = 1;
 	header[28] = 24;
 	i = 0;
@@ -61,13 +61,13 @@ int					make_bmp()
 		write(fd, &header[i], sizeof(header[i]));
 		i++;
 	}
-	i = md.height - 1;
+	i = g_md.height - 1;
 	while (i > -1)
 	{
 		j = 0;
-		while (j < md.width)
+		while (j < g_md.width)
 		{
-			write(fd, &(game.img_3d.data[i * md.width + j]), 3);
+			write(fd, &(g_game.img_3d.data[i * g_md.width + j]), 3);
 			j++;
 		}
 		i--;

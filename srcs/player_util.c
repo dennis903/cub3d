@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:48:22 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/12 21:48:22 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 11:15:29 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,24 @@
 void				set_angle(char direction)
 {
 	if (direction == 'N')
-		player.rot_angle = (PI / 180) * 270;
+		g_player.rot_angle = (PI / 180) * 270;
 	else if (direction == 'E')
-		player.rot_angle = PI / 180;
+		g_player.rot_angle = PI / 180;
 	else if (direction == 'W')
-		player.rot_angle = PI;
+		g_player.rot_angle = PI;
 	else if (direction == 'S')
-		player.rot_angle = (PI / 180) * 90;
+		g_player.rot_angle = (PI / 180) * 90;
 }
 
 void				player_init(int height, int width)
 {
-	player.x = g_tile_size * width;
-	player.y = g_tile_size * height;
-	player.radius = 3;
-	player.turn_dir = 0;
-	player.walk_dir = 0;
-	player.move_speed = 2.0;
-	player.rotation_speed = 2 * (PI / 180);
+	g_player.x = g_tile_size * width;
+	g_player.y = g_tile_size * height;
+	g_player.radius = 3;
+	g_player.turn_dir = 0;
+	g_player.walk_dir = 0;
+	g_player.move_speed = 2.0;
+	g_player.rotation_speed = 2 * (PI / 180);
 }
 
 int					defence_seg_x(double angle)
@@ -65,7 +65,7 @@ int					defence_seg_y(double angle)
 
 void				update(void)
 {
-	player.rot_angle += player.turn_dir * player.rotation_speed;
-	player.rot_angle = normalize_angle(player.rot_angle);
+	g_player.rot_angle += g_player.turn_dir * g_player.rotation_speed;
+	g_player.rot_angle = normalize_angle(g_player.rot_angle);
 	move_player();
 }

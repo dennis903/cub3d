@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:46:56 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/12 21:46:57 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 13:54:01 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int					count_sprite()
 		j = 0;
 		while (j < g_idx_width)
 		{
-			if (game.map[i][j] == '2')
+			if (g_game.map[i][j] == '2')
 				count++;
 			j++;
 		}
@@ -55,11 +55,11 @@ t_ray					rot_angle_ray_cast(double angle)
 	if (horz_wall.is_wall == 0)
 		horz_dist = 9999999;
 	else
-		horz_dist = get_distance(player.x, player.y, horz_wall.x, horz_wall.y);
+		horz_dist = get_distance(g_player.x, g_player.y, horz_wall.x, horz_wall.y);
 	if (vert_wall.is_wall == 0)
 		vert_dist = 9999999;
 	else
-		vert_dist = get_distance(player.x, player.y, vert_wall.x, vert_wall.y);
+		vert_dist = get_distance(g_player.x, g_player.y, vert_wall.x, vert_wall.y);
 	if (horz_dist >= vert_dist)
 		ray.side = 1;
 	return (ray);

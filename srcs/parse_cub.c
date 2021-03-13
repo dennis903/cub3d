@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:48:36 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/12 21:48:37 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 11:15:23 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ int				data_setting(char *line)
 
 int				data_check()
 {
-	if (md.width != 0 && md.height != 0 && md.north != 0 && md.south != 0 &&
-	md.east != 0 && md.west != 0 && md.sprite != 0 && md.f != 0 && md.c != 0)
+	if (g_md.width != 0 && g_md.height != 0 && g_md.north != 0 && g_md.south != 0 &&
+	g_md.east != 0 && g_md.west != 0 && g_md.sprite != 0 && g_md.f != 0 && g_md.c != 0)
 		return (SUCCESS);
 	return (0);
 }
@@ -94,16 +94,16 @@ int				parse_cub(int fd)
 	t_list		*map_list;
 
 	map_list = 0;
-	if (!(game.mlx = mlx_init()))
+	if (!(g_game.mlx = mlx_init()))
 		return (ERROR);
 	if (parse_data(fd) == ERROR)
 		return (ERROR);
 	if (move_to_map(fd, &map_list) == ERROR)
 		return (ERROR);
-	if ((game.map = fill_map_data(map_list)) == 0)
+	if ((g_game.map = fill_map_data(map_list)) == 0)
 		return (ERROR);
-	w_tile = md.width / g_idx_width;
-	h_tile = md.height / g_idx_height;
+	w_tile = g_md.width / g_idx_width;
+	h_tile = g_md.height / g_idx_height;
 	if (w_tile >= h_tile)
 		g_tile_size = h_tile;
 	else

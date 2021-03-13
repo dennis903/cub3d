@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:51:57 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 11:08:47 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 11:15:09 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,8 @@ int					display_window(char *argv)
 		printf("cub setting error\n");
 		return (ERROR);
 	}
-	mlx_loop_hook(game.mlx, main_loop, 0);
-	mlx_loop(game.mlx);
+	mlx_loop_hook(g_game.mlx, main_loop, 0);
+	mlx_loop(g_game.mlx);
 	return (0);
 }
 

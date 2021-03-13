@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:46:50 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 11:09:03 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 11:16:43 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@
 # include "./libft/libft.h"
 # include "./get_next_line/get_next_line.h"
 # include "mlx_dylib/mlx.h"
-
 
 typedef struct			s_point
 {
@@ -180,9 +179,9 @@ typedef struct			s_ray
 	char				side;
 }						t_ray;
 
-t_game					game;
-t_map_data				md;
-t_player				player;
+t_game					g_game;
+t_map_data				g_md;
+t_player				g_player;
 t_key					g_keys;
 t_ray					*g_rays;
 t_direction				g_dir;
@@ -196,128 +195,101 @@ int						g_tile_size;
 double					g_fov_angle;
 int						g_num_rays;
 double					g_dist_from_player;
-//parse_cub.c
 int						parse_cub(int fd);
-//parse_utils.c
 int						set_base_data(char **splits);
 int						count_splits(char **splits);
 int						make_color(char *splits, t_color **color);
 void					free_arrs(char **splits);
-//save.c
 int						save_r(char **splits);
 int						save_texture(char **splits);
 int						save_color(char **splits);
-//player_util.c
 void					update(void);
 void					set_angle(char direction);
 void					player_init(int height, int width);
 int						defence_seg_y(double angle);
 int						defence_seg_x(double angle);
-//map_valid_test.c
 int						map_valid_test(char **map, int i, int j);
-//parse_map.c
 void					parse_map(int fd, t_list **map_list);
 char					**fill_map_data(t_list *map_list);
 int						get_map_width(t_list *map_list);
 int						get_map_height(t_list *map_list);
-//map_utils.c
 void					copy_map_data(char **map, t_list *map_list);
 int						map_valid_check(char **map);
 int						check_not_valid_map(char index);
 void					player_test(char index, int *player_count);
-//cub_setting.c
 int						texture_setting();
 int						cub_setting();
 int						sprite_setting();
 void					player_setting();
 void					ray_setting();
-//key_press.c
 int						key_release(int keycode);
 int						key_press(int keycode);
 int						key_exit();
-//cub3d_start.c
 int						main_loop();
-//utils1.c
 double					get_degree(int degree);
 int						has_wall_at(double x, double y);
 int						to_coord(double x, double y);
 double					get_distance(double x1, double y1, double x2, double y2);
 void					move_player();
-//render.c
 void					render();
 void					draw_2d_ray();
 void					raycast_3d();
-//image.c
-//draw.c
 void					draw_player();
 void					draw_line(double x1, double y1, double x2, double y2, int color);
 void					draw_lines();
 void					draw_rectangles();
 void					draw_rectangle(int row, int col);
-//cub2d_utils.c
 double					normalize_angle(double ray_angle);
-//ray_cast.c
 void					ray_cast(int col_id, double angle);
 void					vertical_wall_check(double angle, t_point *vert_wall);
 void					horizontal_wall_check(double angle, t_point *horz_wall);
-//ray_cast_util.c
-void					get_next_horz_touch(t_point intercept, t_point **horz_wall, t_point step, int angle_side_up);
-void					get_next_vert_touch(t_point intercept, t_point **vert_wall, t_point step, int angle_side_left );
+void					get_next_horz_touch(t_point intercept, t_point **horz_wall,
+t_point step, int angle_side_up);
+void					get_next_vert_touch(t_point intercept, t_point **vert_wall,
+t_point step, int angle_side_left );
 void					get_ray_data(double dist, int col_id, t_point wall_point);
-//ray_cast_3d.c
 void					draw_ceiling();
 void					draw_floor();
 void					draw_wall();
 void					draw_3d_wall(double x, int wall_strip_height, t_ray ray);
-//texture_admin.c
 unsigned int			fill_color(t_color *color);
 void					check_direction(t_ray ray);
 void					init_direction();
-//texture_utils.c
 void					is_dir_up(int left, t_ray ray);
 void					is_dir_down(int left, t_ray ray);
 int						get_texture_x(t_ray ray);
 int						get_texture_y(int screen_y, int wall_height);
 int						get_texture_color(int x, int y);
-//utils2.c
 int						calc_idx(int x, int y);
 int						count_sprite();
 t_ray					rot_angle_ray_cast(double angle);
 double					fix_angle(double angle);
 double					check_angle_by_dir(double angle);
-//reset_img.c
 void					image_reset_2d();
 void					image_reset_3d();
-//sprite_util.c
 void					sprite_pos_set();
 void					draw_2d_sprite(int y, int x, int color);
 void					draw_3d_sprite(int sprite_height, t_sprite sprite);
-void					draw_sprite_height(int sprite_height, int sprite_width, int x, t_sprite_utils sp_utils);
+void					draw_sprite_height(int sprite_height, int sprite_width,
+int x, t_sprite_utils sp_utils);
 void					sort_sprite(t_sprite *visible_sprite, int visible_sp_num);
-//sprite.c
 void					sprite_2d();
 void					sprite_3d();
 void					calc_sprite(t_sprite *visible_sprite, int visible_sp_num);
-//make_bmp.c
 int						make_bmp();
 void					set_bmp_header(unsigned char *header);
-//bmp_utils.c
 int						calc_bmp_size();
-//sprite_textures.c
 int						get_sp_tex_x(int current_x, int sprite_width);
 int						get_sp_tex_y(int current_y, int sprite_height);
 int						get_sp_texture(int x, int y);
-//move_player.c
 void					move_up();
 void					move_down();
 void					move_left();
 void					move_right();
-//check_key.c
 void					check_a(double angle);
 void					check_w(double angle);
 void					check_s(double angle);
 void					check_d(double angle);
-//cub3d.c
 int						find_str(char *dist, const char *src);
 int						check_save(char *argv);
 int						display_window(char *argv);

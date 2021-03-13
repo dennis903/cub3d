@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:47:55 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/12 21:47:57 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 11:15:37 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void				image_reset_2d()
 		j = 0;
 		while (j < g_tile_size * g_idx_width)
 		{
-			game.img_2d.data[i * g_tile_size * g_idx_width + j] = 0x000000;
+			g_game.img_2d.data[i * g_tile_size * g_idx_width + j] = 0x000000;
 			j++;
 		}
 		i++;
@@ -36,12 +36,12 @@ void				image_reset_3d()
 	int				j;
 
 	i = 0;
-	while (i < md.height)
+	while (i < g_md.height)
 	{
 		j = 0;
-		while (j < md.width)
+		while (j < g_md.width)
 		{
-			game.img_3d.data[i * md.width + j] = 0x000000;
+			g_game.img_3d.data[i * g_md.width + j] = 0x000000;
 			j++;
 		}
 		i++;

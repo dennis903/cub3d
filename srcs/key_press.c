@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:48:59 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/12 21:49:00 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 11:15:32 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,12 @@ int					key_press(int keycode)
 	if (keycode == KEY_LEFT)
 	{
 		g_keys.left_key = 1;
-		player.turn_dir = -1;
+		g_player.turn_dir = -1;
 	}
 	if (keycode == KEY_RIGHT)
 	{
 		g_keys.right_key = 1;
-		player.turn_dir = 1;
+		g_player.turn_dir = 1;
 	}
 	if (keycode == KEY_TAB)
 		g_keys.tab_key = 1;
@@ -54,32 +54,32 @@ int					key_release(int keycode)
 {
 	if (keycode == KEY_W)
 	{
-		player.walk_dir = 0;
+		g_player.walk_dir = 0;
 		g_keys.w_key = 0;
 	}
 	if (keycode == KEY_A)
 	{
-		player.walk_dir = 0;
+		g_player.walk_dir = 0;
 		g_keys.a_key = 0;
 	}
 	if (keycode == KEY_S)
 	{
-		player.walk_dir = 0;
+		g_player.walk_dir = 0;
 		g_keys.s_key = 0;
 	}
 	if (keycode == KEY_D)
 	{
-		player.walk_dir = 0;
+		g_player.walk_dir = 0;
 		g_keys.d_key = 0;
 	}
 	if (keycode == KEY_LEFT)
 	{
-		player.turn_dir = 0;
+		g_player.turn_dir = 0;
 		g_keys.left_key = 0;
 	}
 	if (keycode == KEY_RIGHT)
 	{
-		player.turn_dir = 0;
+		g_player.turn_dir = 0;
 		g_keys.right_key = 0;
 	}
 	if (keycode == KEY_TAB)

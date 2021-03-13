@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:48:00 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/12 21:48:02 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 13:48:48 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void				draw_2d_ray()
 	i = 0;
 	while (i < g_num_rays)
 	{
-		ray_angle = player.rot_angle + atan((i - g_num_rays / 2) / g_dist_from_player);
+		ray_angle = g_player.rot_angle + atan((i - g_num_rays / 2) / g_dist_from_player);
 		g_rays[i].ray_angle = normalize_angle(ray_angle);
 		ray_cast(col_id, ray_angle);
 		col_id++;

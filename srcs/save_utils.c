@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:47:51 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/12 21:47:52 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 11:15:38 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ int				save_r(char **splits)
 	// 	width = max_width;
 	// if (height > max_height)
 	// 	height = max_height;
-	md.width = width;
-	md.height = height;
+	g_md.width = width;
+	g_md.height = height;
 	return (0);
 }
 
@@ -49,15 +49,15 @@ int				save_texture(char **splits)
 	if (split_length != 2)
 		return (ERROR);
 	if (ft_strcmp(splits[0], "NO") == 0)
-		md.north = ft_strdup(splits[1]);
+		g_md.north = ft_strdup(splits[1]);
 	else if (ft_strcmp(splits[0], "SO") == 0)
-		md.south = ft_strdup(splits[1]);
+		g_md.south = ft_strdup(splits[1]);
 	else if (ft_strcmp(splits[0], "EA") == 0)
-		md.east = ft_strdup(splits[1]);
+		g_md.east = ft_strdup(splits[1]);
 	else if (ft_strcmp(splits[0], "WE") == 0)
-		md.west = ft_strdup(splits[1]);
+		g_md.west = ft_strdup(splits[1]);
 	else if (ft_strcmp(splits[0], "S") == 0)
-		md.sprite = ft_strdup(splits[1]);
+		g_md.sprite = ft_strdup(splits[1]);
 	return (0);
 }
 
@@ -69,8 +69,8 @@ int				save_color(char **splits)
 	if (split_length != 2)
 		return (ERROR);
 	if (ft_strcmp(splits[0], "F") == 0)
-		return (make_color(splits[1], &md.f));
+		return (make_color(splits[1], &g_md.f));
 	else if (ft_strcmp(splits[0], "C") == 0)
-		return (make_color(splits[1], &md.c));
+		return (make_color(splits[1], &g_md.c));
 	return (0);
 }

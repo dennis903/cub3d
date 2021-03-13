@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:49:03 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/12 21:49:04 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 11:15:32 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void			draw_line(double x1, double y1, double x2, double y2, int color)
 	delta_y /= steps;
 	while (fabs(x2 - x1) > 0.01 || fabs(y2 - y1) > 0.01)
 	{
-		game.img_2d.data[to_coord(x1, y1)] = color;
+		g_game.img_2d.data[to_coord(x1, y1)] = color;
 		x1 += delta_x;
 		y1 += delta_y;
 	}
@@ -42,7 +42,7 @@ void			draw_player()
 		j = 0;
 		while (j < 2)
 		{
-			game.img_2d.data[to_coord(player.x + j, player.y + i)] = 0xFF0000;
+			g_game.img_2d.data[to_coord(g_player.x + j, g_player.y + i)] = 0xFF0000;
 			j++;
 		}
 		i++;
@@ -83,7 +83,7 @@ void			draw_rectangle(int row, int col)
 		j = 0;
 		while (j < g_tile_size)
 		{
-			game.img_2d.data[(row + i) * g_tile_size * g_idx_width + (col + j)] = 0xFFFFFF;
+			g_game.img_2d.data[(row + i) * g_tile_size * g_idx_width + (col + j)] = 0xFFFFFF;
 			j++;
 		}
 		i++;
@@ -101,7 +101,7 @@ void			draw_rectangles()
 		j = 0;
 		while (j < g_idx_width)
 		{
-			if (game.map[i][j] == '1')
+			if (g_game.map[i][j] == '1')
 				draw_rectangle(i, j);
 			j++;
 		}
