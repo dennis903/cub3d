@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:46:50 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 10:38:54 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 11:09:03 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -317,4 +317,8 @@ void					check_a(double angle);
 void					check_w(double angle);
 void					check_s(double angle);
 void					check_d(double angle);
+//cub3d.c
+int						find_str(char *dist, const char *src);
+int						check_save(char *argv);
+int						display_window(char *argv);
 #endif

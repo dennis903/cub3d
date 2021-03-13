@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:51:57 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/12 21:54:07 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 11:08:47 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int					find_str(char *dist, const char *src)
 		if (dist[i] == src[0])
 		{
 			j = 0;
-			while(dist[i] == src[j] && src[j])
+			while (dist[i] == src[j] && src[j])
 			{
 				j++;
 				i++;
@@ -40,6 +40,7 @@ int					find_str(char *dist, const char *src)
 int					check_save(char *argv)
 {
 	int				fd;
+
 	if (find_str(argv, ".cub") == ERROR)
 		return (ERROR);
 	if (!(fd = open(argv, O_RDONLY)))
@@ -114,12 +115,7 @@ int					main(int argc, char *argv[])
 		}
 	}
 	if (argc == 2)
-	{
 		if (display_window(argv[1]) == ERROR)
-		{
-			printf(".cub error\n");
 			return (ERROR);
-		}
-	}
 	return (0);
 }
