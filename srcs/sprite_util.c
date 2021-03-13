@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:47:35 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 17:57:16 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 19:21:15 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ void					draw_2d_sprite(int y, int x, int color)
 	int					j;
 
 	i = 0;
-
-	while (i < 10)
+	while (i < 2)
 	{
 		j = 0;
-		while (j < 10)
+		while (j < 2)
 		{
-			g_game.img_2d.data[(y + i) * (g_tile_size * g_idx_width) + x + j] = color;
+			g_game.img_2d.data[(y + i) * 
+			(g_tile_size * g_idx_width) + x + j] = color;
 			j++;
 		}
 		i++;
@@ -39,7 +39,7 @@ void					sprite_pos_set()
 
 	count = 0;
 	i = 0;
-	while(i < g_idx_height)
+	while (i < g_idx_height)
 	{
 		j = 0;
 		while (j < g_idx_width)
@@ -56,12 +56,14 @@ void					sprite_pos_set()
 	}
 }
 
-void					draw_sprite_height(int sprite_height, int sprite_width, int x, t_sprite_utils sp_utils)
+void					draw_sprite_height(int sprite_height, int sprite_width,
+int x, t_sprite_utils sp_utils)
 {
 	int					start_y;
 	int					end_y;
 	int					texture_x;
 	int					texture_y;
+	int					color;
 
 	start_y = (g_md.height / 2) - (sprite_height / 2);
 	end_y = (g_md.height / 2) + (sprite_height / 2);
@@ -75,8 +77,9 @@ void					draw_sprite_height(int sprite_height, int sprite_width, int x, t_sprite
 	while (start_y < end_y)
 	{
 		texture_y = get_sp_tex_y(start_y - sp_utils.start_y, sprite_height);
-		if (get_sp_texture(texture_x, texture_y) != 0)
-			g_game.img_3d.data[start_y * g_md.width + x] = get_sp_texture(texture_x, texture_y);
+		color = get_sp_texture(texture_x, texture_y);
+		if (color != 0)
+			g_game.img_3d.data[start_y * g_md.width + x] = color;
 		start_y++;
 	}
 }
