@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:48:07 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 13:55:44 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 17:48:27 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void				horizontal_wall_check(double angle, t_point *horz_wall)
 	t_point			intercept;
 	t_point			step;
 
-	horz_wall -> is_wall = 0;
+	horz_wall->is_wall = 0;
 	angle_side_up = (angle <= 0 || angle >= PI) ? 1 : 0;
 	angle_side_left = (angle >= 0.5 * PI && angle <= 1.5 * PI) ? 1 : 0;
 	intercept.y = floor(g_player.y / g_tile_size) * g_tile_size;
@@ -44,7 +44,7 @@ void				vertical_wall_check(double angle, t_point *vert_wall)
 	t_point			intercept;
 	t_point			step;
 
-	vert_wall -> is_wall = 0;
+	vert_wall->is_wall = 0;
 	angle_side_down = (angle > 0 && angle < PI) ? 1 : 0;
 	angle_side_left = (angle > 0.5 * PI && angle <= 1.5 * PI) ? 1 : 0;
 	intercept.x = floor(g_player.x / g_tile_size) * g_tile_size;
@@ -70,7 +70,7 @@ void				ray_cast(int col_id, double angle)
 	double			vert_dist;
 
 	angle = normalize_angle(angle);
-    g_rays[col_id].side = 0;
+	g_rays[col_id].side = 0;
 	horizontal_wall_check(angle, &horz);
 	vertical_wall_check(angle, &vert);
 	if (horz.is_wall == 0)
