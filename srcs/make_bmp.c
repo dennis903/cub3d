@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:48:53 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 17:21:27 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 17:24:43 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ int					make_bmp(void)
 	unsigned char	header[54];
 
 	set_bmp_header(&header[0]);
-	if (!(fd = open("screenshot.bmp", O_RDWR | O_APPEND | O_CREAT | O_TRUNC, 00777)))
+	if (!(fd = open("screenshot.bmp",
+	O_RDWR | O_APPEND | O_CREAT | O_TRUNC, 00777)))
 		return (ERROR);
 	i = 0;
 	while (i < 54)
