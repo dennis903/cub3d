@@ -6,13 +6,14 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:48:12 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/12 21:48:13 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 17:46:56 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void			get_next_horz_touch(t_point intercept, t_point **horz_wall, t_point step, int angle_side_up)
+void				get_next_horz_touch(t_point intercept, t_point **horz_wall,
+t_point step, int angle_side_up)
 {
 	t_point		touch;
 
@@ -38,7 +39,8 @@ void			get_next_horz_touch(t_point intercept, t_point **horz_wall, t_point step,
 	}
 }
 
-void				get_next_vert_touch(t_point intercept, t_point **vert_wall, t_point step, int angle_side_left)
+void				get_next_vert_touch(t_point intercept, t_point **vert_wall,
+t_point step, int angle_side_left)
 {
 	t_point			touch;
 
