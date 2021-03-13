@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:48:53 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 15:47:39 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 17:21:27 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void				set_bmp_header(unsigned char *header)
 }
 
 void				fill_header(unsigned char *header, int size)
-{	
+{
 	header[0] = 'B';
 	header[1] = 'M';
 	header[2] = size % 256;
@@ -49,7 +49,7 @@ void				fill_header(unsigned char *header, int size)
 	header[28] = 24;
 }
 
-int					make_bmp()
+int					make_bmp(void)
 {
 	int				fd;
 	int				i;
@@ -68,12 +68,9 @@ int					make_bmp()
 	i = g_md.height - 1;
 	while (i > -1)
 	{
-		j = 0;
-		while (j < g_md.width)
-		{
+		j = -1;
+		while (j++ < g_md.width)
 			write(fd, &(g_game.img_3d.data[i * g_md.width + j]), 3);
-			j++;
-		}
 		i--;
 	}
 	return (0);

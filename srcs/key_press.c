@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:48:59 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 15:42:47 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 17:18:43 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int					key_release(int keycode)
 	return (0);
 }
 
-int					key_exit()
+int					key_exit(void)
 {
 	exit(0);
 }

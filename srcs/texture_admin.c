@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:47:13 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 15:27:46 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 17:16:26 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void						check_direction(t_ray ray)
 		is_dir_down(angle_side_left, ray);
 }
 
-void						put_xpm_file_to_image(void)
+int							put_xpm_file_to_image(void)
 {
 	if (!(g_dir.north = mlx_xpm_file_to_image(g_game.mlx, g_md.north,
 	&g_dir.no_w, &g_dir.no_h)))
@@ -69,10 +69,10 @@ void						put_xpm_file_to_image(void)
 	if (!(g_dir.sprite = mlx_xpm_file_to_image(g_game.mlx, g_md.sprite,
 	&g_dir.sp_w, &g_dir.sp_h)))
 		return (ERROR);
-
+	return (0);
 }
 
-void						put_get_data_addr(void)
+int							put_get_data_addr(void)
 {
 	if (!(g_dir.no_data = (int *)mlx_get_data_addr(g_dir.north, &g_dir.no_bpp,
 	&g_dir.no_size_l, &g_dir.no_endian)))
@@ -89,4 +89,5 @@ void						put_get_data_addr(void)
 	if (!(g_dir.sp_data = (int *)mlx_get_data_addr(g_dir.sprite, &g_dir.sp_bpp,
 	&g_dir.sp_size_l, &g_dir.sp_endian)))
 		return (ERROR);
+	return (0);
 }

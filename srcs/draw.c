@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:49:03 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 15:33:33 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 17:12:37 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void			draw_line(double x1, double y1, double x2, double y2)
 	}
 }
 
-void			draw_player()
+void			draw_player(void)
 {
 	int			i;
 	int			j;
@@ -50,30 +50,6 @@ void			draw_player()
 	}
 }
 
-void			draw_lines()
-{
-	int			i;
-	int			j;
-
-	i = 0;
-	while (i < g_idx_height)
-	{
-		draw_line(0, i * g_tile_size, (g_tile_size * g_idx_width), i * g_tile_size);
-		i++;
-	}
-	draw_line(0, g_idx_height * g_tile_size - 1, g_tile_size * 
-	g_idx_width, g_idx_height * g_tile_size - 1);
-	j = 0;
-	while (j < g_idx_width)
-	{
-		draw_line(j * g_tile_size, 0, j * g_tile_size,
-		g_tile_size * g_idx_height);
-		j++;
-	}
-	draw_line(g_idx_width * g_tile_size - 1, 0, g_idx_width * g_tile_size - 1,
-	g_tile_size * g_idx_height);
-}
-
 void			draw_rectangle(int row, int col)
 {
 	int			i;
@@ -87,7 +63,8 @@ void			draw_rectangle(int row, int col)
 		j = 0;
 		while (j < g_tile_size)
 		{
-			g_game.img_2d.data[(row + i) * g_tile_size * g_idx_width + (col + j)] = 0xFFFFFF;
+			g_game.img_2d.data[(row + i) * g_tile_size * g_idx_width
+			+ (col + j)] = 0xFFFFFF;
 			j++;
 		}
 		i++;

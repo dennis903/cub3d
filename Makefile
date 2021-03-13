@@ -66,7 +66,7 @@ run : $(NAME)
 
 screen : $(NAME)
 	./$(NAME) map.cub --save
-	open screen.bmp
+	open screenshot.bmp
 
 norm :
 	@norminette *.c *.h ./libft/*.c ./libft/*.h

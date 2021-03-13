@@ -6,18 +6,17 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:48:48 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/12 21:48:49 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 17:23:58 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void			copy_map_data(char **map, t_list *map_list)
+void				copy_map_data(char **map, t_list *map_list)
 {
-	int			length;
-	int			i;
-	int			j;
-
+	int				length;
+	int				i;
+	int				j;
 
 	i = 0;
 	while (map_list)
@@ -39,11 +38,11 @@ void			copy_map_data(char **map, t_list *map_list)
 	}
 }
 
-int				map_valid_check(char **map)
+int					map_valid_check(char **map)
 {
-	int			i;
-	int			j;
-	int			player_count;
+	int				i;
+	int				j;
+	int				player_count;
 
 	player_count = 0;
 	i = 0;
@@ -53,7 +52,7 @@ int				map_valid_check(char **map)
 		while (j < g_idx_width)
 		{
 			if (map[i][j] == '0' || map[i][j] == '2' || map[i][j] == 'N' ||
-			 map[i][j] == 'E' || map[i][j] == 'W' || map[i][j] == 'S')
+			map[i][j] == 'E' || map[i][j] == 'W' || map[i][j] == 'S')
 				if ((map_valid_test(map, i, j)) == -1)
 			 		return (ERROR);
 			player_test(map[i][j], &player_count);
@@ -66,9 +65,9 @@ int				map_valid_check(char **map)
 	return (0);
 }
 
-int				check_not_valid_map(char index)
+int					check_not_valid_map(char index)
 {
-	if (index != '1' && index != 'N' && index != 'E' && index != 'W' && 
+	if (index != '1' && index != 'N' && index != 'E' && index != 'W' &&
 	index != 'S' && index != '0' && index != '2')
 		return (ERROR);
 	return (0);

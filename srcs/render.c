@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:48:00 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 13:48:48 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 17:19:30 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void				draw_2d_ray()
 void				raycast_2d()
 {
 	draw_rectangles();
-	draw_lines();
 	draw_player();
 	draw_2d_ray();
 }
