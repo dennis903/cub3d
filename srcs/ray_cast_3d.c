@@ -6,13 +6,13 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:48:17 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 11:15:05 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 17:39:37 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void					draw_ceiling()
+void					draw_ceiling(void)
 {
 	int					i;
 	int					j;
@@ -30,7 +30,7 @@ void					draw_ceiling()
 	}
 }
 
-void					draw_floor()
+void					draw_floor(void)
 {
 	int					i;
 	int					j;
@@ -69,12 +69,13 @@ void					draw_3d_wall(double x, int wall_strip_height, t_ray ray)
 	{
 		screen_y = i + (wall_strip_height / 2) - (g_md.height / 2);
 		get_texture.y = get_texture_y(screen_y,  wall_strip_height);
-		g_game.img_3d.data[i * g_md.width + (int)x] = get_texture_color(get_texture.x, get_texture.y);
+		g_game.img_3d.data[i * g_md.width + (int)x]
+		= get_texture_color(get_texture.x, get_texture.y);
 		i++;
 	}
 }
 
-void					draw_wall()
+void					draw_wall(void)
 {
 	int					i;
 	double				correct_ray_dist;
@@ -83,7 +84,8 @@ void					draw_wall()
 	i = 0;
 	while (i < g_num_rays)
 	{
-		correct_ray_dist = cos(g_player.rot_angle - g_rays[i].ray_angle) * (g_rays[i].distance);
+		correct_ray_dist = cos(g_player.rot_angle -
+		g_rays[i].ray_angle) * (g_rays[i].distance);
 		wall_height = (g_tile_size / correct_ray_dist) * g_dist_from_player;
 		draw_3d_wall(i, wall_height, g_rays[i]);
 		i++;
