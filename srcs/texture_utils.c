@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:47:09 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 19:26:07 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 19:27:28 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,14 @@ int					get_texture_x(t_ray ray)
 			(g_dir.so_w / g_tile_size);
 	}
 	else
+	{
 		if (g_dir.check_we)
 			temp_x = fmod(ray.hit_point.y, g_tile_size) *
 			(g_dir.we_w / g_tile_size);
 		else
 			temp_x = fmod(ray.hit_point.y, g_tile_size) *
 			(g_dir.ea_w / g_tile_size);
+	}
 	texture_x = temp_x;
 	return (texture_x);
 }
