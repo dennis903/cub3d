@@ -6,13 +6,13 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:47:55 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 17:51:11 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 17:53:35 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void				image_reset_2d()
+void				image_reset_2d(void)
 {
 	int				i;
 	int				j;
@@ -30,7 +30,7 @@ void				image_reset_2d()
 	}
 }
 
-void				image_reset_3d()
+void				image_reset_3d(void)
 {
 	int				i;
 	int				j;

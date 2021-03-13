@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:47:51 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 11:15:38 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 17:53:55 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,10 @@
 int				save_r(char **splits)
 {
 	int			split_length;
-	// int			max_width;
-	// int			max_height;
 	int			width;
 	int			height;
 
 	split_length = count_splits(splits);
-	// mlx_get_screen_size(game.mlx, &max_width, &max_height);
 	if (split_length != 3)
 		return (ERROR);
 	width = ft_atoi(splits[1]);
@@ -32,10 +29,6 @@ int				save_r(char **splits)
 		width = 250;
 	if (height < 250)
 		height = 250;
-	// if (width > max_width)
-	// 	width = max_width;
-	// if (height > max_height)
-	// 	height = max_height;
 	g_md.width = width;
 	g_md.height = height;
 	return (0);
