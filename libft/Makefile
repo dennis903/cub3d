@@ -46,19 +46,19 @@ FILES = ft_strlen.c	\
 		ft_lstiter.c	\
 		ft_lstmap.c
 
-OBJS = $(FILES:.c=.o)
+OBJS	=	$(FILES:.c=.o)
 
-all : $(NAME)
+all	:	$(NAME)
 
-$(NAME) : $(OBJS) 
-	ar rc $(NAME) $(OBJS)
+$(NAME)	:	$(OBJS)
+	ar	rcs	$(NAME)	$(OBJS)
 	
 clean :
-	rm -f $(OBJS) 
+	rm	-f	$(OBJS)
 
-fclean :
-	rm -rf $(OBJS) $(NAME) 
-	
-re : fclean all
+fclean	:
+	rm	-f	$(OBJS)	$(NAME)
 
-.PHONY: clean fclean all re bonus
+re	:	fclean all
+
+.PHONY:	clean fclean all re bonus

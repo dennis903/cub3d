@@ -1,4 +1,4 @@
-R 503 1
+R 400 1
 SO ./textures/south.xpm
 NO ./textures/north.xpm
 WE ./textures/west.xpm

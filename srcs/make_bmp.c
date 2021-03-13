@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:48:53 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 17:56:09 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 20:41:08 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int					make_bmp(void)
 	i = g_md.height - 1;
 	while (i > -1)
 	{
-		j = -1;
+		j = 0;
 		while (j++ < g_md.width)
 			write(fd, &(g_game.img_3d.data[i * g_md.width + j]), 3);
 		i--;

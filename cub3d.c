@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:51:57 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 11:15:09 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 20:37:57 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,15 @@ int					find_str(char *dist, const char *src)
 				i++;
 			}
 			if (!src[j] && !dist[i])
+			{
 				return (1);
+			}
 		}
 		else
 			i++;
 	}
-	return (-1);
+	printf(".cub error\n");
+	return (ERROR);
 }
 
 int					check_save(char *argv)

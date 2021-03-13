@@ -42,7 +42,7 @@ $(NAME): $(SRCS)
 	cp libft/libft.a ./
 	cp mlx/libmlx.a ./
 	cp mlx_dylib/libmlx.dylib ./
-	gcc	$(FLAGS)	./libft.a ./libmlx.a -framework OpenGl -framework AppKit $(SRCS) -o $(NAME)
+	gcc	$(FLAGS)	./libft.a	./libmlx.a	-framework	OpenGl	-framework AppKit	$(SRCS)	-o	$(NAME)
 
 bonus: all
 
