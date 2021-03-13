@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:47:04 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 11:15:36 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 17:57:16 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ double				get_distance(double x1, double y1, double x2, double y2)
 void				move_player()
 {
 	if (g_keys.a_key)
-		check_a(g_player.rot_angle);
+		check_a(g_player.angle);
 	if (g_keys.w_key)
-		check_w(g_player.rot_angle);
+		check_w(g_player.angle);
 	if (g_keys.d_key)
-		check_d(g_player.rot_angle);
+		check_d(g_player.angle);
 	if (g_keys.s_key)
-		check_s(g_player.rot_angle);
+		check_s(g_player.angle);
 }

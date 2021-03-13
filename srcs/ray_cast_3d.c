@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:48:17 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 17:45:16 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 17:56:18 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,9 @@ void					draw_wall(void)
 	i = 0;
 	while (i < g_num_rays)
 	{
-		correct_ray_dist = cos(g_player.rot_angle -
+		correct_ray_dist = cos(g_player.angle -
 		g_rays[i].ray_angle) * (g_rays[i].distance);
-		wall_height = (g_tile_size / correct_ray_dist) * g_dist_from_player;
+		wall_height = (g_tile_size / correct_ray_dist) * g_proj_dist;
 		draw_3d_wall(i, wall_height, g_rays[i]);
 		i++;
 	}

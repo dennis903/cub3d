@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:49:17 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 17:17:47 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 17:56:02 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void			ray_setting(void)
 {
 	g_fov_angle = get_degree(60);
 	g_num_rays = g_md.width;
-	g_dist_from_player = ((g_md.width / 2) / (tan(g_fov_angle / 2)));
+	g_proj_dist = ((g_md.width / 2) / (tan(g_fov_angle / 2)));
 	if (!(g_rays = (t_ray *)malloc(sizeof(t_ray) * g_num_rays)))
 		exit(1);
 	if (g_num_rays == 0)

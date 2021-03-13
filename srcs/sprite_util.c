@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:47:35 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 13:52:46 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 17:57:16 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,9 @@ void					draw_3d_sprite(int sprite_height, t_sprite sprite)
 	int					sprite_width;
 	double				sprite_angle;
 
-	sprite_angle = atan2(sprite.pos.y - g_player.y, sprite.pos.x - g_player.x) - g_player.rot_angle;
+	sprite_angle = atan2(sprite.pos.y - g_player.y, sprite.pos.x - g_player.x) - g_player.angle;
 	sprite_width = sprite_height;
-	start_x = (g_md.width / 2) + (tan(sprite_angle) * g_dist_from_player) - (sprite_width / 2);
+	start_x = (g_md.width / 2) + (tan(sprite_angle) * g_proj_dist) - (sprite_width / 2);
 	sp_utils.start_x = start_x;
 	end_x = start_x + sprite_width;
 	sp_utils.end_x = end_x;

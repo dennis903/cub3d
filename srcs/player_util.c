@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:48:22 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 17:36:42 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 17:56:12 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 void				set_angle(char direction)
 {
 	if (direction == 'N')
-		g_player.rot_angle = (PI / 180) * 270;
+		g_player.angle = (PI / 180) * 270;
 	else if (direction == 'E')
-		g_player.rot_angle = PI / 180;
+		g_player.angle = PI / 180;
 	else if (direction == 'W')
-		g_player.rot_angle = PI;
+		g_player.angle = PI;
 	else if (direction == 'S')
-		g_player.rot_angle = (PI / 180) * 90;
+		g_player.angle = (PI / 180) * 90;
 }
 
 void				player_init(int height, int width)
@@ -65,7 +65,7 @@ int					defence_seg_y(double angle)
 
 void				update(void)
 {
-	g_player.rot_angle += g_player.turn_dir * g_player.rotation_speed;
-	g_player.rot_angle = normalize_angle(g_player.rot_angle);
+	g_player.angle += g_player.turn_dir * g_player.rotation_speed;
+	g_player.angle = normalize_angle(g_player.angle);
 	move_player();
 }
