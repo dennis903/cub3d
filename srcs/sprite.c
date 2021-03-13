@@ -6,13 +6,13 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:47:19 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 19:12:38 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 19:13:50 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void				sprite_2d()
+void				sprite_2d(void)
 {
 	int				i;
 	double			pbs_angle;
@@ -39,12 +39,12 @@ void				sprite_2d()
 	}
 }
 
-void				sprite_3d()
+void				sprite_3d(void)
 {
 	t_sprite		visible_sprite[g_sprite_num];
 	int				visible_sp_num;
 	int				i;
-	
+
 	i = 0;
 	visible_sp_num = 0;
 	while (i < g_sprite_num)
