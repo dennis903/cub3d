@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:48:31 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 17:33:21 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 17:35:17 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,9 @@ char			**fill_map_data(t_list *map_list)
 	copy_map_data(map, map_list);
 	if ((map_valid_check(map)) == ERROR)
 	{
-		i = 0;
-		while (i < g_idx_height)
-		{
+		i = -1;
+		while (i++ < g_idx_height)
 			free(map[i]);
-			i++;
-		}
 		return (0);
 	}
 	return (map);
