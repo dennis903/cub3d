@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:48:44 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/12 21:48:45 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 17:30:27 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int				right_test(char **map, int i, int j)
 
 int				down_test(char **map, int i, int j)
 {
-	while(i <= g_idx_height)
+	while (i <= g_idx_height)
 	{
 		if (map[i][j] == '1')
 			return (0);

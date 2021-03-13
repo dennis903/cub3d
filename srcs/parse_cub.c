@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:48:36 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 11:15:23 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 17:32:11 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,12 @@ int				data_setting(char *line)
 	return (1);
 }
 
-int				data_check()
+int				data_check(void)
 {
-	if (g_md.width != 0 && g_md.height != 0 && g_md.north != 0 && g_md.south != 0 &&
-	g_md.east != 0 && g_md.west != 0 && g_md.sprite != 0 && g_md.f != 0 && g_md.c != 0)
+	if (g_md.width != 0 && g_md.height != 0 &&
+	g_md.north != 0 && g_md.south != 0 &&
+	g_md.east != 0 && g_md.west != 0 &&
+	g_md.sprite != 0 && g_md.f != 0 && g_md.c != 0)
 		return (SUCCESS);
 	return (0);
 }
