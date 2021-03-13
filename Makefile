@@ -31,11 +31,9 @@ srcs/check_key.c		\
 get_next_line/get_next_line.c	\
 get_next_line/get_next_line_utils.c
 
-OSRC = $(SRCS:.c=.o)
-
 FLAGS = -Wall -Wextra -Werror
 
-all: $(NAME) $(OSRC)
+all: $(NAME)
 
 $(NAME): $(SRCS)
 	make -C libft
@@ -44,12 +42,9 @@ $(NAME): $(SRCS)
 	cp libft/libft.a ./
 	cp mlx/libmlx.a ./
 	cp mlx_dylib/libmlx.dylib ./
-	gcc	$(FLAGS)	./libft/libft.a ./mlx/libmlx.a -framework OpenGl -framework AppKit $(SRCS) -o $(NAME)
+	gcc	$(FLAGS)	./libft.a ./libmlx.a -framework OpenGl -framework AppKit $(SRCS) -o $(NAME)
 
 bonus: all
-
-%.o: %.c $(HEADER)
-	gcc -c $< -o $@
 
 clean:
 	make -C libft clean

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ray_cast.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/12 21:48:07 by ihyeongjin        #+#    #+#             */
+/*   Updated: 2021/03/12 21:48:08 by ihyeongjin       ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../cub3d.h"
 
 void				horizontal_wall_check(double angle, t_point *horz_wall)
@@ -47,8 +59,6 @@ void				vertical_wall_check(double angle, t_point *vert_wall)
 		step.y *= -1;
 	if (angle_side_down && step.y < 0)
 		step.y *= -1;
-	if (angle_side_left)
-		intercept.x--;
 	get_next_vert_touch(intercept, &vert_wall, step, angle_side_left);
 }
 
@@ -60,8 +70,8 @@ void				ray_cast(int col_id, double angle)
 	double			vert_dist;
 
 	angle = normalize_angle(angle);
-	horizontal_wall_check(angle, &horz_wall);
     g_rays[col_id].side = 0;
+	horizontal_wall_check(angle, &horz_wall);
 	vertical_wall_check(angle, &vert_wall);
 	if (horz_wall.is_wall == 0)
 		horz_dist = 9999999;
@@ -71,7 +81,7 @@ void				ray_cast(int col_id, double angle)
 		vert_dist = 9999999;
 	else
 		vert_dist = get_distance(player.x, player.y, vert_wall.x, vert_wall.y);
-	if (horz_dist >= vert_dist)
+	if (horz_dist > vert_dist)
 	{
 		get_ray_data(vert_dist, col_id, vert_wall);
 		g_rays[col_id].side = 1;

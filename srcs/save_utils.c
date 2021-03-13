@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   save_utils.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/12 21:47:51 by ihyeongjin        #+#    #+#             */
+/*   Updated: 2021/03/12 21:47:52 by ihyeongjin       ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../cub3d.h"
 
 int				save_r(char **splits)
@@ -16,6 +28,14 @@ int				save_r(char **splits)
 	height = ft_atoi(splits[2]);
 	if (width == 0 || height == 0)
 		return (ERROR);
+	if (width < 250)
+		width = 250;
+	if (height < 250)
+		height = 250;
+	// if (width > max_width)
+	// 	width = max_width;
+	// if (height > max_height)
+	// 	height = max_height;
 	md.width = width;
 	md.height = height;
 	return (0);

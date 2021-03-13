@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   player_util.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/12 21:48:22 by ihyeongjin        #+#    #+#             */
+/*   Updated: 2021/03/12 21:48:22 by ihyeongjin       ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../cub3d.h"
 
 void				set_angle(char direction)
@@ -31,9 +43,9 @@ int					defence_seg_x(double angle)
 	ray = rot_angle_ray_cast(angle);
 	check_direction(ray);
 	if (g_dir.check_ea)
-		return (3);
+		return (2);
 	else if (g_dir.check_we)
-		return (-3);
+		return (-2);
 	return (0);
 }
 
@@ -45,9 +57,9 @@ int					defence_seg_y(double angle)
 	ray = rot_angle_ray_cast(angle);
 	check_direction(ray);
 	if (g_dir.check_no)
-		return (-3);
+		return (-2);
 	else if (g_dir.check_so)
-		return (3);
+		return (2);
 	return (0);
 }
 

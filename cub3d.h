@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/12 21:46:50 by ihyeongjin        #+#    #+#             */
+/*   Updated: 2021/03/13 10:38:54 by ihyeongjin       ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUB3D_H
 # define CUB3D_H
 # define ERROR					-1
@@ -181,7 +193,6 @@ char					g_sprite_num;
 int						g_idx_width;
 int						g_idx_height;
 int						g_tile_size;
-int						h_tile_size;
 double					g_fov_angle;
 int						g_num_rays;
 double					g_dist_from_player;
@@ -212,6 +223,8 @@ int						get_map_height(t_list *map_list);
 //map_utils.c
 void					copy_map_data(char **map, t_list *map_list);
 int						map_valid_check(char **map);
+int						check_not_valid_map(char index);
+void					player_test(char index, int *player_count);
 //cub_setting.c
 int						texture_setting();
 int						cub_setting();
@@ -228,7 +241,7 @@ int						main_loop();
 double					get_degree(int degree);
 int						has_wall_at(double x, double y);
 int						to_coord(double x, double y);
-double					get_distance(int x1, int y1, int x2, int y2);
+double					get_distance(double x1, double y1, double x2, double y2);
 void					move_player();
 //render.c
 void					render();

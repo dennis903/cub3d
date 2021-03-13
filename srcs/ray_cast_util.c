@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ray_cast_util.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/12 21:48:12 by ihyeongjin        #+#    #+#             */
+/*   Updated: 2021/03/12 21:48:13 by ihyeongjin       ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../cub3d.h"
 
 void			get_next_horz_touch(t_point intercept, t_point **horz_wall, t_point step, int angle_side_up)
@@ -8,7 +20,8 @@ void			get_next_horz_touch(t_point intercept, t_point **horz_wall, t_point step,
 	touch.y = intercept.y;
 	(*horz_wall)->x = 0;
 	(*horz_wall)->y = 0;
-	while (touch.x >= 0 && touch.x < (g_tile_size * g_idx_width) && touch.y >= 0 && touch.y < (g_tile_size * g_idx_height))
+	while (touch.x >= 0 && touch.x < (g_tile_size * g_idx_width) &&
+	touch.y >= 0 && touch.y < (g_tile_size * g_idx_height))
 	{
 		if (has_wall_at(touch.x, touch.y - angle_side_up))
 		{
@@ -33,7 +46,8 @@ void				get_next_vert_touch(t_point intercept, t_point **vert_wall, t_point step
 	touch.y = intercept.y;
 	(*vert_wall)->x = 0;
 	(*vert_wall)->y = 0;
-	while (touch.x >= 0 && touch.x <= (g_tile_size * g_idx_width) && touch.y >= 0 && touch.y < (g_tile_size * g_idx_height))
+	while (touch.x >= 0 && touch.x <= (g_tile_size * g_idx_width) &&
+	touch.y >= 0 && touch.y < (g_tile_size * g_idx_height))
 	{
 		if (has_wall_at(touch.x - angle_side_left, touch.y))
 		{

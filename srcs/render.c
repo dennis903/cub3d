@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   render.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/12 21:48:00 by ihyeongjin        #+#    #+#             */
+/*   Updated: 2021/03/12 21:48:02 by ihyeongjin       ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../cub3d.h"
 
 int					change_to_degree(double angle)
@@ -19,7 +31,6 @@ void				draw_2d_ray()
 		ray_angle = player.rot_angle + atan((i - g_num_rays / 2) / g_dist_from_player);
 		g_rays[i].ray_angle = normalize_angle(ray_angle);
 		ray_cast(col_id, ray_angle);
-		// draw_line(player.x, player.y, g_rays[i].hit_point.x, g_rays[i].hit_point.y, 0xFF0000);
 		col_id++;
 		i++;
 	}

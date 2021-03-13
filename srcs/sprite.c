@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sprite.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/12 21:47:19 by ihyeongjin        #+#    #+#             */
+/*   Updated: 2021/03/12 21:47:20 by ihyeongjin       ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../cub3d.h"
 
 void				sprite_2d()
@@ -52,6 +64,7 @@ void					calc_sprite(t_sprite *visible_sprite, int visible_sp_num)
 {
 	t_sprite			sprite;
 	int					sprite_height;
+	double				correct_dist;
 	int					i;
 
 	i = 0;
@@ -59,7 +72,8 @@ void					calc_sprite(t_sprite *visible_sprite, int visible_sp_num)
 	while (i < visible_sp_num)
 	{
 		sprite = visible_sprite[i];
-		sprite_height = (g_tile_size / sprite.distance) * g_dist_from_player;
+		correct_dist = sprite.distance * cos(sprite.angle);
+		sprite_height = (g_tile_size / correct_dist) * g_dist_from_player;
 		draw_3d_sprite(sprite_height, sprite);
 		i++;
 	}

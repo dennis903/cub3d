@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_utils.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/12 21:48:26 by ihyeongjin        #+#    #+#             */
+/*   Updated: 2021/03/12 21:48:27 by ihyeongjin       ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../cub3d.h"
 
 int				count_splits(char **splits)
@@ -42,6 +54,8 @@ int				make_color(char *splits, t_color **color)
 	char		**sub_split;
 	t_color		*temp;
 
+	if ((*color) != 0)
+		return (ERROR);
 	sub_split = ft_split(splits, ',');
 	split_length = count_splits(sub_split);
 	if (split_length != 3)

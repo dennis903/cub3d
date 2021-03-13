@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils1.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/12 21:47:04 by ihyeongjin        #+#    #+#             */
+/*   Updated: 2021/03/12 21:47:05 by ihyeongjin       ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../cub3d.h"
 
 double				get_degree(int degree)
@@ -25,7 +37,7 @@ int					to_coord(double x, double y)
 	return ((int)floor(y) * g_tile_size * g_idx_width + (int)floor(x));
 }
 
-double				get_distance(int x1, int y1, int x2, int y2)
+double				get_distance(double x1, double y1, double x2, double y2)
 {
 	return (sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1)));
 }
