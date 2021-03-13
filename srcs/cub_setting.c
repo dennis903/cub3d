@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:49:17 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 17:56:02 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 19:31:56 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int				texture_setting(void)
 {
 	if ((put_xpm_file_to_image()) == ERROR)
 		return (ERROR);
-	if ((put_get_data_addr())== ERROR)
+	if ((put_get_data_addr()) == ERROR)
 		return (ERROR);
 	return (0);
 }
@@ -71,7 +71,7 @@ int				cub_setting(void)
 	if (!(g_game.win = mlx_new_window(g_game.mlx, g_md.width,
 	g_md.height, "cub3d")))
 		return (ERROR);
-	if (!(g_game.img_2d.img = mlx_new_image(g_game.mlx, 
+	if (!(g_game.img_2d.img = mlx_new_image(g_game.mlx,
 	g_tile_size * g_idx_width, g_tile_size * g_idx_height)))
 		return (ERROR);
 	if (!(g_game.img_3d.img = mlx_new_image(g_game.mlx, g_md.width,

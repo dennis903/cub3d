@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:46:56 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 19:29:41 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 19:30:53 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ t_ray				rot_angle_ray_cast(double angle)
 	return (ray);
 }
 
-double					fix_angle(double angle)
+double				fix_angle(double angle)
 {
 	if (g_keys.a_key)
 		angle = angle + get_degree(90);
@@ -75,7 +75,8 @@ double					fix_angle(double angle)
 		angle = angle + get_degree(180);
 	return (angle);
 }
-double					check_angle_by_dir(double angle)
+
+double				check_angle_by_dir(double angle)
 {
 	if (g_keys.a_key)
 		angle = angle - get_degree(90);
