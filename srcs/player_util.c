@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:48:22 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 11:15:29 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 17:36:42 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int					defence_seg_x(double angle)
 int					defence_seg_y(double angle)
 {
 	t_ray			ray;
-	
+
 	angle = check_angle_by_dir(angle);
 	ray = rot_angle_ray_cast(angle);
 	check_direction(ray);
