@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:47:09 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/12 21:47:09 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 19:26:07 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,15 +56,19 @@ int					get_texture_x(t_ray ray)
 	if (g_dir.check_no || g_dir.check_so)
 	{
 		if (g_dir.check_no)
-			temp_x = fmod(ray.hit_point.x, g_tile_size) * (g_dir.no_w / g_tile_size);
+			temp_x = fmod(ray.hit_point.x, g_tile_size) *
+			(g_dir.no_w / g_tile_size);
 		else
-			temp_x = fmod(ray.hit_point.x, g_tile_size) * (g_dir.so_w / g_tile_size);
+			temp_x = fmod(ray.hit_point.x, g_tile_size) *
+			(g_dir.so_w / g_tile_size);
 	}
 	else
 		if (g_dir.check_we)
-			temp_x = fmod(ray.hit_point.y, g_tile_size) * (g_dir.we_w / g_tile_size);
+			temp_x = fmod(ray.hit_point.y, g_tile_size) *
+			(g_dir.we_w / g_tile_size);
 		else
-			temp_x = fmod(ray.hit_point.y, g_tile_size) * (g_dir.ea_w / g_tile_size);
+			temp_x = fmod(ray.hit_point.y, g_tile_size) *
+			(g_dir.ea_w / g_tile_size);
 	texture_x = temp_x;
 	return (texture_x);
 }
@@ -91,9 +95,9 @@ int					get_texture_y(int screen_y, int wall_height)
 	return (texture_y);
 }
 
-int						get_texture_color(int x, int y)
+int					get_texture_color(int x, int y)
 {
-	int					color;
+	int				color;
 
 	if (g_dir.check_no)
 		color = g_dir.no_data[y * g_dir.no_w + x];

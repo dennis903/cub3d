@@ -6,13 +6,13 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:47:13 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 17:16:26 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 19:24:55 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void						init_direction()
+void						init_direction(void)
 {
 	g_dir.check_no = 0;
 	g_dir.check_so = 0;
