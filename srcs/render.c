@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:48:00 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 17:51:06 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 17:52:41 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int					change_to_degree(double angle)
 	return ((int)angle / (PI / 180));
 }
 
-void				draw_2d_ray()
+void				draw_2d_ray(void)
 {
 	int				col_id;
 	int				i;
@@ -36,22 +36,21 @@ void				draw_2d_ray()
 	}
 }
 
-
-void				raycast_2d()
+void				raycast_2d(void)
 {
 	draw_rectangles();
 	draw_player();
 	draw_2d_ray();
 }
 
-void				raycast_3d()
+void				raycast_3d(void)
 {
 	draw_ceiling();
 	draw_floor();
 	draw_wall();
 }
 
-void				render()
+void				render(void)
 {
 	image_reset_2d();
 	image_reset_3d();
