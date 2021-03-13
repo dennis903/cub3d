@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:47:04 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 17:57:16 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 19:28:36 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ double				get_degree(int degree)
 int					has_wall_at(double x, double y)
 {
 	int				check_wall_x;
-	int				check_wall_y;	
+	int				check_wall_y;
 
-	if (x >= g_md.width || x < 0 ||y >= g_md.height || y < 0)
+	if (x >= g_md.width || x < 0 || y >= g_md.height || y < 0)
 		return (1);
 	check_wall_x = (int)(x / g_tile_size);
 	check_wall_y = (int)(y / g_tile_size);
@@ -42,7 +42,7 @@ double				get_distance(double x1, double y1, double x2, double y2)
 	return (sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1)));
 }
 
-void				move_player()
+void				move_player(void)
 {
 	if (g_keys.a_key)
 		check_a(g_player.angle);

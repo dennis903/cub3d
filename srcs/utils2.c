@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:46:56 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 13:54:01 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 19:29:41 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int					calc_idx(int x, int y)
 
 int					count_sprite()
 {
-	int			i;
-	int			j;
-	int			count;
+	int				i;
+	int				j;
+	int				count;
 
 	i = 0;
 	count = 0;
@@ -39,27 +39,27 @@ int					count_sprite()
 	return (count);
 }
 
-t_ray					rot_angle_ray_cast(double angle)
+t_ray				rot_angle_ray_cast(double angle)
 {
-	t_point				horz_wall;
-	t_point				vert_wall;
-	t_ray				ray;
-	double				horz_dist;
-	double				vert_dist;
+	t_point			horz;
+	t_point			vert;
+	t_ray			ray;
+	double			horz_dist;
+	double			vert_dist;
 
 	angle = normalize_angle(angle);
 	ray.ray_angle = angle;
-	horizontal_wall_check(angle, &horz_wall);
+	horizontal_wall_check(angle, &horz);
 	ray.side = 0;
-	vertical_wall_check(angle, &vert_wall);
-	if (horz_wall.is_wall == 0)
+	vertical_wall_check(angle, &vert);
+	if (horz.is_wall == 0)
 		horz_dist = 9999999;
 	else
-		horz_dist = get_distance(g_player.x, g_player.y, horz_wall.x, horz_wall.y);
-	if (vert_wall.is_wall == 0)
+		horz_dist = get_distance(g_player.x, g_player.y, horz.x, horz.y);
+	if (vert.is_wall == 0)
 		vert_dist = 9999999;
 	else
-		vert_dist = get_distance(g_player.x, g_player.y, vert_wall.x, vert_wall.y);
+		vert_dist = get_distance(g_player.x, g_player.y, vert.x, vert.y);
 	if (horz_dist >= vert_dist)
 		ray.side = 1;
 	return (ray);
