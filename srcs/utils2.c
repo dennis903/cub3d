@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:46:56 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 19:30:53 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 19:32:44 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int					calc_idx(int x, int y)
 	return (y * (g_tile_size * g_idx_width) + x);
 }
 
-int					count_sprite()
+int					count_sprite(void)
 {
 	int				i;
 	int				j;

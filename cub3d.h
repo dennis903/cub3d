@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:46:50 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 17:50:55 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 19:43:16 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -217,26 +217,26 @@ void					copy_map_data(char **map, t_list *map_list);
 int						map_valid_check(char **map);
 int						check_not_valid_map(char index);
 void					player_test(char index, int *player_count);
-int						texture_setting();
-int						cub_setting();
-int						sprite_setting();
-void					player_setting();
-void					ray_setting();
+int						texture_setting(void);
+int						cub_setting(void);
+int						sprite_setting(void);
+void					player_setting(void);
+void					ray_setting(void);
 int						key_release(int keycode);
 int						key_press(int keycode);
-int						key_exit();
-int						main_loop();
+int						key_exit(void);
+int						main_loop(void);
 double					get_degree(int degree);
 int						has_wall_at(double x, double y);
 int						to_coord(double x, double y);
 double					get_distance(double x1, double y1, double x2, double y2);
-void					move_player();
-void					render();
-void					draw_2d_ray();
-void					raycast_3d();
-void					draw_player();
+void					move_player(void);
+void					render(void);
+void					draw_2d_ray(void);
+void					raycast_3d(void);
+void					draw_player(void);
 void					draw_line(double x1, double y1, double x2, double y2);
-void					draw_rectangles();
+void					draw_rectangles(void);
 void					draw_rectangle(int row, int col);
 double					normalize_angle(double ray_angle);
 void					ray_cast(int col_id, double angle);
@@ -245,46 +245,46 @@ void					horizontal_wall_check(double angle, t_point *horz_wall);
 void					get_next_horz_touch(t_point intercept, t_point **horz_wall,
 t_point step, int angle_side_up);
 void					get_next_vert_touch(t_point intercept, t_point **vert_wall,
-t_point step, int angle_side_left );
+t_point step, int angle_side_left);
 void					get_ray_data(double dist, int col_id, t_point wall_point);
-void					draw_ceiling();
-void					draw_floor();
-void					draw_wall();
+void					draw_ceiling(void);
+void					draw_floor(void);
+void					draw_wall(void);
 void					draw_3d_wall(double x, int wall_strip_height, t_ray ray);
 unsigned int			fill_color(t_color *color);
 void					check_direction(t_ray ray);
-void					init_direction();
+void					init_direction(void);
 void					is_dir_up(int left, t_ray ray);
 void					is_dir_down(int left, t_ray ray);
 int						get_texture_x(t_ray ray);
 int						get_texture_y(int screen_y, int wall_height);
 int						get_texture_color(int x, int y);
 int						calc_idx(int x, int y);
-int						count_sprite();
+int						count_sprite(void);
 t_ray					rot_angle_ray_cast(double angle);
 double					fix_angle(double angle);
 double					check_angle_by_dir(double angle);
-void					image_reset_2d();
-void					image_reset_3d();
-void					sprite_pos_set();
+void					image_reset_2d(void);
+void					image_reset_3d(void);
+void					sprite_pos_set(void);
 void					draw_2d_sprite(int y, int x, int color);
 void					draw_3d_sprite(int sprite_height, t_sprite sprite);
 void					draw_sprite_height(int sprite_height, int sprite_width,
 int x, t_sprite_utils sp_utils);
 void					sort_sprite(t_sprite *visible_sprite, int visible_sp_num);
-void					sprite_2d();
-void					sprite_3d();
+void					sprite_2d(void);
+void					sprite_3d(void);
 void					calc_sprite(t_sprite *visible_sprite, int visible_sp_num);
-int						make_bmp();
+int						make_bmp(void);
 void					set_bmp_header(unsigned char *header);
-int						calc_bmp_size();
+int						calc_bmp_size(void);
 int						get_sp_tex_x(int current_x, int sprite_width);
 int						get_sp_tex_y(int current_y, int sprite_height);
 int						get_sp_texture(int x, int y);
-void					move_up();
-void					move_down();
-void					move_left();
-void					move_right();
+void					move_up(void);
+void					move_down(void);
+void					move_left(void);
+void					move_right(void);
 void					check_a(double angle);
 void					check_w(double angle);
 void					check_s(double angle);
