@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:46:50 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 19:49:15 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 19:50:03 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # define SUCCESS				1
 # define PI						3.1415926536
 # define X_EVENT_KEY_PRESS		2
-# define X_EVENT_KEY_release	3
+# define X_EVENT_KEY_REALEASE	3
 # define X_EVENT_KEY_EXIT		17
 # define KEY_ESC				53
 # define KEY_W					13

@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:49:17 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 19:31:56 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 19:50:12 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int				cub_setting(void)
 	player_setting();
 	ray_setting();
 	mlx_hook(g_game.win, X_EVENT_KEY_PRESS, 0, key_press, 0);
-	mlx_hook(g_game.win, X_EVENT_KEY_release, 0, key_release, 0);
+	mlx_hook(g_game.win, X_EVENT_KEY_REALEASE, 0, key_release, 0);
 	mlx_hook(g_game.win, X_EVENT_KEY_EXIT, 0, key_exit, 0);
 	return (0);
 }
