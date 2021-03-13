@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:48:48 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 17:27:48 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/13 17:28:30 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,10 @@ int					map_valid_check(char **map)
 		{
 			if (map[i][j] == '0' || map[i][j] == '2' || map[i][j] == 'N' ||
 			map[i][j] == 'E' || map[i][j] == 'W' || map[i][j] == 'S')
+			{
 				if ((map_valid_test(map, i, j)) == -1)
 			 		return (ERROR);
+			}
 			player_test(map[i][j], &player_count);
 			j++;
 		}
