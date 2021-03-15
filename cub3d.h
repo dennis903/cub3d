@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:46:50 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 19:50:03 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/15 16:12:49 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # include <math.h>
 # include <fcntl.h>
 # include <unistd.h>
+# include <stdlib.h>
 # include "./libft/libft.h"
 # include "./get_next_line/get_next_line.h"
 # include "mlx_dylib/mlx.h"
@@ -296,4 +297,5 @@ int					put_xpm_file_to_image(void);
 int					put_get_data_addr(void);
 void				init_keys(int keycode);
 void				fill_header(unsigned char *header, int size);
+void				free_map_list(t_list **map_list);
 #endif

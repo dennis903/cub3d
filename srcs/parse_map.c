@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:48:31 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 17:56:15 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/15 20:27:44 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,21 @@ void			parse_map(int fd, t_list **map_list)
 	line = 0;
 	while (get_next_line(fd, &line) > 0)
 		ft_lstadd_back(map_list, ft_lstnew((void *)line));
+}
+
+void			free_map_list(t_list **map_list)
+{
+	t_list		*node;
+
+	if (!map_list)
+		return ;
+	while (*map_list)
+	{
+		node = (*map_list)->next;
+		free((*map_list)->content);
+		free(*map_list);
+		*map_list = node;
+	}
 }
 
 char			**fill_map_data(t_list *map_list)

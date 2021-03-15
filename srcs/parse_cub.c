@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_cub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:48:36 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 17:56:14 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/15 20:26:12 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,14 @@ int				data_setting(char *line)
 	char		**splits;
 
 	splits = ft_split(line, ' ');
-	if (*splits == 0)
+	if (!(*splits))
 	{
-		free_arrs(splits);
 		return (0);
 	}
 	else
 	{
 		if ((set_base_data(splits)) == ERROR)
 		{
-			free_arrs(splits);
 			return (-1);
 		}
 	}
@@ -61,8 +59,10 @@ int				parse_data(int fd)
 			free(line);
 			return (0);
 		}
-		free(line);
+		else
+			free(line);
 	}
+	free(line);
 	return (0);
 }
 
@@ -83,7 +83,10 @@ int				move_to_map(int fd, t_list **map_list)
 		free(line);
 	}
 	if (check == 0)
+	{
+		free(line);
 		return (ERROR);
+	}
 	ft_lstadd_back(map_list, ft_lstnew((void *)line));
 	parse_map(fd, map_list);
 	return (0);
@@ -104,6 +107,7 @@ int				parse_cub(int fd)
 		return (ERROR);
 	if ((g_game.map = fill_map_data(map_list)) == 0)
 		return (ERROR);
+	free_map_list(&map_list);
 	w_tile = g_md.width / g_idx_width;
 	h_tile = g_md.height / g_idx_height;
 	if (w_tile >= h_tile)

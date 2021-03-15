@@ -1,10 +1,10 @@
-R 400 1
+R 1000 1000
 SO ./textures/south.xpm
 NO ./textures/north.xpm
 WE ./textures/west.xpm
 S ./textures/pillar.xpm
 EA ./textures/east.xpm
-F 0,154,225
+F 0,154,255
 C 255,124,0
 
         1111111111111111111111111

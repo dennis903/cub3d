@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_util.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:48:22 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 17:56:12 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/15 15:59:42 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ int					defence_seg_x(double angle)
 	ray = rot_angle_ray_cast(angle);
 	check_direction(ray);
 	if (g_dir.check_ea)
-		return (2);
+		return (3);
 	else if (g_dir.check_we)
-		return (-2);
+		return (-3);
 	return (0);
 }
 
@@ -57,9 +57,9 @@ int					defence_seg_y(double angle)
 	ray = rot_angle_ray_cast(angle);
 	check_direction(ray);
 	if (g_dir.check_no)
-		return (-2);
+		return (-3);
 	else if (g_dir.check_so)
-		return (2);
+		return (3);
 	return (0);
 }
 

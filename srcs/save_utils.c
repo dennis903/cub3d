@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   save_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:47:51 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 17:53:55 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/15 18:05:12 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@ int				save_r(char **splits)
 	height = ft_atoi(splits[2]);
 	if (width == 0 || height == 0)
 		return (ERROR);
+	if (width > 1920)
+		width = 1920;
+	if (height > 1080)
+		height = 1080;
 	if (width < 250)
 		width = 250;
 	if (height < 250)

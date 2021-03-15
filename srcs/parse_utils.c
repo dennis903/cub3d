@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:48:26 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 17:56:16 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/15 19:00:48 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,17 @@ int				make_color(char *splits, t_color **color)
 	if (split_length != 3)
 		return (ERROR);
 	if (!(temp = (t_color *)malloc(sizeof(t_color))))
+	{
+		free(temp);
 		return (ERROR);
+	}
 	*color = temp;
 	(*color)->red = ft_atoi(sub_split[0]);
 	(*color)->green = ft_atoi(sub_split[1]);
 	(*color)->blue = ft_atoi(sub_split[2]);
+	if ((*color)->red > 255 || ((*color)->green > 255 || (*color)->blue > 255))
+		return (ERROR);
+	free_arrs(sub_split);
 	return (0);
 }
 
@@ -73,10 +79,13 @@ void			free_arrs(char **splits)
 {
 	int			i;
 
+	if (!(*splits))
+		return ;
 	i = 0;
 	while (splits[i])
 	{
 		free(splits[i]);
 		i++;
 	}
+	free(splits);
 }
