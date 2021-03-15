@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:48:48 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 17:56:07 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/15 22:25:16 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void				copy_map_data(char **map, t_list *map_list)
 {
 	int				length;
+	t_list			*temp;
 	int				i;
 	int				j;
 
@@ -22,20 +23,20 @@ void				copy_map_data(char **map, t_list *map_list)
 	while (map_list)
 	{
 		length = ft_strlen((char *)map_list->content);
-		j = 0;
-		while (j < length)
-		{
+		temp = map_list->next;
+		j = -1;
+		while (++j < length)
 			map[i][j] = ((char *)map_list->content)[j];
-			j++;
-		}
 		while (j < g_idx_width)
 		{
 			map[i][j] = '\0';
 			j++;
 		}
 		i++;
-		map_list = map_list->next;
+		free_map_list(map_list);
+		map_list = temp;
 	}
+	free(map_list);
 }
 
 int					map_valid_check(char **map)

@@ -6,7 +6,7 @@
 /*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:48:36 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/15 20:26:12 by hyeolee          ###   ########.fr       */
+/*   Updated: 2021/03/15 22:20:31 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,6 @@ int				parse_cub(int fd)
 		return (ERROR);
 	if ((g_game.map = fill_map_data(map_list)) == 0)
 		return (ERROR);
-	free_map_list(&map_list);
 	w_tile = g_md.width / g_idx_width;
 	h_tile = g_md.height / g_idx_height;
 	if (w_tile >= h_tile)

@@ -6,7 +6,7 @@
 /*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:46:50 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/15 16:12:49 by hyeolee          ###   ########.fr       */
+/*   Updated: 2021/03/15 22:01:04 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -297,5 +297,5 @@ int					put_xpm_file_to_image(void);
 int					put_get_data_addr(void);
 void				init_keys(int keycode);
 void				fill_header(unsigned char *header, int size);
-void				free_map_list(t_list **map_list);
+void				free_map_list(t_list *map_list);
 #endif
