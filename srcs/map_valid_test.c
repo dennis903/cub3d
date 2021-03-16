@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:48:44 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 17:56:08 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/17 02:07:56 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int				left_test(char **map, int i, int j)
 
 int				right_test(char **map, int i, int j)
 {
-	while (j <= g_idx_width)
+	while (j < g_idx_width)
 	{
 		if (map[i][j] == '1')
 			return (0);
@@ -53,7 +53,7 @@ int				right_test(char **map, int i, int j)
 
 int				down_test(char **map, int i, int j)
 {
-	while (i <= g_idx_height)
+	while (i < g_idx_height)
 	{
 		if (map[i][j] == '1')
 			return (0);

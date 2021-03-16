@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:48:26 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/15 19:00:48 by hyeolee          ###   ########.fr       */
+/*   Updated: 2021/03/17 01:46:11 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,34 @@ int				count_splits(char **splits)
 	while (splits[count])
 		count++;
 	return (count);
+}
+
+int				test_color_num(char *s1, char *s2, char *s3)
+{
+	int			i;
+
+	i = 0;
+	while (s1[i])
+	{
+		if (s1[i] < '0' || s1[i] > '9')
+			return (ERROR);
+		i++;
+	}
+	i = 0;
+	while (s2[i])
+	{
+		if (s2[i] < '0' || s2[i] > '9')
+			return (ERROR);
+		i++;
+	}
+	i = 0;
+	while (s3[i])
+	{
+		if (s3[i] < '0' || s3[i] > '9')
+			return (ERROR);
+		i++;
+	}
+	return (0);
 }
 
 int				set_base_data(char **splits)
@@ -59,6 +87,8 @@ int				make_color(char *splits, t_color **color)
 	sub_split = ft_split(splits, ',');
 	split_length = count_splits(sub_split);
 	if (split_length != 3)
+		return (ERROR);
+	if (test_color_num(sub_split[0], sub_split[1], sub_split[2]) == ERROR)
 		return (ERROR);
 	if (!(temp = (t_color *)malloc(sizeof(t_color))))
 	{

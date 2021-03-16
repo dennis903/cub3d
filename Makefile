@@ -28,10 +28,11 @@ srcs/make_bmp.c		\
 srcs/bmp_utils.c	\
 srcs/sprite_textures.c	\
 srcs/check_key.c		\
+srcs/check_parse.c		\
 get_next_line/get_next_line.c	\
 get_next_line/get_next_line_utils.c
 
-FLAGS = -Wall -Wextra -Werror #-fsanitize=address -g2
+FLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 

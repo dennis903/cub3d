@@ -3,14 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   save_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:47:51 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/15 18:05:12 by hyeolee          ###   ########.fr       */
+/*   Updated: 2021/03/17 01:42:52 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+int				test_number(char *s1, char *s2)
+{
+	int			i;
+
+	i = 0;
+	while (s1[i])
+	{
+		if (s1[i] < '0' || s1[i] >'9')
+			return (ERROR);
+		i++;
+	}
+	i = 0;
+	while (s2[i])
+	{
+		if (s2[i] < '0' || s2[i] >'9')
+			return (ERROR);
+		i++;
+	}
+	return (0);
+}
 
 int				save_r(char **splits)
 {
@@ -20,6 +41,10 @@ int				save_r(char **splits)
 
 	split_length = count_splits(splits);
 	if (split_length != 3)
+		return (ERROR);
+	if (test_number(splits[1], splits[2]) == ERROR)
+		return (ERROR);
+	if (check_g_md() == ERROR)
 		return (ERROR);
 	width = ft_atoi(splits[1]);
 	height = ft_atoi(splits[2]);
@@ -44,6 +69,8 @@ int				save_texture(char **splits)
 
 	split_length = count_splits(splits);
 	if (split_length != 2)
+		return (ERROR);
+	if (check_texture(splits[0]) == ERROR)
 		return (ERROR);
 	if (ft_strcmp(splits[0], "NO") == 0)
 		g_md.north = ft_strdup(splits[1]);

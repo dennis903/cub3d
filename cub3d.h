@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:46:50 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/16 15:10:00 by hyeolee          ###   ########.fr       */
+/*   Updated: 2021/03/17 01:46:31 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -289,4 +289,9 @@ int					put_get_data_addr(void);
 void				init_keys(int keycode);
 void				fill_header(unsigned char *header, int size);
 void				free_map_list(t_list *map_list);
+int					test_number(char *s1, char *s2);
+int					check_g_md(void);
+int					check_texture(char *splits);
+int					check_color(char *splits);
+int					test_color_num(char *s1, char *s2, char *s3);
 #endif
