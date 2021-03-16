@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:48:31 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/16 02:34:01 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/16 16:31:17 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,6 @@ void			parse_map(int fd, t_list **map_list)
 	ft_lstadd_back(map_list, ft_lstnew((void *)line));
 }
 
-void			free_map_list(t_list *map_list)
-{
-	free(map_list->content);
-	free(map_list);
-}
-
 char			**fill_map_data(t_list *map_list)
 {
 	char		**map;
@@ -65,13 +59,13 @@ char			**fill_map_data(t_list *map_list)
 
 	map = 0;
 	g_idx_width = get_map_width(map_list);
-	g_idx_height = get_map_height(map_list);
+	g_idx_height = ft_lstsize(map_list);
 	if (g_idx_width == 0 || g_idx_height == 0)
 		return (0);
 	if (!(map = (char **)malloc(sizeof(char *) * g_idx_height)))
 		return (0);
 	i = -1;
-	while (i++ < g_idx_height)
+	while (++i < g_idx_height)
 		if (!(map[i] = (char *)malloc(sizeof(char) * (g_idx_width + 1))))
 			return (0);
 	copy_map_data(map, map_list);

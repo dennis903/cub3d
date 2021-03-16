@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_cub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:48:36 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/16 02:32:37 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/16 16:22:42 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ int				parse_cub(int fd)
 		return (ERROR);
 	if ((g_game.map = fill_map_data(map_list)) == 0)
 		return (ERROR);
+	ft_lstclear(&map_list, free);
 	w_tile = g_md.width / g_idx_width;
 	h_tile = g_md.height / g_idx_height;
 	if (w_tile >= h_tile)

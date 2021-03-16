@@ -6,7 +6,7 @@
 /*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:46:50 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/15 22:01:04 by hyeolee          ###   ########.fr       */
+/*   Updated: 2021/03/16 15:10:00 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,6 @@ typedef struct		s_img
 	int				bpp;
 	int				size_l;
 }					t_img;
-
-typedef struct		s_3d_data
-{
-	double			actual_wall_height;
-	double			dist_to_wall;
-	double			proj_wall_height;
-	double			dist_from_player;
-}					t_3d_data;
 
 typedef struct		s_direction
 {
@@ -186,7 +178,6 @@ t_player			g_player;
 t_key				g_keys;
 t_ray				*g_rays;
 t_direction			g_dir;
-t_3d_data			g_3d;
 t_sprite			*g_sprites;
 
 char				g_sprite_num;

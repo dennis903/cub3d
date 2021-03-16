@@ -4,8 +4,10 @@ NO ./textures/north.xpm
 WE ./textures/west.xpm
 S ./textures/pillar.xpm
 EA ./textures/east.xpm
-F 0,154,255
-C 255,124,0
+F  0,154,255
+C  255,124,0
+
+
 
         1111111111111111111111111
         1000000000110000000000021

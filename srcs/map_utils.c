@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:48:48 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/16 03:29:29 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/16 16:22:26 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void				copy_map_data(char **map, t_list *map_list)
 			j++;
 		}
 		i++;
-		free_map_list(map_list);
 		map_list = temp;
 	}
 }

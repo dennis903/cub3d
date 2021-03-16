@@ -31,7 +31,7 @@ srcs/check_key.c		\
 get_next_line/get_next_line.c	\
 get_next_line/get_next_line_utils.c
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror #-fsanitize=address -g2
 
 all: $(NAME)
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeolee <hyeolee@42student.kr>             +#+  +:+       +#+        */
+/*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 13:47:40 by hyeolee           #+#    #+#             */
-/*   Updated: 2020/10/14 13:49:03 by hyeolee          ###   ########.fr       */
+/*   Updated: 2021/03/16 16:10:35 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
+	del(lst->content);
 	del(lst);
 }
