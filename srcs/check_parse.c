@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 01:31:09 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/17 02:02:15 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/17 02:25:05 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,12 @@ int				check_texture(char *splits)
 		if (g_md.west != 0)
 			return (ERROR);
 	}
-	else if (ft_strcmp(splits, "S") == 0)
+	return (0);
+}
+
+int				check_sprite(char *splits)
+{
+	if (ft_strcmp(splits, "S") == 0)
 	{
 		if (g_md.sprite != 0)
 			return (ERROR);

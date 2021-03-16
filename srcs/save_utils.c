@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:47:51 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/17 01:42:52 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/17 02:32:39 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int				test_number(char *s1, char *s2)
 	i = 0;
 	while (s2[i])
 	{
-		if (s2[i] < '0' || s2[i] >'9')
+		if (s2[i] < '0' || s2[i] > '9')
 			return (ERROR);
 		i++;
 	}
@@ -50,14 +50,10 @@ int				save_r(char **splits)
 	height = ft_atoi(splits[2]);
 	if (width == 0 || height == 0)
 		return (ERROR);
-	if (width > 1920)
-		width = 1920;
-	if (height > 1080)
-		height = 1080;
-	if (width < 250)
-		width = 250;
-	if (height < 250)
-		height = 250;
+	width = width > 1920 ? 1920 : width;
+	height = height > 1080 ? 1080 : height;
+	width = width < 250 ? 250 : width;
+	height = height < 250 ? 250 : height;
 	g_md.width = width;
 	g_md.height = height;
 	return (0);
@@ -71,6 +67,8 @@ int				save_texture(char **splits)
 	if (split_length != 2)
 		return (ERROR);
 	if (check_texture(splits[0]) == ERROR)
+		return (ERROR);
+	if (check_sprite(splits[0]) == ERROR)
 		return (ERROR);
 	if (ft_strcmp(splits[0], "NO") == 0)
 		g_md.north = ft_strdup(splits[1]);

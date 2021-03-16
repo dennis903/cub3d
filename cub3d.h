@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:46:50 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/17 01:46:31 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/17 02:25:17 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -293,5 +293,6 @@ int					test_number(char *s1, char *s2);
 int					check_g_md(void);
 int					check_texture(char *splits);
 int					check_color(char *splits);
+int					check_sprite(char *splits);
 int					test_color_num(char *s1, char *s2, char *s3);
 #endif
