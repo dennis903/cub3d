@@ -6,7 +6,7 @@
 /*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:47:51 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/17 02:32:39 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/17 02:34:48 by ihyeongjin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int				test_number(char *s1, char *s2)
 	i = 0;
 	while (s1[i])
 	{
-		if (s1[i] < '0' || s1[i] >'9')
+		if (s1[i] < '0' || s1[i] > '9')
 			return (ERROR);
 		i++;
 	}
