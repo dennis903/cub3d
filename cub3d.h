@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:46:50 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/17 02:25:17 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/17 18:25:42 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -248,14 +248,12 @@ void				check_direction(t_ray ray);
 void				init_direction(void);
 void				is_dir_up(int left, t_ray ray);
 void				is_dir_down(int left, t_ray ray);
-int					get_texture_x(t_ray ray);
-int					get_texture_y(int screen_y, int wall_height);
-int					get_texture_color(int x, int y);
+double				get_texture_x(t_ray ray);
+double				get_texture_y(int screen_y, int wall_height);
+int					get_texture_color(double x, double y);
 int					calc_idx(int x, int y);
 int					count_sprite(void);
-t_ray				rot_angle_ray_cast(double angle);
 double				fix_angle(double angle);
-double				check_angle_by_dir(double angle);
 void				image_reset_2d(void);
 void				image_reset_3d(void);
 void				sprite_pos_set(void);
@@ -292,7 +290,9 @@ void				free_map_list(t_list *map_list);
 int					test_number(char *s1, char *s2);
 int					check_g_md(void);
 int					check_texture(char *splits);
-int					check_color(char *splits);
+int					check_color(char *splits, char *splits2);
 int					check_sprite(char *splits);
 int					test_color_num(char *s1, char *s2, char *s3);
+int					check_comma(char *splits);
+int					check_wall_hit(double new_pos_x, double new_pos_y);
 #endif

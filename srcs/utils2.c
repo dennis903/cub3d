@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:46:56 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 19:32:44 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/17 18:20:44 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,32 +37,6 @@ int					count_sprite(void)
 		i++;
 	}
 	return (count);
-}
-
-t_ray				rot_angle_ray_cast(double angle)
-{
-	t_point			horz;
-	t_point			vert;
-	t_ray			ray;
-	double			horz_dist;
-	double			vert_dist;
-
-	angle = normalize_angle(angle);
-	ray.ray_angle = angle;
-	horizontal_wall_check(angle, &horz);
-	ray.side = 0;
-	vertical_wall_check(angle, &vert);
-	if (horz.is_wall == 0)
-		horz_dist = 9999999;
-	else
-		horz_dist = get_distance(g_player.x, g_player.y, horz.x, horz.y);
-	if (vert.is_wall == 0)
-		vert_dist = 9999999;
-	else
-		vert_dist = get_distance(g_player.x, g_player.y, vert.x, vert.y);
-	if (horz_dist >= vert_dist)
-		ray.side = 1;
-	return (ray);
 }
 
 double				fix_angle(double angle)

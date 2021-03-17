@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_cast_3d.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:48:17 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 17:56:18 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/17 17:00:34 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void					draw_3d_wall(double x, int wall_strip_height, t_ray ray)
 		start_point = 0;
 	end_point = (g_md.height / 2) + (wall_strip_height / 2);
 	if (end_point >= g_md.height)
-		end_point = g_md.height - 1;
+		end_point = g_md.height;
 	check_direction(ray);
 	get_texture.x = get_texture_x(ray);
 	while (start_point < end_point)

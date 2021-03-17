@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_parse.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 01:31:09 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/17 02:25:05 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/17 15:49:44 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,16 +54,34 @@ int				check_sprite(char *splits)
 	return (0);
 }
 
-int				check_color(char *splits)
+int				check_comma(char *splits)
+{
+	int			i;
+	int			count;
+
+	i = 0;
+	count = 0;
+	while (splits[i])
+	{
+		if (count > 2)
+			return (ERROR);
+		if (splits[i] == ',')
+			count++;
+		i++;
+	}
+	return (0);
+}
+
+int				check_color(char *splits, char *splits2)
 {
 	if (ft_strcmp(splits, "F"))
 	{
-		if (g_md.f != 0)
+		if (check_comma(splits2) == ERROR)
 			return (ERROR);
 	}
 	else if (ft_strcmp(splits, "C"))
 	{
-		if (g_md.c != 0)
+		if (check_comma(splits2) == ERROR)
 			return (ERROR);
 	}
 	return (0);

@@ -1,4 +1,4 @@
-NAME = cub3d
+NAME = cub3D
 
 SRCS =	cub3d.c	\
 srcs/cub_setting.c	\
@@ -32,7 +32,7 @@ srcs/check_parse.c		\
 get_next_line/get_next_line.c	\
 get_next_line/get_next_line_utils.c
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -fsanitize=address
 
 all: $(NAME)
 
@@ -43,13 +43,13 @@ $(NAME): $(SRCS)
 	cp libft/libft.a ./
 	cp mlx/libmlx.a ./
 	cp mlx_dylib/libmlx.dylib ./
-	gcc	$(FLAGS)	./libft.a	./libmlx.a	-framework	OpenGl	-framework AppKit	$(SRCS)	-o	$(NAME)
+	gcc	$(FLAGS) -L ./mlx	-lmlx	./libft.a	-framework	OpenGl	-framework AppKit	$(SRCS)	-o	$(NAME) libmlx.dylib
 
 bonus: all
 
 clean:
 	make -C libft clean
-	rm -f $(OSRC)
+	rm -f get_next_line/*.o
 
 fclean: clean
 	make -C libft fclean
@@ -70,6 +70,6 @@ screen : $(NAME)
 	open screenshot.bmp
 
 norm :
-	@norminette *.c *.h ./libft/*.c ./libft/*.h
+	@norminette *.c *.h ./srcs/*.c ./get_next_line/*.c ./get_next_line/*.h ./libft/*.c ./libft/*.h
 
 .PHONY: all bonus clean fclean re norm run screen

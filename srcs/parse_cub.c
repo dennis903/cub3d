@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_cub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:48:36 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/17 02:00:33 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/17 17:02:28 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,7 @@ int				data_setting(char *line)
 	else
 	{
 		if ((set_base_data(splits)) == ERROR)
-		{
 			return (-1);
-		}
 	}
 	free_arrs(splits);
 	return (1);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:47:04 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 19:28:36 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/17 12:59:13 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ int					has_wall_at(double x, double y)
 	int				check_wall_x;
 	int				check_wall_y;
 
-	if (x >= g_md.width || x < 0 || y >= g_md.height || y < 0)
+	if (x > g_md.width || x < 0 || y > g_md.height || y < 0)
 		return (1);
-	check_wall_x = (int)(x / g_tile_size);
-	check_wall_y = (int)(y / g_tile_size);
+	check_wall_x = (int)floor(x / g_tile_size);
+	check_wall_y = (int)floor(y / g_tile_size);
 	if (g_game.map[check_wall_y][check_wall_x] == '1')
 		return (1);
 	else

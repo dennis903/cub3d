@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:47:09 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/13 19:27:28 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/17 17:11:27 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,34 +48,34 @@ void				is_dir_down(int left, t_ray ray)
 	}
 }
 
-int					get_texture_x(t_ray ray)
+double				get_texture_x(t_ray ray)
 {
-	int				texture_x;
+	double			texture_x;
 	double			temp_x;
 
 	if (g_dir.check_no || g_dir.check_so)
 	{
 		if (g_dir.check_no)
 			temp_x = fmod(ray.hit_point.x, g_tile_size) *
-			(g_dir.no_w / g_tile_size);
+			((double)g_dir.no_w / g_tile_size);
 		else
 			temp_x = fmod(ray.hit_point.x, g_tile_size) *
-			(g_dir.so_w / g_tile_size);
+			((double)g_dir.so_w / g_tile_size);
 	}
 	else
 	{
 		if (g_dir.check_we)
 			temp_x = fmod(ray.hit_point.y, g_tile_size) *
-			(g_dir.we_w / g_tile_size);
+			((double)g_dir.we_w / g_tile_size);
 		else
 			temp_x = fmod(ray.hit_point.y, g_tile_size) *
-			(g_dir.ea_w / g_tile_size);
+			((double)g_dir.ea_w / g_tile_size);
 	}
 	texture_x = temp_x;
 	return (texture_x);
 }
 
-int					get_texture_y(int screen_y, int wall_height)
+double				get_texture_y(int screen_y, int wall_height)
 {
 	int				texture_y;
 
@@ -97,17 +97,17 @@ int					get_texture_y(int screen_y, int wall_height)
 	return (texture_y);
 }
 
-int					get_texture_color(int x, int y)
+int					get_texture_color(double x, double y)
 {
 	int				color;
 
 	if (g_dir.check_no)
-		color = g_dir.no_data[y * g_dir.no_w + x];
+		color = g_dir.no_data[(int)y * g_dir.no_w + (int)x];
 	else if (g_dir.check_so)
-		color = g_dir.so_data[y * g_dir.so_w + x];
+		color = g_dir.so_data[(int)y * g_dir.so_w + (int)x];
 	else if (g_dir.check_we)
-		color = g_dir.we_data[y * g_dir.we_w + x];
+		color = g_dir.we_data[(int)y * g_dir.we_w + (int)x];
 	else
-		color = g_dir.ea_data[y * g_dir.ea_w + x];
+		color = g_dir.ea_data[(int)y * g_dir.ea_w + (int)x];
 	return (color);
 }

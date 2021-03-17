@@ -6,7 +6,7 @@
 /*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:48:22 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/15 15:59:42 by hyeolee          ###   ########.fr       */
+/*   Updated: 2021/03/17 18:46:28 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void				set_angle(char direction)
 
 void				player_init(int height, int width)
 {
-	g_player.x = g_tile_size * width;
-	g_player.y = g_tile_size * height;
+	g_player.x = (g_tile_size * width) + (g_tile_size / 2);
+	g_player.y = (g_tile_size * height) + (g_tile_size / 2);
 	g_player.radius = 3;
 	g_player.turn_dir = 0;
 	g_player.walk_dir = 0;
@@ -35,37 +35,22 @@ void				player_init(int height, int width)
 	g_player.rotation_speed = 2 * (PI / 180);
 }
 
-int					defence_seg_x(double angle)
-{
-	t_ray			ray;
-
-	angle = check_angle_by_dir(angle);
-	ray = rot_angle_ray_cast(angle);
-	check_direction(ray);
-	if (g_dir.check_ea)
-		return (3);
-	else if (g_dir.check_we)
-		return (-3);
-	return (0);
-}
-
-int					defence_seg_y(double angle)
-{
-	t_ray			ray;
-
-	angle = check_angle_by_dir(angle);
-	ray = rot_angle_ray_cast(angle);
-	check_direction(ray);
-	if (g_dir.check_no)
-		return (-3);
-	else if (g_dir.check_so)
-		return (3);
-	return (0);
-}
-
 void				update(void)
 {
 	g_player.angle += g_player.turn_dir * g_player.rotation_speed;
 	g_player.angle = normalize_angle(g_player.angle);
 	move_player();
+}
+
+int					check_wall_hit(double new_pos_x, double new_pos_y)
+{
+	if (has_wall_at(new_pos_x + 3, new_pos_y + 3))
+		return (1);
+	if (has_wall_at(new_pos_x - 3, new_pos_y - 3))
+		return (1);
+	if (has_wall_at(new_pos_x + 3, new_pos_y - 3))
+		return (1);
+	if (has_wall_at(new_pos_x - 3, new_pos_y + 3))
+		return (1);
+	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   save_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:47:51 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/17 02:34:48 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/17 17:13:08 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,26 +36,25 @@ int				test_number(char *s1, char *s2)
 int				save_r(char **splits)
 {
 	int			split_length;
-	int			width;
-	int			height;
+	int			max_width;
+	int			max_height;
 
 	split_length = count_splits(splits);
+	mlx_get_screen_size(g_game.mlx, &max_width, &max_height);
 	if (split_length != 3)
 		return (ERROR);
 	if (test_number(splits[1], splits[2]) == ERROR)
 		return (ERROR);
 	if (check_g_md() == ERROR)
 		return (ERROR);
-	width = ft_atoi(splits[1]);
-	height = ft_atoi(splits[2]);
-	if (width == 0 || height == 0)
+	g_md.width = ft_atoi(splits[1]);
+	g_md.height = ft_atoi(splits[2]);
+	if (g_md.width == 0 || g_md.height == 0)
 		return (ERROR);
-	width = width > 1920 ? 1920 : width;
-	height = height > 1080 ? 1080 : height;
-	width = width < 250 ? 250 : width;
-	height = height < 250 ? 250 : height;
-	g_md.width = width;
-	g_md.height = height;
+	g_md.width = g_md.width > max_width ? max_width : g_md.width;
+	g_md.height = g_md.height > max_height ? max_height : g_md.height;
+	g_md.width = g_md.width < 400 ? 400 : g_md.width;
+	g_md.height = g_md.height < 400 ? 400 : g_md.height;
 	return (0);
 }
 
@@ -89,6 +88,8 @@ int				save_color(char **splits)
 
 	split_length = count_splits(splits);
 	if (split_length != 2)
+		return (ERROR);
+	if (check_color(splits[0], splits[1]) == ERROR)
 		return (ERROR);
 	if (ft_strcmp(splits[0], "F") == 0)
 		return (make_color(splits[1], &g_md.f));

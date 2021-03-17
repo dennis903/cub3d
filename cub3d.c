@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ihyeongjin <ihyeongjin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: hyeolee <hyeolee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 21:51:57 by ihyeongjin        #+#    #+#             */
-/*   Updated: 2021/03/16 03:31:04 by ihyeongjin       ###   ########.fr       */
+/*   Updated: 2021/03/17 18:30:04 by hyeolee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int					find_str(char *dist, const char *src)
 		else
 			i++;
 	}
-	printf(".cub error\n");
+	printf("Error\n.cub error\n");
 	return (ERROR);
 }
 
@@ -48,17 +48,17 @@ int					check_save(char *argv)
 		return (ERROR);
 	if (!(fd = open(argv, O_RDONLY)))
 	{
-		printf("file open error\n");
+		printf("Error\nfile open error\n");
 		return (ERROR);
 	}
 	if (parse_cub(fd) == ERROR)
 	{
-		printf("cub parse error\n");
+		printf("Error\ncub parse error\n");
 		return (ERROR);
 	}
 	if (cub_setting() == ERROR)
 	{
-		printf("cub setting error\n");
+		printf("Error\ncub setting error\n");
 		return (ERROR);
 	}
 	update();
@@ -76,17 +76,17 @@ int					display_window(char *argv)
 		return (ERROR);
 	if (!(fd = open(argv, O_RDONLY)))
 	{
-		printf("file open error\n");
+		printf("Error\nfile open error\n");
 		return (ERROR);
 	}
 	if (parse_cub(fd) == ERROR)
 	{
-		printf("cub parse error\n");
+		printf("Error\ncub parse error\n");
 		return (ERROR);
 	}
 	if (cub_setting() == ERROR)
 	{
-		printf("cub setting error\n");
+		printf("Error\ncub setting error\n");
 		return (ERROR);
 	}
 	mlx_loop_hook(g_game.mlx, main_loop, 0);
@@ -98,7 +98,7 @@ int					main(int argc, char *argv[])
 {
 	if (argc != 2 && argc != 3)
 	{
-		printf("please type --save or .cub\n");
+		printf("Error\nplease type --save or .cub\n");
 		return (ERROR);
 	}
 	if (argc == 3)
@@ -107,13 +107,13 @@ int					main(int argc, char *argv[])
 		{
 			if (check_save(argv[1]) == ERROR)
 			{
-				printf("save_error\n");
+				printf("Error\nsave_error\n");
 				return (ERROR);
 			}
 		}
 		else
 		{
-			printf("save_error\n");
+			printf("Error\nsave_error\n");
 			return (ERROR);
 		}
 	}
